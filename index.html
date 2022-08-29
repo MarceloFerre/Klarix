@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KlariX - Gestión de ambientes productivos</title>
+  <script src=""></script>
+  <link rel="stylesheet" href="css/tacit-css-1.5.5.min.css" />
+  <link rel="stylesheet" href="css/estilo.css">
+  <script defer src="js/clases.js"></script>
+  <script defer src="js/variables.js"></script>
+  <script defer src="js/funciones.js"></script>
+  <script defer src="js/index.js"></script>
+</head>
+
+<body>
+  <header class="cabecera">
+    <h1>⚗️ KlariX <small>Gestión de ambientes productivos</small></h1>
+    <nav id="navbar">
+      <div class="navbar">
+        <button class="navbar-item" onclick="VerMonitor()">🖥️ MONITOR</button>
+        <button class="navbar-item" onclick="VerAdmin()">📔 ADMINISTRADOR</button>
+        <button class="navbar-item" onclick="VerAudit()">🔍 AUDITORÍAS</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <hr>
+    <section id="Monitor">
+      <h2>🖥️ MONITOR</h2>
+      <section id="MonitorTarjetas">
+
+        <div id="cardMonitor" class="cards">
+
+          <!--
+          <div class="card">
+            <div class="cardtitulo">🏭 Manual 2</div>
+            <div class="cardot">📑 OT17</div>
+            <div class="cardprod">NOVEMINA FUERTE</div>
+            <div class="cardpresen">20 COMPRIMIDOS</div>
+            <div class="cardestadoicono">⏸️</div>
+            <div class="cardestado">Detenido</div>
+            <div class="cardUnidades">140/200 | 70%</div>
+            <div class="cardpie">
+              <a href="#">+info</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="cardtitulo">🏭 Manual 2</div>
+            <div class="cardot">📑 OT17</div>
+            <div class="cardprod">NOVEMINA FUERTE</div>
+            <div class="cardpresen">20 COMPRIMIDOS</div>
+            <div class="cardestadoicono">⏸️</div>
+            <div class="cardestado">Detenido</div>
+            <div class="cardUnidades">140/200 | 70%</div>
+            <div class="cardpie">
+              <a href="#">+info</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="cardtitulo">🏭 Manual 2</div>
+            <div class="cardot">📑 OT17</div>
+            <div class="cardprod">NOVEMINA FUERTE</div>
+            <div class="cardpresen">20 COMPRIMIDOS</div>
+            <div class="cardestadoicono">⏸️</div>
+            <div class="cardestado">Detenido</div>
+            <div class="cardUnidades">140/200 | 70%</div>
+            <div class="cardpie">
+              <a href="#">+info</a>
+            </div>
+          </div>-->
+
+        </div>
+      </section>
+      <section id="logDiario">
+
+      </section>
+
+    </section>
+
+    <section id="Admin">
+      <h2>📔 ADMINISTRDOR</h2>
+      <br>
+      <button class="botontitulo" onclick="verLineas()">
+        <h2>🏭 Lineas de producción</h2>
+      </button>
+      <br>
+      <section id="Lineas">
+
+        <form class=formFilrto action="">
+          Filtrar Empleados por
+          <select name="asd" id="asd">
+            <option value="ID">ID</option>
+            <option value="nombre">Nombre</option>
+            <option value="direccion">Dirección</option>
+            <option value="contacto">Contacto</option>
+            <option value="categoria">Categoría</option>
+          </select>
+          <input type="search" placeholder="Escriba su busqueda">
+          <button type="">🔍 Buscar</button>
+        </form>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>⚙️</th>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Orden Activa</th>
+
+            </tr>
+          </thead>
+          <tbody id="tablns">
+
+          </tbody>
+        </table>
+
+        formularios
+
+
+
+        cosas de lineas de produccion
+      </section>
+      <hr>
+      <button class="botontitulo" onclick="verOrdenes()">
+        <h2>📑 Ordenes de Trabajo</h2>
+      </button><br>
+      <section id="Ordenes">
+        filtros
+
+        tabla
+        <table class="table">
+          <thead>
+            <th>⚙️</th>
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Presentacion</th>
+            <th>Cliente</th>
+            <th>Unidades Pedidas</th>
+          </thead>
+          <tbody id="tabot">
+
+          </tbody>
+        </table>
+        formularios
+
+
+
+
+        cosas de ots
+      </section>
+      <hr>
+      <button onclick="verEmp()" class="botontitulo">
+        <h2>👷‍♀️ Empleados</h2>
+      </button>
+      <section id="Empleados">
+        <div class=formFilrto action="">
+          Filtrar por
+          <select name="empCat" id="empCat" onMouseUp="verCategorias()">
+            <option value="...">...</option>
+            <option value="ID">ID</option>
+            <option value="nombre">Nombre</option>
+            <option value="direccion">Dirección</option>
+            <option value="contacto">Contacto</option>
+            <option value="categoria">Categoría</option>
+          </select>
+          <input id="filtroEmp" type="search" onkeyup="filtroEmp()" placeholder="🔍 Escriba su busqueda">
+          <select name="empCategoria" id="empCategoria" onmouseup="filtroEmpCategorias()">
+            <option value="...">...</option>
+          </select>
+
+        </div>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>⚙️</th>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>Dirección</th>
+              <th>Contacto</th>
+
+            </tr>
+          </thead>
+          <tbody id="tabemp">
+
+          </tbody>
+        </table>
+
+        <section id="menuEmp">
+          <button onclick="">📄 Nuevo Empleado</button>
+          <button onclick="">🌀 Refrescar</button>
+        </section>
+
+        <form id="formNuevoEmp">
+          <h3>📄 Nuevo Empleado</h3>
+
+          <input type="text" id="idEmpNvo" placeholder="ID" readonly="readonly">
+          <input type="text" id="nombreEmpNvo" placeholder="Nombre">
+          <input type="text" id="direcEmpNvo" placeholder="Dirección">
+          <input type="email" id="contEmpNvo" placeholder="Contacto">
+          <select name="categoria" id="catEmpNvo">
+            <option value="">...</option>
+            <option value=""></option>
+          </select>
+          <button onclick="">Ingresar Empleado</button>
+        </form>
+
+        <form id="formModifEmp">
+          <h3>✏️ Modificar Empleado</h3>
+
+          <select name="idEmpMod" id="idEmpMod">
+            <option value="" selected disabled>...</option>
+          </select>
+          <input type="text" id="nombreEmpMod" placeholder="Nombre">
+          <input type="text" id="direcEmpMod" placeholder="Dirección">
+          <input type="text" id="contEmpMod" placeholder="Contacto">
+          <select name="categoria" id="catEmpMod">
+            <option value="" selected disabled>Categoría</option>
+            <option value=""></option>
+          </select>
+          <button onclick="">Guardar Cambios</button>
+        </form>
+
+      </section>
+      <hr>
+      <button class="botontitulo" onclick="verProd()">
+        <h2>💊 Productos</h2>
+      </button><br>
+      <section id="Productos">
+
+        <div class=formFilrto action="">
+          Buscar por
+          <select name="prodCat" id="prodCat">
+            <option value="">...</option>
+            <option value="ID">ID</option>
+            <option value="nombre">Nombre</option>
+            <option value="presentacion">Presentación</option>
+            <option value="descripcion">Descripción</option>
+          </select>
+          <input id="filtroProd" type="text" onkeyup="filtroProd()" placeholder=" 🔍 Escriba su busqueda">
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>⚙️</th>
+              <th>ID</th>
+              <th>Producto</th>
+              <th>Presentación</th>
+              <th>Descripción</th>
+
+            </tr>
+          </thead>
+          <tbody id="tabprod">
+
+          </tbody>
+        </table>
+        <section id="menuProd">
+          <button onclick="verFormNvoProd()">📄 Producto Nuevo</button>
+        </section>
+        <div id="formNuevoProd">
+          <h3>📄 Crear producto nuevo</h3>
+          <input type="text" id="idProdNvo" placeholder="ID" readonly="readonly">
+          <input type="text" id="nombreProdNvo" placeholder="Nombre del Producto">
+          <input type="text" id="presenProdNvo" placeholder="Presentación">
+          <input type="text" id="descProdNvo" placeholder="Descripción del Producto">
+          <button onclick="ingresarNvoProd()">Ingresar producto</button>
+        </div>
+        <div id="formModifProd">
+          <h3>✏️ Modificar producto</h3>
+          <input type="text" id="idProdMod" placeholder="PR0" disabled>
+          <input type="text" id="nombreProdMod" placeholder="Nombre del Producto">
+          <input type="text" id="presenProdMod" placeholder="Presentación">
+          <input type="text" id="descProdMod" placeholder="Descripción del Producto">
+          <button onclick=" guardarProdModif()">Guardar Cambio</button>
+        </div>
+
+      </section>
+      <hr>
+      <button class="botontitulo" onclick="verCli()">
+        <h2>🤑 Clientes</h2>
+      </button><br>
+      <section id="Clientes">
+        <div class=formFilrto action="">
+          Buscar por
+          <select name="cliCat" id="cliCat">
+            <option value="">...</option>
+            <option value="ID">ID</option>
+            <option value="nombre">Nombre</option>
+            <option value="direccion">Dirección</option>
+            <option value="email">e-mail</option>
+            <option value="telefono">Teléfono</option>
+          </select>
+          <input id="filtroCli" type="text" onkeyup="filtroCli()" placeholder=" 🔍 Escriba su busqueda">
+
+        </div>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>⚙️</th>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Dirección</th>
+              <th>e-mail</th>
+              <th>Telefono</th>
+
+            </tr>
+          </thead>
+          <tbody id="tabcli">
+          </tbody>
+        </table>
+
+        <section id="menuCli">
+          <button onclick="verFormNvoCli()">📄 Nuevo Cliente</button>
+        </section>
+
+        <div id="formNuevoCli">
+          <h3>📄 Nuevo Cliente</h3>
+
+          <input type="text" id="idCliNvo" placeholder="ID" readonly="readonly">
+          <input type="text" id="nombreCliNvo" placeholder="Nombre">
+          <input type="text" id="direcCliNvo" placeholder="Dirección">
+          <input type="email" id="mailCliNvo" placeholder="e-mail">
+          <input type="tel" id="telCliNvo" placeholder="Teléfono">
+
+          <button onclick="ingresarNvoCli()">Ingresar Cliente</button>
+        </div>
+
+        <div id="formModifCli">
+          <h3>✏️ Modificar Cliente</h3>
+          <input type="text" id="idCliMod" placeholder="CLI0" disabled>
+          <input type="text" id="nombreCliMod" placeholder="Nombre">
+          <input type="text" id="direcCliMod" placeholder="Dirección">
+          <input type="email" id="mailCliMod" placeholder="e-mail">
+          <input type="tel" id="telCliMod" placeholder="Teléfono">
+          <button onclick="guardarCliModif()">Guardar Cambios</button>
+        </div>
+      </section>
+      <hr>
+    </section>
+
+    <section id="Audit">
+
+      <h2>🔍 AUDITORÍAS</h2>
+      <hr>
+    </section>
+
+
+  </main>
+  <footer class="foot">
+    <small> CoderHouse - Javascript - 38030 <a href="mailto:marceloferrenogueira@gmail.com">Marcelo Ferré </a> &copy
+      2022 <a href="https://youtu.be/TJYvg5w6pu4" target="_blank">🎵</a> </small>
+  </footer>
+</body>
+
+</html>

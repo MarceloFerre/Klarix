@@ -1,0 +1,220 @@
+* {
+    background-color: rgb(232, 232, 232);
+    text-decoration: white;
+    font-size: small;
+}
+
+.cabecera {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1em;
+    background-color: rgb(118, 156, 165);
+
+
+}
+
+h2 {
+    text-shadow: 2px 2px 2px grey;
+}
+
+.cabecera h1 {
+    text-align: center;
+    color: rgb(214, 214, 214);
+    text-shadow: rgb(17, 17, 17) 1px 1px 1px, rgb(163, 163, 163) -1px -1px 1px;
+    background-color: rgb(118, 156, 165);
+    font-style: inherit;
+    font-weight: bold;
+    font-size: 3.5em;
+    margin: 5px 0 0 0;
+    padding-top: 1%;
+
+}
+
+.cabecera h1 small {
+    padding-left: 15px;
+    color: rgb(214, 214, 214);
+    background-color: rgb(118, 156, 165);
+}
+
+.navbar {
+    background-color: rgb(86, 86, 86);
+    text-align: center;
+
+    box-shadow: rgba(0, 0, 0, 0.5) 0 5px 5px;
+
+}
+
+.navbar-item {
+    text-align: center;
+    font-size: 14px;
+    width: 30%;
+    color: white;
+    background-color: rgb(86, 86, 86);
+    padding: 8px;
+    border-radius: 10px 0 10px 0;
+    margin: 1px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 2px 2px;
+
+
+}
+
+.navbar-item :hover {
+    background-color: rgb(118, 156, 165);
+    font-weight: bold;
+    border-width: 3px;
+}
+
+.botontitulo {
+    width: 100%;
+    background-color: rgb(167, 167, 167);
+    border-radius: 15px 15px 0 0;
+    box-shadow: 2px 2px 5px grey;
+}
+
+.botontitulo h2 {
+    background-color: transparent;
+}
+
+h2 {
+    text-align: center;
+}
+
+main {
+    margin: 6em 0 0 0;
+    min-height: 100%;
+    align-content: center;
+    align-items: center;
+}
+
+hr {
+    height: 15px;
+    background-color: rgb(118, 156, 165)
+}
+
+section hr {
+    height: 5px;
+    background-color: grey;
+    box-shadow: 5px 5px 10px grey;
+    border-radius: 0 0 5px 5px;
+}
+
+.cards {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    align-self: start;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: auto;
+    border: 2px solid rgb(118, 156, 165);
+    border-radius: 15px 0 15px 0;
+    background-color: rgb(136, 178, 185);
+    align-items: center;
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 10px grey;
+}
+
+
+.cardtitulo {
+    text-align: left;
+    padding-left: 8px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border-radius: 13px 0 0 0;
+    width: 100%;
+}
+
+.cardot {
+    width: 100%;
+    background-color: transparent;
+    text-align: left;
+    padding: 0px 0 0 10px;
+}
+
+.cardprod {
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 15px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.cardpresen {
+    align-self: center;
+    background-color: transparent;
+    font-size: smaller;
+}
+
+.cardestadoicono {
+    background-color: transparent;
+    font-size: 50px;
+    padding: 20px;
+}
+
+.cardestado {
+    text-align: center;
+    background-color: gray;
+    font-weight: bold;
+    width: 100%;
+}
+
+.cardUnidades {
+    text-align: center;
+    background-color: whitesmoke;
+    width: 100%;
+}
+
+.cardpie {
+
+    text-align: right;
+    background-color: rgb(31, 30, 30);
+    width: 100%;
+    height: 24px;
+    border-radius: 0 0 13px 0;
+}
+
+.cardpie a {
+    font-size: x-small;
+    background-color: transparent;
+    color: rgb(230, 231, 255);
+    padding: 0;
+    padding-right: 8px;
+    padding-bottom: 8px;
+}
+
+
+table tr td button {
+    margin: 0;
+    padding: 0%;
+}
+
+footer {
+    position: fixed;
+    width: auto;
+    height: 25px;
+    bottom: 0;
+    right: 5%;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 5px 5px 0 0;
+}
+
+
+
+footer small,
+footer a {
+    padding: 10px;
+    background-color: transparent;
+}
+
+hr {
+    height: 15px;
+    background-color: rgb(118, 156, 165)
+}
