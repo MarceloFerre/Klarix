@@ -384,7 +384,6 @@ function verEmp() {//Boton EMPLEADOS
         emps.style.display = "block"
     } else { emps.style.display = "none" }
 }
-
 function filtroEmp() {
     const filtro = document.getElementById("filtroEmp").value.toLocaleUpperCase()
     const categoria = document.getElementById("empCat").value
@@ -463,6 +462,8 @@ function filtroEmpCategorias() {
                            </tr>`
     })
 }
+
+
 //LINEAS
 //
 function verLineas() {
@@ -526,6 +527,7 @@ function cargarTablaClientes() {
     })
 }
 function cargarTablaEmpleados() {
+    EmpleadosLSset()
     tabemp.innerHTML = ``
     empleados.forEach(empleado => {
         tabemp.innerHTML += `<tr>
@@ -553,6 +555,7 @@ function cargarTablaLineas() {
     })
 }
 function cargarTablaOrdenes() {
+    OrdenesLSset()
     tabot.innerHTML = ``
     ordenes.forEach(orden => {
         let cli = clientes.find(cliente => cliente.idcli == orden.idcliente)

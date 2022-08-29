@@ -94,13 +94,19 @@ function agregarOrdenes() {
 }
 function incrustarDatos() {
 
-    agregarEmpleados()
-    agregarLineas()
-    agregarOrdenes()
+
+
+
     //agregarProductos()
     ProductosLSget()
     //agregarClientes()
     ClientesLSget()
+    //agregarEmpleados()
+    EmpleadosLSget()
+    //agregarOrdenes()
+    OrdenesLSget()
+    agregarLineas()
+
 }
 incrustarDatos()
 
@@ -127,9 +133,9 @@ function ClientesLSset() {//Guarda CLIENTES en localStorage
     localStorage.setItem('KXclientes', clisJson)
 }
 function ClientesLSget() {//busca CLIENTES en localStorage, si no encuentra los agrega del hardcode
-    
+
     const clisJson = localStorage.getItem('KXclientes')
-    if (clisJson === null|| clisJson === []) {
+    if (clisJson === null || clisJson === []) {
         agregarClientes()
         ClientesLSset()
     } else {
@@ -139,6 +145,36 @@ function ClientesLSget() {//busca CLIENTES en localStorage, si no encuentra los 
         })
     }
 }
-function EmpleadosLSset() {
-
+function EmpleadosLSset() {//Guarda EMPLEADOS en localStorage
+    const empsJson = JSON.stringify(empleados)
+    localStorage.setItem('KXempleados', empsJson)
+}
+function EmpleadosLSget() {//Busca EMPLEADOS en localStorage, si no encuentra los agrega del hardcode
+    const empsJson = localStorage.getItem('KXempleados')
+    if (empsJson === null || empsJson === []) {
+        agregarEmpleados()
+        EmpleadosLSset()
+    } else {
+        const empsParseados = JSON.parse(empsJson)
+        empsParseados.forEach(empleado => {
+            empleados.push(empleado)
+        })
+    }
+}
+function OrdenesLSset() {
+    const otsJson = JSON.stringify(ordenes)
+    localStorage.setItem('KXordenes', otsJson)
+}
+function OrdenesLSget() {
+    //debugger
+    const otsJson = localStorage.getItem('KXordenes')
+    if (otsJson === null || otsJson === []) {
+        agregarOrdenes()
+        OrdenesLSset()
+    } else {
+        const otsParseadas = JSON.parse(otsJson)
+        otsParseadas.forEach(orden => {
+            ordenes.push(orden)
+        })
+    }
 }

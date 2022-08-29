@@ -28,6 +28,7 @@ table {
     display: table;
     width: 100%;
     max-height: min-content;
+
 }
 
 table tr {
@@ -46,14 +47,9 @@ table tr th {
 table tr td,
 table tr th {
     overflow: hidden;
-    padding: 2px;
-    position: relative;
-   
+    padding: 2px
 }
-tbody{
-    overflow-y: scroll;
-    max-height:200px;
-}
+
 @media all and (max-width:400px) {
 
     table tr td,
