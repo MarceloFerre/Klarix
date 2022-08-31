@@ -36,7 +36,7 @@ class linea {
         this.descripcion = descripcion
         this.empleados = []
         this.ordenes = []
-        this.ordenactiva = ordenes[0]
+        this.ordenactiva = (this.ordenes[0] || "Sin ordenes asignadas")
     }
 }
 class orden {

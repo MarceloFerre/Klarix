@@ -32,9 +32,6 @@ const monitores = [
     },
 ]
 
-let loglineas = []
-let logordenes = []
-
 //HARDCODE
 function agregarProductos() {
     productos.push(new producto("PR0", "KETOFEN 100", "10 COMPRIMIDOS", "KETOPROFENO 100MG"))
@@ -93,10 +90,6 @@ function agregarOrdenes() {
 
 }
 function incrustarDatos() {
-
-
-
-
     //agregarProductos()
     ProductosLSget()
     //agregarClientes()
@@ -105,8 +98,8 @@ function incrustarDatos() {
     EmpleadosLSget()
     //agregarOrdenes()
     OrdenesLSget()
-    agregarLineas()
-
+    //agregarLineas()
+    LineasLSget()
 }
 incrustarDatos()
 
@@ -116,14 +109,12 @@ function ProductosLSset() {//Guarda PRODUCTOS en localStorage
     localStorage.setItem('KXproductos', prodsJson)
 }
 function ProductosLSget() {//Busca PRODUCTOS en localStorage, si no encuentra los agrega del hardcode
-    //debugger
-    const prodsJson = localStorage.getItem('KXproductos')
-    if (prodsJson === null) {
+    const prodsJson = (JSON.parse(localStorage.getItem('KXproductos')) || [])
+    if (prodsJson.length == 0) {
         agregarProductos()
         ProductosLSset()
     } else {
-        const prodsParseados = JSON.parse(prodsJson)
-        prodsParseados.forEach(producto => {
+        prodsJson.forEach(producto => {
             productos.push(producto)
         })
     }
@@ -133,14 +124,12 @@ function ClientesLSset() {//Guarda CLIENTES en localStorage
     localStorage.setItem('KXclientes', clisJson)
 }
 function ClientesLSget() {//busca CLIENTES en localStorage, si no encuentra los agrega del hardcode
-
-    const clisJson = localStorage.getItem('KXclientes')
-    if (clisJson === null || clisJson === []) {
+    const clisJson = (JSON.parse(localStorage.getItem('KXclientes')) || [])
+    if (clisJson.length == 0) {
         agregarClientes()
         ClientesLSset()
     } else {
-        const clisParseados = JSON.parse(clisJson)
-        clisParseados.forEach(cliente => {
+        clisJson.forEach(cliente => {
             clientes.push(cliente)
         })
     }
@@ -150,31 +139,43 @@ function EmpleadosLSset() {//Guarda EMPLEADOS en localStorage
     localStorage.setItem('KXempleados', empsJson)
 }
 function EmpleadosLSget() {//Busca EMPLEADOS en localStorage, si no encuentra los agrega del hardcode
-    const empsJson = localStorage.getItem('KXempleados')
-    if (empsJson === null || empsJson === []) {
+    const empsJson = (JSON.parse(localStorage.getItem('KXempleados')) || [])
+    if (empsJson.length == 0) {
         agregarEmpleados()
         EmpleadosLSset()
     } else {
-        const empsParseados = JSON.parse(empsJson)
-        empsParseados.forEach(empleado => {
+        empsJson.forEach(empleado => {
             empleados.push(empleado)
         })
     }
 }
-function OrdenesLSset() {
+function OrdenesLSset() {//Guarda ORDENES en localStorage
     const otsJson = JSON.stringify(ordenes)
     localStorage.setItem('KXordenes', otsJson)
 }
-function OrdenesLSget() {
-    //debugger
-    const otsJson = localStorage.getItem('KXordenes')
-    if (otsJson === null || otsJson === []) {
+function OrdenesLSget() {//Busca ORDENES en localStorage, si no encuentra los agrega del hardcode
+    const otsJson = (JSON.parse(localStorage.getItem('KXordenes')) || [])
+    if (otsJson.length == 0) {
         agregarOrdenes()
         OrdenesLSset()
     } else {
-        const otsParseadas = JSON.parse(otsJson)
-        otsParseadas.forEach(orden => {
+        otsJson.forEach(orden => {
             ordenes.push(orden)
+        })
+    }
+}
+function LineasLSset() {//Guarda LINEAS DE PROD en localStorage
+    const lnsJson = JSON.stringify(lineas)
+    localStorage.setItem('KXlineas', lnsJson)
+}
+function LineasLSget() {//Busca LINEAS DE PROD en localStorage, si no encuentra los agrega del hardcode
+    const lnsJson = (JSON.parse(localStorage.getItem('KXlineas')) || [])
+    if (lnsJson.length == 0) {
+        agregarLineas()
+        LineasLSset()
+    } else {
+        lnsJson.forEach(linea => {
+            lineas.push(linea)
         })
     }
 }

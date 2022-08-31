@@ -89,11 +89,7 @@ formNvoProd.style.display = "none"
 formModProd.style.display = "none"
 
 function verProd() {//Boton PRODUCTOS
-    if (prods.style.display == "none") {
-        prods.style.display = "block"
-    } else {
-        prods.style.display = "none"
-    }
+    prods.style.display == "none" ? prods.style.display = "block" : prods.style.display = "none"
 }
 function verFormNvoProd() {//Boton NUEVO PRODUCTO
     if (formNvoProd.style.display == "none") {
@@ -141,11 +137,12 @@ function verFormModifProd(idpr) {//Boton de tabla MODIFICAR PRODUCTO
     const presenProdMod = document.getElementById("presenProdMod")
     const descProdMod = document.getElementById("descProdMod")
     let producto = productos.find(producto => producto.idpr == idpr)
+    const { nombre, presentacion, descripcion } = producto
 
     idprod.value = idpr
-    nombreProdMod.value = producto.nombre
-    presenProdMod.value = producto.presentacion
-    descProdMod.value = producto.descripcion
+    nombreProdMod.value = nombre
+    presenProdMod.value = presentacion
+    descProdMod.value = descripcion
 
 }
 function guardarProdModif() {//guarda los cambios en el PRODUCTO
@@ -229,11 +226,7 @@ selectCat.style.display = "none"
 
 
 function verCli() {//Boton CLIENTES
-    if (clis.style.display == "none") {
-        clis.style.display = "block"
-    } else {
-        clis.style.display = "none"
-    }
+    clis.style.display == "none" ? clis.style.display = "block" : clis.style.display = "none"
 }
 function verFormNvoCli() {//Boton NUEVO CLIENTE
     if (formNvoCli.style.display == "none") {
@@ -283,13 +276,13 @@ function verFormModifCli(idcli) {//Boton de tabla MODIFICAR CLIENTE
     const mailCliMod = document.getElementById("mailCliMod")
     const telCliMod = document.getElementById("telCliMod")
 
-    let cliente = clientes.find(cliente => cliente.idcli == idcli)
+    let { nombre, direccion, mail, telefono } = clientes.find(cliente => cliente.idcli == idcli)
 
     idclien.value = idcli
-    nombreCliMod.value = cliente.nombre
-    direcCliMod.value = cliente.direccion
-    mailCliMod.value = cliente.mail
-    telCliMod.value = cliente.telefono
+    nombreCliMod.value = nombre
+    direcCliMod.value = direccion
+    mailCliMod.value = mail
+    telCliMod.value = telefono
 }
 function guardarCliModif() {//guarda los cambios en el CLIENTE
     const idCliMod = document.getElementById("idCliMod")
@@ -380,9 +373,7 @@ formNvoEmp.style.display = "none"
 formModEmp.style.display = "none"
 
 function verEmp() {//Boton EMPLEADOS
-    if (emps.style.display == "none") {
-        emps.style.display = "block"
-    } else { emps.style.display = "none" }
+    emps.style.display == "none" ? emps.style.display = "block" : emps.style.display = "none"
 }
 function filtroEmp() {
     const filtro = document.getElementById("filtroEmp").value.toLocaleUpperCase()
@@ -467,17 +458,13 @@ function filtroEmpCategorias() {
 //LINEAS
 //
 function verLineas() {
-    if (lns.style.display == "none") {
-        lns.style.display = "block"
-    } else { lns.style.display = "none" }
+    lns.style.display == "none" ? lns.style.display = "block" : lns.style.display = "none"
 }
 
 //ORDENES
 //
 function verOrdenes() {
-    if (ots.style.display == "none") {
-        ots.style.display = "block"
-    } else { ots.style.display = "none" }
+    ots.style.display == "none" ? ots.style.display = "block" : ots.style.display = "none"
 }
 
 
@@ -542,6 +529,7 @@ function cargarTablaEmpleados() {
     })
 }
 function cargarTablaLineas() {
+    LineasLSset()
     tablns.innerHTML = ``
     lineas.forEach(linea => {
         tablns.innerHTML += `<tr>
@@ -560,7 +548,7 @@ function cargarTablaOrdenes() {
     ordenes.forEach(orden => {
         let cli = clientes.find(cliente => cliente.idcli == orden.idcliente)
         let prod = productos.find(producto => producto.idpr == orden.idproducto)
-        /*tabot.innerHTML += `<tr>
+        tabot.innerHTML += `<tr>
                                 <td><a >📝</a> </td>
                                 <td>${orden.idorden}</td>
                                 <td>${prod.nombre}</td>
@@ -568,6 +556,6 @@ function cargarTablaOrdenes() {
                                 <td>${cli.nombre}</td>
                                 <td>${orden.unidadespedidas}</td>      
                                
-                           </tr>`*/
+                           </tr>`
     })
 }
