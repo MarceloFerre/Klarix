@@ -1,24 +1,4 @@
-//CREACION DE IDs
-function crearIDprod() {
-    let id = `PR${productos.length}`
-    return id
-}
-function crearIDcli() {
-    let id = `CL${clientes.length}`
-    return id
-}
-function crearIDemp() {
-    let id = `EMP${empleados.length}`
-    return id
-}
-function crearIDlinea() {
-    let id = `LN${lineas.length}`
-    return id
-}
-function crearIDorden() {
-    let id = `ORD${ordenes.length}`
-    return id
-}
+
 
 //FUNCIONES CONSOLA ARRAY PRODUCTOS
 /*

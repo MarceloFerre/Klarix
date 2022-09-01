@@ -13,6 +13,7 @@
   <script defer src="js/variables.js"></script>
   <script defer src="js/funciones.js"></script>
   <script defer src="js/index.js"></script>
+  <script defer src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -35,44 +36,6 @@
 
         <div id="cardMonitor" class="cards">
 
-          <!--
-          <div class="card">
-            <div class="cardtitulo">🏭 Manual 2</div>
-            <div class="cardot">📑 OT17</div>
-            <div class="cardprod">NOVEMINA FUERTE</div>
-            <div class="cardpresen">20 COMPRIMIDOS</div>
-            <div class="cardestadoicono">⏸️</div>
-            <div class="cardestado">Detenido</div>
-            <div class="cardUnidades">140/200 | 70%</div>
-            <div class="cardpie">
-              <a href="#">+info</a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="cardtitulo">🏭 Manual 2</div>
-            <div class="cardot">📑 OT17</div>
-            <div class="cardprod">NOVEMINA FUERTE</div>
-            <div class="cardpresen">20 COMPRIMIDOS</div>
-            <div class="cardestadoicono">⏸️</div>
-            <div class="cardestado">Detenido</div>
-            <div class="cardUnidades">140/200 | 70%</div>
-            <div class="cardpie">
-              <a href="#">+info</a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="cardtitulo">🏭 Manual 2</div>
-            <div class="cardot">📑 OT17</div>
-            <div class="cardprod">NOVEMINA FUERTE</div>
-            <div class="cardpresen">20 COMPRIMIDOS</div>
-            <div class="cardestadoicono">⏸️</div>
-            <div class="cardestado">Detenido</div>
-            <div class="cardUnidades">140/200 | 70%</div>
-            <div class="cardpie">
-              <a href="#">+info</a>
-            </div>
-          </div>-->
-
         </div>
       </section>
       <section id="logDiario">
@@ -81,23 +44,20 @@
 
     </section>
 
-    <section id="Admin">
+    <section id="Admin" class="modulo">
       <h2>📔 ADMINISTRDOR</h2>
       <br>
       <button class="botontitulo" onclick="verLineas()">
         <h2>🏭 Lineas de producción</h2>
       </button>
       <br>
-      <section id="Lineas">
+      <section id="Lineas" class="carpeta">
 
         <form class=formFilrto action="">
-          Filtrar Empleados por
+          
           <select name="asd" id="asd">
             <option value="ID">ID</option>
-            <option value="nombre">Nombre</option>
-            <option value="direccion">Dirección</option>
-            <option value="contacto">Contacto</option>
-            <option value="categoria">Categoría</option>
+            
           </select>
           <input type="search" placeholder="Escriba su busqueda">
           <button type="">🔍 Buscar</button>
@@ -129,7 +89,7 @@
       <button class="botontitulo" onclick="verOrdenes()">
         <h2>📑 Ordenes de Trabajo</h2>
       </button><br>
-      <section id="Ordenes">
+      <section class="carpeta" id="Ordenes">
         filtros
 
         tabla
@@ -138,7 +98,6 @@
             <th>⚙️</th>
             <th>ID</th>
             <th>Producto</th>
-            <th>Presentacion</th>
             <th>Cliente</th>
             <th>Unidades Pedidas</th>
           </thead>
@@ -155,12 +114,12 @@
       </section>
       <hr>
       <button onclick="verEmp()" class="botontitulo">
-        <h2>👷‍♀️ Empleados</h2>
+        <h2>👷‍♀️ Operarios</h2>
       </button>
-      <section id="Empleados">
+      <section id="Empleados" class="carpeta">
         <div class=formFilrto action="">
           Filtrar por
-          <select name="empCat" id="empCat" onMouseUp="verCategorias()">
+          <select name="empCat" id="empCat" onMouseUp="verCatFiltros()">
             <option value="...">...</option>
             <option value="ID">ID</option>
             <option value="nombre">Nombre</option>
@@ -193,30 +152,29 @@
         </table>
 
         <section id="menuEmp">
-          <button onclick="">📄 Nuevo Empleado</button>
-          <button onclick="">🌀 Refrescar</button>
+          <button onclick="verFormNvoEmp()">📄 Nuevo Operario</button>
+
+
         </section>
 
-        <form id="formNuevoEmp">
-          <h3>📄 Nuevo Empleado</h3>
+        <div id="formNuevoEmp">
+          <h3>📄 Nuevo Operario</h3>
 
           <input type="text" id="idEmpNvo" placeholder="ID" readonly="readonly">
           <input type="text" id="nombreEmpNvo" placeholder="Nombre">
           <input type="text" id="direcEmpNvo" placeholder="Dirección">
-          <input type="email" id="contEmpNvo" placeholder="Contacto">
+          <input type="text" id="contEmpNvo" placeholder="Contacto">
           <select name="categoria" id="catEmpNvo">
-            <option value="">...</option>
+            <option value="">Categoría</option>
             <option value=""></option>
           </select>
-          <button onclick="">Ingresar Empleado</button>
-        </form>
+          <button onclick="ingresarNvoEmp()">Ingresar Empleado</button>
+        </div>
 
-        <form id="formModifEmp">
-          <h3>✏️ Modificar Empleado</h3>
+        <div id="formModifEmp">
+          <h3>✏️ Modificar Operario</h3>
 
-          <select name="idEmpMod" id="idEmpMod">
-            <option value="" selected disabled>...</option>
-          </select>
+          <input type="text" id="idEmpMod" placeholder="ID" readonly>
           <input type="text" id="nombreEmpMod" placeholder="Nombre">
           <input type="text" id="direcEmpMod" placeholder="Dirección">
           <input type="text" id="contEmpMod" placeholder="Contacto">
@@ -225,14 +183,14 @@
             <option value=""></option>
           </select>
           <button onclick="">Guardar Cambios</button>
-        </form>
+        </div>
 
       </section>
       <hr>
       <button class="botontitulo" onclick="verProd()">
         <h2>💊 Productos</h2>
       </button><br>
-      <section id="Productos">
+      <section id="Productos" class="carpeta">
 
         <div class=formFilrto action="">
           Buscar por
@@ -285,7 +243,7 @@
       <button class="botontitulo" onclick="verCli()">
         <h2>🤑 Clientes</h2>
       </button><br>
-      <section id="Clientes">
+      <section id="Clientes" class="carpeta">
         <div class=formFilrto action="">
           Buscar por
           <select name="cliCat" id="cliCat">

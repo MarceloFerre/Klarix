@@ -109,7 +109,12 @@ function ingresarNvoProd() {//Boton INGRESAR PRODUCTO
     const descProdNvo = document.getElementById("descProdNvo")
 
     if (nombreProdNvo.value == "" || presenProdNvo.value == "" || descProdNvo.value == "") {
-        alert("Por favor llenar bien los campos.")
+        Swal.fire({
+            title: 'Producto incorrecto',
+            text: 'Por favor, llene bien los campos.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        })
     } else {
         const prodNvo = new producto()
         prodNvo.idpr = crearIDprod()
@@ -124,6 +129,12 @@ function ingresarNvoProd() {//Boton INGRESAR PRODUCTO
         descProdNvo.value = ""
 
         cargarTablaProductos()
+        Swal.fire({
+            title: 'Producto ingresado correctamente',
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false,
+        })
     }
 
 }
@@ -155,7 +166,12 @@ function guardarProdModif() {//guarda los cambios en el PRODUCTO
     const descProdMod = document.getElementById("descProdMod")
 
     if (nombreProdMod.value == "" || presenProdMod.value == "" || descProdMod.value == "") {
-        alert("Ingrese todos los campos correctamente")
+        Swal.fire({
+            title: 'Cambio incorrecto',
+            text: 'Por favor, llene bien los campos.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        })
         verFormModifProd(IDprod)
     } else {
         const modificado = new producto()
@@ -164,11 +180,25 @@ function guardarProdModif() {//guarda los cambios en el PRODUCTO
         modificado.presentacion = presenProdMod.value.toLocaleUpperCase()
         modificado.descripcion = descProdMod.value.toLocaleUpperCase()
 
-        if (confirm("Desea guardar los cambios?")) {
-            productos[IDreal] = modificado
-            cargarTablaProductos()
-            formModProd.style.display = "none"
-        }
+        Swal.fire({
+            showCancelButton: true,
+            text: '¿Desea modificar el producto?',
+            icon: 'warning',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                productos[IDreal] = modificado
+                cargarTablaProductos()
+                formModProd.style.display = "none"
+                Swal.fire({
+                    title: 'Producto modificado correctamente',
+                    icon: 'success',
+                    timer: 1500,
+                    showConfirmButton: false,
+                })
+            }
+        })
     }
 }
 function filtroProd() {//Filtro PRODUCTOS
@@ -196,7 +226,7 @@ function filtroProd() {//Filtro PRODUCTOS
             tabprod.innerHTML += `<tr>
                                     <td><button onclick="verFormModifProd('${producto.idpr}')" >📝</button></td>
                                     <td>${producto.idpr}</td>
-                                    <td>${producto.nombre}</td>
+                                    <td><strong>${producto.nombre}</strong></td>
                                     <td>${producto.presentacion}</td>
                                     <td>${producto.descripcion}</td>
                                   </tr>`
@@ -207,7 +237,7 @@ function filtroProd() {//Filtro PRODUCTOS
             tabprod.innerHTML += `<tr>
                                     <td><button onclick="verFormModifProd('${producto.idpr}')" >📝</button></td>
                                     <td>${producto.idpr}</td>
-                                    <td>${producto.nombre}</td>
+                                    <td><strong>${producto.nombre}</strong></td>
                                     <td>${producto.presentacion}</td>
                                     <td>${producto.descripcion}</td>
                                   </tr>`
@@ -340,7 +370,7 @@ function filtroCli() {//Filtro CLIENTES
             tabcli.innerHTML += `<tr>
                                 <td><button onclick="verFormModifCli('${cliente.idcli}')" >📝</button></td>
                                 <td>${cliente.idcli}</td>
-                                <td>${cliente.nombre}</td>
+                                <td><strong>${cliente.nombre}</strong></td>
                                 <td>${cliente.direccion}</td>
                                 <td><a href="mailto:${cliente.mail}">${cliente.mail}</a></td>
                                 <td>${cliente.telefono}</td>
@@ -352,7 +382,7 @@ function filtroCli() {//Filtro CLIENTES
             tabcli.innerHTML += `<tr>
                                 <td><button onclick="verFormModifCli('${cliente.idcli}')" >📝</button></td>
                                 <td>${cliente.idcli}</td>
-                                <td>${cliente.nombre}</td>
+                                <td><strong>${cliente.nombre}</strong></td>
                                 <td>${cliente.direccion}</td>
                                 <td><a href="mailto:${cliente.mail}">${cliente.mail}</a></td>
                                 <td>${cliente.telefono}</td>
@@ -365,15 +395,23 @@ function filtroCli() {//Filtro CLIENTES
 
 }
 
-//EMPLEADOS
+//OPERARIOS
 //oculta formularios cuando inicia
 const formNvoEmp = document.getElementById("formNuevoEmp")
 const formModEmp = document.getElementById("formModifEmp")
 formNvoEmp.style.display = "none"
 formModEmp.style.display = "none"
 
-function verEmp() {//Boton EMPLEADOS
+function verEmp() {//Boton Operarios
     emps.style.display == "none" ? emps.style.display = "block" : emps.style.display = "none"
+}
+function optCatEmp(optid) {//todos los select con categorias de operarios
+    //optid es el id del select en el html
+    const optCat = document.getElementById(optid)
+    optCat.innerHTML = `<option value="">Categoría</option>`
+    for (let i = 0; i < CATEGORIA.length; i++) {
+        optCat.innerHTML += `<option value="${i}">${CATEGORIA[i]}</option>`
+    }
 }
 function filtroEmp() {
     const filtro = document.getElementById("filtroEmp").value.toLocaleUpperCase()
@@ -398,22 +436,22 @@ function filtroEmp() {
         tabemp.innerHTML = ``
         busqueda.forEach(empleado => {
             tabemp.innerHTML += `<tr>
-                                    <td><a >📝</a> </td>
-                                    <td>${empleado.idemp}</td>
-                                    <td>${empleado.nombre}</td>
-                                    <td>${empleado.categoria}</td>
-                                    <td>${empleado.direccion}</td>
-                                    <td>${empleado.contacto}</td>
-                                    
-                               </tr>`
+                                <td><button onclick="verFormModifEmp('${empleado.idemp}')" >📝</button></td>
+                                <td>${empleado.idemp}</td>
+                                <td><strong>${empleado.nombre}</strong></td>
+                                <td>${empleado.categoria}</td>
+                                <td>${empleado.direccion}</td>
+                                <td>${empleado.contacto}</td>
+            
+       </tr>`
         })
     } else {
         tabemp.innerHTML = ``
         empleados.forEach(empleado => {
             tabemp.innerHTML += `<tr>
-                                    <td><a >📝</a> </td>
+                                    <td><button onclick="verFormModifEmp('${empleado.idemp}')" >📝</button></td>
                                     <td>${empleado.idemp}</td>
-                                    <td>${empleado.nombre}</td>
+                                    <td><strong>${empleado.nombre}</strong></td>
                                     <td>${empleado.categoria}</td>
                                     <td>${empleado.direccion}</td>
                                     <td>${empleado.contacto}</td>
@@ -422,30 +460,28 @@ function filtroEmp() {
         })
     }
 }
-function verCategorias() {//si selecciona filtrar por categoria, muestra select Categorias y oculta input Busqueda
+function verCatFiltros() {//si selecciona filtrar por categoria, muestra select Categorias y oculta input Busqueda
     const empCat = document.getElementById("empCat").value
     const filtro = document.getElementById("filtroEmp")
-    selectCat.innerHTML = `<option value="...">...</option>`
+
     if (empCat == "categoria") {
         selectCat.style.display = "block"
         filtro.style.display = "none"
-        for (let i = 0; i < CATEGORIA.length; i++) {
-            selectCat.innerHTML += `<option value="${CATEGORIA[i]}">${CATEGORIA[i]}</option>`
-        }
+        optCatEmp("empCategoria")
     } else {
         selectCat.style.display = "none"
         if (filtro.style.display == "none") { filtro.style.display = "block" }
     }
 }
 function filtroEmpCategorias() {
-    const filtrocat = document.getElementById("empCategoria").value
+    const filtrocat = CATEGORIA[document.getElementById("empCategoria").value]
     let busqueda = empleados.filter((empleado) => empleado.categoria == filtrocat)
     tabemp.innerHTML = ``
     busqueda.forEach(empleado => {
         tabemp.innerHTML += `<tr>
-                                <td><a >📝</a> </td>
+                                <td><button onclick="verFormModifEmp('${empleado.idemp}')" >📝</button></td>
                                 <td>${empleado.idemp}</td>
-                                <td>${empleado.nombre}</td>
+                                <td><strong>${empleado.nombre}</strong></td>
                                 <td>${empleado.categoria}</td>
                                 <td>${empleado.direccion}</td>
                                 <td>${empleado.contacto}</td>
@@ -453,8 +489,70 @@ function filtroEmpCategorias() {
                            </tr>`
     })
 }
+function verFormNvoEmp() {
+    if (formNvoEmp.style.display == "none") {
+        formNvoEmp.style.display = "block"
+        formModEmp.style.display = "none"
+
+    } else {
+        formNvoEmp.style.display = "none"
+    }
+    const idEmpNvo = document.getElementById("idEmpNvo")
+    idEmpNvo.value = crearIDop()
+    optCatEmp("catEmpNvo")
+}
+function ingresarNvoEmp() {
+    const idEmpNvo = document.getElementById("idEmpNvo")
+    const nombreEmpNvo = document.getElementById("nombreEmpNvo")
+    const direcEmpNvo = document.getElementById("direcEmpNvo")
+    const contactoEmpNvo = document.getElementById("contEmpNvo")
+    const catEmpNvo = document.getElementById("catEmpNvo")
 
 
+    if (nombreEmpNvo.value == "" || direcEmpNvo.value == "" || contactoEmpNvo.value == "" || catEmpNvo.value == "") {
+        alert("Por favor llenar bien los campos.")
+    } else {
+        const EmpNvo = new empleado()
+        EmpNvo.idemp = idEmpNvo.value
+        EmpNvo.nombre = nombreEmpNvo.value.toLocaleUpperCase()
+        EmpNvo.direccion = direcEmpNvo.value.toLocaleUpperCase()
+        EmpNvo.contacto = parseInt(contactoEmpNvo.value)
+        EmpNvo.categoria = CATEGORIA[catEmpNvo.value]
+
+
+        empleados.push(EmpNvo)
+        cargarTablaEmpleados()
+        idEmpNvo.value = crearIDop()
+        nombreEmpNvo.value = ""
+        direcEmpNvo.value = ""
+        contactoEmpNvo.value = ""
+        catEmpNvo.value = ""
+    }
+
+
+}
+function verFormModifEmp(idemp) {
+    optCatEmp("catEmpMod")
+    if (formModEmp.style.display == "none") {
+        formModEmp.style.display = "block"
+        formNvoEmp.style.display = "none"
+    }
+    const idempleado = document.getElementById("idEmpMod")
+    const nombreEmpMod = document.getElementById("nombreEmpMod")
+    const direcEmpMod = document.getElementById("direcEmpMod")
+    const contEmpMod = document.getElementById("contEmpMod")
+    const catEmpMod = document.getElementById("catEmpMod")
+    let { nombre, direccion, contacto, categoria } = empleados.find(empleado => empleado.idemp == idemp)
+    let cataindi = CATEGORIA.findIndex(cat => cat == categoria)
+    idempleado.value = idemp
+    nombreEmpMod.value = nombre
+    direcEmpMod.value = direccion
+    contEmpMod.value = contacto
+    catEmpMod.value = cataindi
+}
+function guardarEmpModif() {
+
+}
 //LINEAS
 //
 function verLineas() {
@@ -490,7 +588,7 @@ function cargarTablaProductos() {
         tabprod.innerHTML += `<tr>
                                 <td><button onclick="verFormModifProd('${producto.idpr}')" >📝</button></td>
                                 <td>${producto.idpr}</td>
-                                <td>${producto.nombre}</td>
+                                <td><strong>${producto.nombre}</strong></td>
                                 <td>${producto.presentacion}</td>
                                 <td>${producto.descripcion}</td>
                               </tr>`
@@ -504,7 +602,7 @@ function cargarTablaClientes() {
         tabcli.innerHTML += `<tr>
                                 <td><button onclick="verFormModifCli('${cliente.idcli}')" >📝</button></td>
                                 <td>${cliente.idcli}</td>
-                                <td>${cliente.nombre}</td>
+                                <td><strong>${cliente.nombre}</strong></td>
                                 <td>${cliente.direccion}</td>
                                 <td><a href="mailto:${cliente.mail}">${cliente.mail}</a></td>
                                 
@@ -518,9 +616,9 @@ function cargarTablaEmpleados() {
     tabemp.innerHTML = ``
     empleados.forEach(empleado => {
         tabemp.innerHTML += `<tr>
-                                <td><a >📝</a> </td>
+                                <td><button onclick="verFormModifEmp('${empleado.idemp}')" >📝</button></td>
                                 <td>${empleado.idemp}</td>
-                                <td>${empleado.nombre}</td>
+                                <td><strong>${empleado.nombre}</strong></td>
                                 <td>${empleado.categoria}</td>
                                 <td>${empleado.direccion}</td>
                                 <td>${empleado.contacto}</td>
@@ -548,11 +646,11 @@ function cargarTablaOrdenes() {
     ordenes.forEach(orden => {
         let cli = clientes.find(cliente => cliente.idcli == orden.idcliente)
         let prod = productos.find(producto => producto.idpr == orden.idproducto)
+        let pres = prod.presentacion.toLocaleLowerCase()
         tabot.innerHTML += `<tr>
                                 <td><a >📝</a> </td>
                                 <td>${orden.idorden}</td>
-                                <td>${prod.nombre}</td>
-                                <td>${prod.presentacion}</td>
+                                <td><strong>${prod.nombre}</strong> - ${pres}</td>
                                 <td>${cli.nombre}</td>
                                 <td>${orden.unidadespedidas}</td>      
                                
