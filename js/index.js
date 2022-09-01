@@ -129,13 +129,22 @@ function ingresarNvoProd() {//Boton INGRESAR PRODUCTO
         descProdNvo.value = ""
 
         cargarTablaProductos()
+        ocultarNvoProd()
         Swal.fire({
             title: 'Producto ingresado correctamente',
             icon: 'success',
             timer: 1500,
             showConfirmButton: false,
         })
+
     }
+
+}
+function ocultarNvoProd() {
+    formNvoProd.style.display = "none"
+}
+function ocultarModProd() {
+    formModProd.style.display = "none"
 
 }
 function verFormModifProd(idpr) {//Boton de tabla MODIFICAR PRODUCTO
@@ -190,7 +199,7 @@ function guardarProdModif() {//guarda los cambios en el PRODUCTO
             if (result.isConfirmed) {
                 productos[IDreal] = modificado
                 cargarTablaProductos()
-                formModProd.style.display = "none"
+                ocultarModProd()
                 Swal.fire({
                     title: 'Producto modificado correctamente',
                     icon: 'success',
