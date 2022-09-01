@@ -91,7 +91,9 @@ main {
 }
 hr {
     height: 15px;
-    background-color: rgb(118, 156, 165)
+    background-color: rgb(118, 156, 165);
+    margin-bottom: 5px;
+    
 }
 
 section hr {

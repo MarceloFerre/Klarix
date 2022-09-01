@@ -653,7 +653,7 @@ function cargarTablaOrdenes() {
                                 <td><strong>${prod.nombre}</strong> - ${pres}</td>
                                 <td>${cli.nombre}</td>
                                 <td>${orden.unidadespedidas}</td>      
-                               
+                                <td>${orden.estado}</td>
                            </tr>`
     })
 }
