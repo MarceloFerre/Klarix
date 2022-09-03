@@ -369,7 +369,6 @@ function guardarCliModif() {//guarda los cambios en el CLIENTE
             formModCli.style.display = "none"
         }
     }
-
 }
 function filtroCli() {//Filtro CLIENTES
     const filtro = document.getElementById("filtroCli").value
@@ -397,12 +396,7 @@ function filtroCli() {//Filtro CLIENTES
         cargarTablaClientes(busqueda)
     } else {
         cargarTablaClientes(clientes)
-
     }
-
-
-
-
 }
 
 //OPERARIOS
@@ -565,42 +559,49 @@ function cargarTablas() {
     cargarTablaOrdenes(ordenes)
     OrdenesLSset()
 }
-function cargarTablaProductos(array) {
-
+function cargarTablaProductos(arrProd) {
     tabprod.innerHTML = ``
-    array.forEach(producto => {
-
+    arrProd.forEach(producto => {
         tabprod.innerHTML += `<tr>
-                            <td><button onclick="verFormModifProd('${producto.idpr}')" >📝</button></td>
+                            <td><button class="btnModProd" id=${producto.idpr} >📝</button></td>
                             <td>${producto.idpr}</td>
                             <td><strong>${producto.nombre}</strong></td>
                             <td>${producto.presentacion}</td>
                             <td>${producto.descripcion}</td>
-                            </tr>`
-    });
+                          </tr>`
 
-
+    })
+    let btnModProd = document.querySelectorAll('.btnModProd')
+    btnModProd.forEach(btn => {
+        btn.addEventListener('click', () => {
+            verFormModifProd(btn.id)
+        })
+    })
 }
-function cargarTablaClientes(array) {
+function cargarTablaClientes(arrCli) {
     tabcli.innerHTML = ``
-    array.forEach(cliente => {
+    arrCli.forEach(cliente => {
         tabcli.innerHTML += `<tr>
-                                <td><button onclick="verFormModifCli('${cliente.idcli}')" >📝</button></td>
+                                <td><button class="btnModCli" id='${cliente.idcli}' >📝</button></td>
                                 <td>${cliente.idcli}</td>
                                 <td><strong>${cliente.nombre}</strong></td>
                                 <td>${cliente.direccion}</td>
                                 <td><a href="mailto:${cliente.mail}">${cliente.mail}</a></td>
-                                
-                                <td>${cliente.telefono}</td>
-                                
+                                <td>${cliente.telefono}</td>                                
                             </tr>`
     })
+    let btnModCli = document.querySelectorAll('.btnModCli')
+    btnModCli.forEach(btn => {
+        btn.addEventListener('click', () => {
+            verFormModifCli(btn.id)
+        })
+    })
 }
-function cargarTablaEmpleados(array) {
+function cargarTablaEmpleados(arrEmp) {
     tabemp.innerHTML = ``
-    array.forEach(empleado => {
+    arrEmp.forEach(empleado => {
         tabemp.innerHTML += `<tr>
-                                <td><button onclick="verFormModifEmp('${empleado.idemp}')" >📝</button></td>
+                                <td><button class="btnModEmp" id='${cliente.idemp}' >📝</button></td>
                                 <td>${empleado.idemp}</td>
                                 <td><strong>${empleado.nombre}</strong></td>
                                 <td>${empleado.categoria}</td>
@@ -609,11 +610,17 @@ function cargarTablaEmpleados(array) {
                                 
                            </tr>`
     })
+    let btnModEmp = document.querySelectorAll('.btnModEmp')
+    btnModEmp.forEach(btn => {
+        btn.addEventListener('click', () => {
+            verFormModifEmp(btn.id)
+        })
+    })
 }
-function cargarTablaLineas(array) {
+function cargarTablaLineas(arrLns) {
 
     btnslns.innerHTML = ``
-    array.forEach(linea => {
+    arrLns.forEach(linea => {
         btnslns.innerHTML += `<button class="btnLinea">🏭 ${linea.nombre}</button>`
     })
     btnslns.innerHTML += `<button id="btnNvaLn">➕</button>`
@@ -630,9 +637,9 @@ function cargarTablaLineas(array) {
                                </tr>`
         })*/
 }
-function cargarTablaOrdenes(arr) {
+function cargarTablaOrdenes(arrOts) {
     tabot.innerHTML = ``
-    arr.forEach(orden => {
+    arrOts.forEach(orden => {
         let cli = clientes.find(cliente => cliente.idcli == orden.idcliente)
         let prod = productos.find(producto => producto.idpr == orden.idproducto)
         let pres = prod.presentacion.toLocaleLowerCase()
@@ -646,4 +653,4 @@ function cargarTablaOrdenes(arr) {
                            </tr>`
     })
 }
-btnLinea
+prod

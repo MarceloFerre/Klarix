@@ -155,7 +155,7 @@ section hr {
     background-color: rgb(136, 178, 185);
     align-items: center;
     margin-bottom: 10px;
-    box-shadow: 5px 5px 10px grey;
+    box-shadow: 5px 5px 5px grey;
 }
 
 
@@ -178,15 +178,14 @@ section hr {
 }
 
 .cardprod {
+    margin-top: 10px;
     background-color: transparent;
     font-weight: bold;
     font-size: 15px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    align-self: start;
-    align-self: center;
+}
+.cardpresen{
     background-color: transparent;
-    font-size: smaller;
+    font-size: 10px;
 }
 
 .cardestadoicono {
@@ -229,12 +228,12 @@ section hr {
     padding-right: 8px;
     padding-bottom: 8px;
 }
-
+/*
 table {
     position: sticky;
-    max-height: 100px;
+    max-height: 350px;
     overflow-y: scroll;
-}
+}*/
 
 table tr td button {
     margin: 0;
