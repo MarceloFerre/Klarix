@@ -46,6 +46,7 @@ class orden {
         this.idproducto = idproducto
         this.unidadespedidas = unidades
         this.unidadesproducidas = 0
+        this.progreso = this.unidadespedidas/this.unidadesproducidas*100
         this.estado = "NO ASIGNADO"
     }
 }

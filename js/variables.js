@@ -19,7 +19,11 @@ const monitores = [
         present: '10 COMPRIMIDOS',
         icono: '▶️',
         estado: 'Produciendo',
-        unidades: '50/100 | 50%'
+        undspedidas: 100,
+        undsprod: 50,
+        progreso: 0.50,
+
+
     },
     {
         titulo: 'Manual 2',
@@ -28,7 +32,9 @@ const monitores = [
         present: '20 COMPRIMIDOS',
         icono: '▶️',
         estado: 'Produciendo',
-        unidades: '140/200 | 70%'
+        undspedidas: 200,
+        undsprod: 140,
+        progreso: 0.7,
     },
 ]
 //CREACION DE IDs

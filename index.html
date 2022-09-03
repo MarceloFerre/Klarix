@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="css/estilo.css">
   <script defer src="js/clases.js"></script>
   <script defer src="js/variables.js"></script>
-  <script defer src="js/funciones.js"></script>
   <script defer src="js/index.js"></script>
   <script defer src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -21,9 +20,9 @@
     <h1>⚗️ KlariX <small>Gestión de ambientes productivos</small></h1>
     <nav id="navbar">
       <div class="navbar">
-        <button class="navbar-item" onclick="VerMonitor()">🖥️ MONITOR</button>
-        <button class="navbar-item" onclick="VerAdmin()">📔 ADMINISTRADOR</button>
-        <button class="navbar-item" onclick="VerAudit()">🔍 AUDITORÍAS</button>
+        <button class="navbar-item" id="VerMonitor">🖥️ MONITOR</button>
+        <button class="navbar-item" id="VerAdmin">📔 ADMINISTRADOR</button>
+        <button class="navbar-item" id="VerAudit">🔍 AUDITORÍAS</button>
       </div>
     </nav>
   </header>
@@ -47,16 +46,16 @@
     <section id="Admin" class="modulo">
       <h2>📔 ADMINISTRDOR</h2>
       <br>
-      <button class="botontitulo" onclick="verLineas()">
+      <button class="botontitulo" id="verLineas">
         <h2>🏭 Lineas de producción</h2>
       </button>
       <br>
       <section id="Lineas" class="carpeta">
 
-        <form class=formFilrto action="">
-
+        <div id="btnsLineas" class="btnsLineas">
           
-        </form>
+
+        </div>
 
         <table class="table">
           <thead>
@@ -76,11 +75,11 @@
 
       </section>
       <hr>
-      <button class="botontitulo" onclick="verOrdenes()">
+      <button class="botontitulo" id="verOrdenes">
         <h2>📑 Ordenes de Trabajo</h2>
       </button><br>
       <section class="carpeta" id="Ordenes">
-        
+
         <table class="table">
           <thead>
             <th>⚙️</th>
@@ -94,10 +93,10 @@
 
           </tbody>
         </table>
-       
+
       </section>
       <hr>
-      <button onclick="verEmp()" class="botontitulo">
+      <button id="verEmp" class="botontitulo">
         <h2>👷‍♀️ Operarios</h2>
       </button>
       <section id="Empleados" class="carpeta">
@@ -136,7 +135,7 @@
         </table>
 
         <section id="menuEmp">
-          <button onclick="verFormNvoEmp()">📄 Nuevo Operario</button>
+          <button id="verFormNvoEmp">📄 Nuevo Operario</button>
 
 
         </section>
@@ -152,7 +151,8 @@
             <option value="">Categoría</option>
             <option value=""></option>
           </select>
-          <button onclick="ingresarNvoEmp()">Ingresar Empleado</button>
+          <button id="ingresarNvoEmp">Ingresar Empleado</button>
+          <button id="ocultarNvoEmp">❌</button>
         </div>
 
         <div id="formModifEmp">
@@ -166,12 +166,13 @@
             <option value="" selected disabled>Categoría</option>
             <option value=""></option>
           </select>
-          <button onclick="">Guardar Cambios</button>
+          <button id="guardarEmpModif">Guardar Cambios</button>
+          <button id="ocultarEmpModif">❌</button>
         </div>
 
       </section>
       <hr>
-      <button class="botontitulo" onclick="verProd()">
+      <button class="botontitulo" id="verProductos">
         <h2>💊 Productos</h2>
       </button><br>
       <section id="Productos" class="carpeta">
@@ -203,30 +204,30 @@
           </tbody>
         </table>
         <section id="menuProd">
-          <button onclick="verFormNvoProd()">📄 Producto Nuevo</button>
+          <button id="verFormNvoProd">📄 Producto Nuevo</button>
         </section>
         <div id="formNuevoProd">
-          <h3>📄 Crear producto nuevo</h3>
+          <h3>📄 Crear producto nuevo</h3><br>
           <input type="text" id="idProdNvo" placeholder="ID" readonly="readonly">
           <input type="text" id="nombreProdNvo" placeholder="Nombre del Producto">
           <input type="text" id="presenProdNvo" placeholder="Presentación">
           <input type="text" id="descProdNvo" placeholder="Descripción del Producto">
-          <button onclick="ingresarNvoProd()">Ingresar producto</button>
-          <button onclick="ocultarNvoProd()">❌</button>
+          <button id="ingresarNvoProd">Ingresar producto</button>
+          <button id="cerrarNvoProd">❌</button>
         </div>
         <div id="formModifProd">
-          <h3>✏️ Modificar producto</h3>
+          <h3>✏️ Modificar producto</h3><br>
           <input type="text" id="idProdMod" placeholder="PR0" disabled>
           <input type="text" id="nombreProdMod" placeholder="Nombre del Producto">
           <input type="text" id="presenProdMod" placeholder="Presentación">
           <input type="text" id="descProdMod" placeholder="Descripción del Producto">
-          <button onclick=" guardarProdModif()">Guardar Cambio</button>
-          <button onclick="ocultarModProd()">❌</button>
+          <button id="guardarCambiosProd">Guardar Cambio</button>
+          <button id="cerrarModProd">❌</button>
         </div>
 
       </section>
       <hr>
-      <button class="botontitulo" onclick="verCli()">
+      <button class="botontitulo" id="verCli">
         <h2>🤑 Clientes</h2>
       </button><br>
       <section id="Clientes" class="carpeta">
@@ -261,29 +262,30 @@
         </table>
 
         <section id="menuCli">
-          <button onclick="verFormNvoCli()">📄 Nuevo Cliente</button>
+          <button id="verFormNvoCli">📄 Nuevo Cliente</button>
         </section>
 
         <div id="formNuevoCli">
-          <h3>📄 Nuevo Cliente</h3>
-
+          <h3>📄 Nuevo Cliente</h3><br>
           <input type="text" id="idCliNvo" placeholder="ID" readonly="readonly">
           <input type="text" id="nombreCliNvo" placeholder="Nombre">
           <input type="text" id="direcCliNvo" placeholder="Dirección">
           <input type="email" id="mailCliNvo" placeholder="e-mail">
           <input type="tel" id="telCliNvo" placeholder="Teléfono">
 
-          <button onclick="ingresarNvoCli()">Ingresar Cliente</button>
+          <button id="ingresarNvoCli">Ingresar Cliente</button>
+          <button id="ocultarModCli">❌</button>
         </div>
 
         <div id="formModifCli">
-          <h3>✏️ Modificar Cliente</h3>
+          <h3>✏️ Modificar Cliente</h3><br>
           <input type="text" id="idCliMod" placeholder="CLI0" disabled>
           <input type="text" id="nombreCliMod" placeholder="Nombre">
           <input type="text" id="direcCliMod" placeholder="Dirección">
           <input type="email" id="mailCliMod" placeholder="e-mail">
           <input type="tel" id="telCliMod" placeholder="Teléfono">
-          <button onclick="guardarCliModif()">Guardar Cambios</button>
+          <button id="guardarCliModif">Guardar Cambios</button>
+          <button id="ocultarModCli">❌</button>
         </div>
       </section>
       <hr>

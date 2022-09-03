@@ -11,7 +11,7 @@
     width: 100%;
     height: 1em;
     background-color: rgb(118, 156, 165);
-
+    z-index: 20;
 
 }
 
@@ -105,31 +105,38 @@ section hr {
     border-radius: 0 0 5px 5px;
 }
 
-#formNuevoEmp, #formNuevoProd {
+#formNuevoEmp,
+#formModifEmp,
+#formNuevoProd,
+#formModifProd,
+#formNuevoCli,
+#formModifCli {
     display: none;
     position: fixed;
-    top: 30%;
-    
-    border: 3px solid rgb(118, 156, 165);
-    border-radius: 15px 0 15px 0;
-    box-shadow: 5px 5px 5px gray;
+    top: 25%;
+    left: 50%;
     width: 250px;
+    margin-left: -125px;
+    border: 4px solid rgb(118, 156, 165);
+    border-radius: 15px 0 15px 0;
+    border-style: outset;
+    box-shadow: 5px 5px 5px gray;
     z-index: 8;
     padding: 10px;
+    background-color: rgb(146, 175, 182);
+    backdrop-filter: blur(4px);
 }
 
-#formModifEmp, #formModifProd {
-    display: none;
-    position: fixed;
-    top: 30%;
-    right: 5em;
-    border: 3px solid rgb(118, 156, 165);
-    border-radius: 15px 0 15px 0;
-    box-shadow: 5px 5px 5px gray;
-    width: 250px;
-    z-index: 8;
-    padding: 10px;
+#formNuevoEmp h3,
+#formModifEmp h3,
+#formNuevoProd h3,
+#formModifProd h3,
+#formNuevoCli h3,
+#formModifCli h3 {
+
+    background-color: transparent;
 }
+
 
 .cards {
 
@@ -164,8 +171,9 @@ section hr {
 
 .cardot {
     width: 100%;
-    background-color: transparent;
+    background-color: rgba(87, 87, 87, 0.5);
     text-align: left;
+    font-weight: bold;
     padding: 0px 0 0 10px;
 }
 
@@ -173,11 +181,9 @@ section hr {
     background-color: transparent;
     font-weight: bold;
     font-size: 15px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-}
-
-.cardpresen {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    align-self: start;
     align-self: center;
     background-color: transparent;
     font-size: smaller;
@@ -191,15 +197,19 @@ section hr {
 
 .cardestado {
     text-align: center;
-    background-color: gray;
+    background-color: whitesmoke;
     font-weight: bold;
     width: 100%;
+    margin-top: 5px;
+
 }
 
 .cardUnidades {
     text-align: center;
     background-color: whitesmoke;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .cardpie {
@@ -220,18 +230,42 @@ section hr {
     padding-bottom: 8px;
 }
 
+table {
+    position: sticky;
+    max-height: 100px;
+    overflow-y: scroll;
+}
 
 table tr td button {
     margin: 0;
     padding: 0%;
 }
 
+#btnsLineas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    align-self: start;
+    padding-block-end: 10px;
+}
+
+.btnLinea {
+    margin-right: 2px;
+}
+
+#btnNvaLn {
+    background-color: rgb(118, 156, 165);
+    margin-right: 100px;
+    margin-left: 5px;
+}
+
+
+
 footer {
     position: fixed;
     width: auto;
     height: 25px;
     bottom: 0;
-    right: 5%;
+    right: 30px;
     background-color: black;
     color: aliceblue;
     border-radius: 5px 5px 0 0;
