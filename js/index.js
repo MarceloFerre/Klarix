@@ -29,13 +29,14 @@ function comenzar() {
         progCarga.value++
     }, 1);
     setTimeout(() => {
+        recuperarMonitores()
         Swal.fire({
             title: 'Datos cargados exitosamente',
             icon: 'success',
             timer: 2000,
             showConfirmButton: false,
         })
-        recuperarMonitores()
+
     }, 6000);
 
 }
