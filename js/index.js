@@ -8,7 +8,7 @@
     })*/
 comenzar()
 function comenzar() {
-    cardMonitor.innerHTML = `<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    cardMonitor.innerHTML = `<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="aviso">
         <div class="avtitulo">
             <h2>Cargando datos</h2>
