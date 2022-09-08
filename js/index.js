@@ -15,19 +15,33 @@ function comenzar() {
         </div>
         <div class="avimg">
             <img src="logo.gif">
-            <h3 id="comentCarga">Recuperando tablas</h3>
-            <progress id="progCarga" class="progress" max="1000" value="0"></progress>
+            <h3 id="comentCarga">Buscando y recuperando datos</h3>
+            <progress id="progCarga" class="progress" max="1400" value="0"></progress>
            
         </div>
         <div class="avpie"></div>
     </div>`
+
     let progCarga = document.getElementById("progCarga")
     let comentCarga = document.getElementById("comentCarga")
-    comentCarga.innerHTML = "Cargando Productos"
     progCarga.value = 0
+
     setInterval(() => {
         progCarga.value++
-    }, 1);
+        if (progCarga.value > 1200) {
+            comentCarga.innerHTML = "Finalizando..."
+        } else if (progCarga.value > 1000) {
+            comentCarga.innerHTML = "Cargando Lineas..."
+        } else if (progCarga.value > 800) {
+            comentCarga.innerHTML = "Cargando Ordenes..."
+        } else if (progCarga.value > 600) {
+            comentCarga.innerHTML = "Cargando Operarios..."
+        } else if (progCarga.value > 400) {
+            comentCarga.innerHTML = "Cargando Clientes..."
+        } else if (progCarga.value > 200) {
+            comentCarga.innerHTML = "Cargando Productos..."
+        }
+    }, 5);
     setTimeout(() => {
         recuperarMonitores()
         Swal.fire({
@@ -37,7 +51,7 @@ function comenzar() {
             showConfirmButton: false,
         })
 
-    }, 6000);
+    }, 9000);
 
 }
 function recuperarMonitores() {
@@ -727,7 +741,7 @@ const tabot = document.getElementById("tabot")
 setTimeout(() => {
     cargarTablas()
 }, 3500);
-//cargarTablas()
+cargarTablas()
 function cargarTablas() {
     cargarTablaProductos(productos)
     ProductosLSset()
