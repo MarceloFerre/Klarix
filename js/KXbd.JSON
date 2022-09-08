@@ -1,0 +1,467 @@
+{
+    "productos": [
+        {
+            "idpr": "PR0",
+            "nombre": "ABAMIC",
+            "presentacion": "500ML",
+            "descripcion": "ABAMECTINA 1%"
+        },
+        {
+            "idpr": "PR1",
+            "nombre": "DORAMIC",
+            "presentacion": "500ML",
+            "descripcion": "DORAMECTINA 1%"
+        },
+        {
+            "idpr": "PR2",
+            "nombre": "DORAMIC + AD3E",
+            "presentacion": "100ML",
+            "descripcion": "DORAMECTINA1% + VITAMINAS A, D3 Y E"
+        },
+        {
+            "idpr": "PR3",
+            "nombre": "IVERMIC",
+            "presentacion": "100ML",
+            "descripcion": "IVERMECTINA 1%"
+        },
+        {
+            "idpr": "PR4",
+            "nombre": "IVERMIC",
+            "presentacion": "250ML",
+            "descripcion": "IVERMECTINA 1%"
+        },
+        {
+            "idpr": "PR5",
+            "nombre": "IVERMIC PREMIUM",
+            "presentacion": "500ML",
+            "descripcion": "IVERMECTINA 3.15%"
+        },
+        {
+            "idpr": "PR6",
+            "nombre": "IVERMIC PREMIUM",
+            "presentacion": "250ML",
+            "descripcion": "IVERMECTINA 3.15%"
+        },
+        {
+            "idpr": "PR7",
+            "nombre": "IVERMIC",
+            "presentacion": "500ML",
+            "descripcion": "IVERMECTINA 1%"
+        },
+        {
+            "idpr": "PR8",
+            "nombre": "IVERMIC",
+            "presentacion": "1LT",
+            "descripcion": "IVERMECTINA 1%"
+        },
+        {
+            "idpr": "PR9",
+            "nombre": "NITROMIC",
+            "presentacion": "200ML",
+            "descripcion": "NITROXINIL 34%"
+        },
+        {
+            "idpr": "PR10",
+            "nombre": "NITROMIC",
+            "presentacion": "500ML",
+            "descripcion": "NITROXINIL 34%"
+        },
+        {
+            "idpr": "PR11",
+            "nombre": "NITROMIC IVER",
+            "presentacion": "500ML",
+            "descripcion": "NITROXINIL 34% + IVERMECTINA 1%"
+        },
+        {
+            "idpr": "PR12",
+            "nombre": "ZULETEL 10",
+            "presentacion": "100ML",
+            "descripcion": "CLOSANTEL 10%"
+        },
+        {
+            "idpr": "PR13",
+            "nombre": "ZULETEL 15",
+            "presentacion": "100ML",
+            "descripcion": "CLOSANTEL 15%"
+        },
+        {
+            "idpr": "PR14",
+            "nombre": "ENROMIC 10",
+            "presentacion": "50ML",
+            "descripcion": "ENROFLOXACINA 10%"
+        },
+        {
+            "idpr": "PR15",
+            "nombre": "ESTREPEN",
+            "presentacion": "50ML",
+            "descripcion": "ESTREPTO PENICILINA"
+        },
+        {
+            "idpr": "PR16",
+            "nombre": "ESTREPEN",
+            "presentacion": "100ML",
+            "descripcion": "ESTREPTO PENICILINA"
+        },
+        {
+            "idpr": "PR17",
+            "nombre": "OXIMIC",
+            "presentacion": "200ML",
+            "descripcion": "OXITETRACICLINA 10%"
+        },
+        {
+            "idpr": "PR18",
+            "nombre": "OXIMIC",
+            "presentacion": "100ML",
+            "descripcion": "OXITETRACICLINA 10%"
+        }
+    ],
+    "clientes": [
+        {
+            "idcli": "CL0",
+            "nombre": "VETERINARIA LA HACIENDA",
+            "direccion": "MALDONADO 2233",
+            "mail": "ventas@lahacienda.com.uy",
+            "telefono": 25045377
+        },
+        {
+            "idcli": "CL1",
+            "nombre": "ADITIVOS S.R.L",
+            "direccion": "RUTA 101 KM 28 S/N",
+            "mail": "aditivos@aditivos.com.uy",
+            "telefono": 22889647
+        },
+        {
+            "idcli": "CL2",
+            "nombre": "ADMINISTRACION GANADERA S.A.",
+            "direccion": "PARAGUAY 2585",
+            "mail": "admgan@gmail.com",
+            "telefono": 25876982
+        },
+        {
+            "idcli": "CL3",
+            "nombre": "MGAP",
+            "direccion": "GARZON 358 ESQ DR. PENA",
+            "mail": "compra.insumos@mgap.gub.uy",
+            "telefono": 36051471
+        },
+        {
+            "idcli": "CL4",
+            "nombre": "AGROVETERINARIA EL GALLO",
+            "direccion": "RUTA 8 KM 29",
+            "mail": "elgallo.vet@gmail.com",
+            "telefono": 22887365
+        },
+        {
+            "idcli": "CL5",
+            "nombre": "ASOCIACION RURAL DEL URUGUAY",
+            "direccion": "18 DE JULIO 124 APT 506",
+            "mail": "administracion@aru.com.uy",
+            "telefono": 98182734
+        },
+        {
+            "idcli": "CL6",
+            "nombre": "DILAVE",
+            "direccion": "CNO MALDONADO KM 18",
+            "mail": "dilave@dilave.com",
+            "telefono": 30485698
+        },
+        {
+            "idcli": "CL7",
+            "nombre": "FACULTAD DE VETERINARIA",
+            "direccion": "RUTA 8 KM 18.700",
+            "mail": "fvet@bedelia.edu.uy",
+            "telefono": 12587469
+        },
+        {
+            "idcli": "CL8",
+            "nombre": "VETERINARIA EL CIMARRON",
+            "direccion": "RUTA 74 KM 33.200",
+            "mail": "vetcimarron@gmail.com",
+            "telefono": 22786985
+        }
+    ],
+    "empleados": [
+        {
+            "idemp": "OP0",
+            "nombre": "JUAN PEREZ",
+            "direccion": "CAFE 1223",
+            "contacto": 91999888,
+            "categoria": "OP.COMUN"
+        },
+        {
+            "idemp": "OP1",
+            "nombre": "JOHN PEREZ",
+            "direccion": "CAFE 1226",
+            "contacto": 91223344,
+            "categoria": "OP.COMUN"
+        },
+        {
+            "idemp": "OP2",
+            "nombre": "MARIO PEREZ",
+            "direccion": "CHOCOLATE 741",
+            "contacto": 99888777,
+            "categoria": "OP.COMUN"
+        },
+        {
+            "idemp": "OP3",
+            "nombre": "PEDRO RODRIGUEZ",
+            "direccion": "MATEAMARGO 8787",
+            "contacto": 95856974,
+            "categoria": "OP.COMUN"
+        },
+        {
+            "idemp": "OP4",
+            "nombre": "RICARDO RICARDE",
+            "direccion": "CHOCOLATE 1626",
+            "contacto": 22885577,
+            "categoria": "OP.COMUN"
+        },
+        {
+            "idemp": "OP5",
+            "nombre": "CARLOS PEREZ",
+            "direccion": "CAFE 1223",
+            "contacto": 91999888,
+            "categoria": "OP.ESPECIALIZADO"
+        },
+        {
+            "idemp": "OP6",
+            "nombre": "ALBERTO BELLO",
+            "direccion": "TENEGRO 333",
+            "contacto": 91989898,
+            "categoria": "OP.ESPECIALIZADO"
+        },
+        {
+            "idemp": "OP7",
+            "nombre": "DANILO FERNANDEZ",
+            "direccion": "TENEGRO 7788",
+            "contacto": 22886633,
+            "categoria": "OP.ESPECIALIZADO"
+        },
+        {
+            "idemp": "OP8",
+            "nombre": "SEBASTIAN ALTEZ",
+            "direccion": "TERERE S/N",
+            "contacto": 22929299,
+            "categoria": "OP.ESPECIALIZADO"
+        },
+        {
+            "idemp": "OP9",
+            "nombre": "DANIEL VIERA",
+            "direccion": "CERVEZA 987",
+            "contacto": 91125896,
+            "categoria": "OP.ESPECIALIZADO"
+        },
+        {
+            "idemp": "OP10",
+            "nombre": "JARRY GONZALES",
+            "direccion": "CHOCOLATE 658",
+            "contacto": 24092178,
+            "categoria": "JEFE DE LINEA"
+        },
+        {
+            "idemp": "OP11",
+            "nombre": "JOSE MANSINO",
+            "direccion": "JUGO 357",
+            "contacto": 91316797,
+            "categoria": "JEFE DE LINEA"
+        },
+        {
+            "idemp": "OP12",
+            "nombre": "CLARISA CURIEL",
+            "direccion": "JUGO 369",
+            "contacto": 91666066,
+            "categoria": "CHECKER QC"
+        },
+        {
+            "idemp": "OP13",
+            "nombre": "CINTIA CORDEL",
+            "direccion": "JUGO 355",
+            "contacto": 91224477,
+            "categoria": "CHECKER QC"
+        },
+        {
+            "idemp": "OP14",
+            "nombre": "LORENA NOGUEIRA",
+            "direccion": "MATEAMARGO 284",
+            "contacto": 96483726,
+            "categoria": "JEFE DE LINEA"
+        },
+        {
+            "idemp": "OP15",
+            "nombre": "MARCELO FERRE",
+            "direccion": "AGAMENON 4577",
+            "contacto": 98178526,
+            "categoria": "ADMINISTRATIVO"
+        },
+        {
+            "idemp": "OP16",
+            "nombre": "CAMILO PERDOMO",
+            "direccion": "REECONQUISTA 457",
+            "contacto": 92365874,
+            "categoria": "JEFE DE LINEA"
+        },
+        {
+            "idemp": "OP17",
+            "nombre": "MARIO QUINTANA",
+            "direccion": "BAROMETRICA 963",
+            "contacto": 22558899,
+            "categoria": "MANTENIMIENTO"
+        }
+    ],
+    "ordenes": [
+        {
+            "idorden": "OT0",
+            "idcliente": "CL0",
+            "idproducto": "PR0",
+            "unidadespedidas": 750,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT1",
+            "idcliente": "CL1",
+            "idproducto": "PR1",
+            "unidadespedidas": 190,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT2",
+            "idcliente": "CL2",
+            "idproducto": "PR2",
+            "unidadespedidas": 7500,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT3",
+            "idcliente": "CL3",
+            "idproducto": "PR3",
+            "unidadespedidas": 20000,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT4",
+            "idcliente": "CL0",
+            "idproducto": "PR4",
+            "unidadespedidas": 15700,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT5",
+            "idcliente": "CL1",
+            "idproducto": "PR5",
+            "unidadespedidas": 750,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT6",
+            "idcliente": "CL2",
+            "idproducto": "PR6",
+            "unidadespedidas": 200,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT7",
+            "idcliente": "CL3",
+            "idproducto": "PR0",
+            "unidadespedidas": 11,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT8",
+            "idcliente": "CL0",
+            "idproducto": "PR1",
+            "unidadespedidas": 450,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT9",
+            "idcliente": "CL1",
+            "idproducto": "PR2",
+            "unidadespedidas": 2000,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT10",
+            "idcliente": "CL2",
+            "idproducto": "PR3",
+            "unidadespedidas": 55000,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT11",
+            "idcliente": "CL3",
+            "idproducto": "PR4",
+            "unidadespedidas": 360,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT12",
+            "idcliente": "CL0",
+            "idproducto": "PR5",
+            "unidadespedidas": 500,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT13",
+            "idcliente": "CL1",
+            "idproducto": "PR6",
+            "unidadespedidas": 500,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        },
+        {
+            "idorden": "OT14",
+            "idcliente": "CL2",
+            "idproducto": "PR0",
+            "unidadespedidas": 750,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO"
+        }
+    ],
+    "lineas": [
+        {
+            "idlinea": "LN0",
+            "nombre": "MANUAL 1",
+            "descripcion": "ENVASADO Y ACONDICIONAMIENTO MANUAL",
+            "empleados": [],
+            "ordenes": [],
+            "ordenactiva": "Sin ordenes asignadas"
+        },
+        {
+            "idlinea": "LN1",
+            "nombre": "MANUAL 2",
+            "descripcion": "ACONDICIONAMIENTO MANUAL",
+            "empleados": [],
+            "ordenes": [],
+            "ordenactiva": "Sin ordenes asignadas"
+        },
+        {
+            "idlinea": "LN2",
+            "nombre": "AUTOMATICA 1",
+            "descripcion": "ENVASADORA AUTOMATICA MEDIANA",
+            "empleados": [],
+            "ordenes": [],
+            "ordenactiva": "Sin ordenes asignadas"
+        },
+        {
+            "idlinea": "LN3",
+            "nombre": "AUTOMATICA 2",
+            "descripcion": "ENVASADORA AUTOMATICA GRANDE",
+            "empleados": [],
+            "ordenes": [],
+            "ordenactiva": "Sin ordenes asignadas"
+        }
+    ]
+}

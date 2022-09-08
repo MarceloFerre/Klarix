@@ -10,14 +10,14 @@
   <link rel="stylesheet" href="css/tacit-css-1.5.5.min.css" />
   <link rel="stylesheet" href="css/estilo.css">
   <script defer src="js/clases.js"></script>
-  <script defer src="js/variables.js"></script>
+  <script  src="js/variables.js"></script>
   <script defer src="js/index.js"></script>
   <script defer src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
   <header class="cabecera">
-    <h1>⚗️ KlariX <small>Gestión de ambientes productivos</small></h1>
+    <h1><img src="logo.gif">⚗️ KlariX </h1>
     <nav id="navbar">
       <div class="navbar">
         <button class="navbar-item" id="VerMonitor">🖥️ MONITOR</button>
@@ -32,9 +32,9 @@
     <section id="Monitor">
       <h2>🖥️ MONITOR</h2>
       <section id="MonitorTarjetas">
-
+        
         <div id="cardMonitor" class="cards">
-
+          
         </div>
       </section>
       <section id="logDiario">
@@ -48,12 +48,11 @@
       <br>
       <button class="botontitulo" id="verLineas">
         <h2>🏭 Lineas de producción</h2>
-      </button>
-      <br>
+      </button><br>
       <section id="Lineas" class="carpeta">
 
         <div id="btnsLineas" class="btnsLineas">
-          
+
 
         </div>
 
@@ -80,6 +79,22 @@
       </button><br>
       <section class="carpeta" id="Ordenes">
 
+        <button class="btnNvaOt" id="btnNvaOt">📄Ingresar Pedido</button>
+        <section id="formNvaOt">
+          <h3>📄 Nuevo Pedido</h3><br>
+          <input id="nvaOtId" type="text" placeholder="ID" readonly>
+          <select name="" id="nvaOtProd">
+            <option value="">Seleccionar Producto</option>
+          </select>
+          <select name="" id="nvaOtCli">
+            <option value="">Seleccionar Cliente</option>
+          </select>
+          <input id="nvaOtUnds" type="text" placeholder="Unidades pedidas">
+          <button id="btnIngresarOt">Ingresar Pedido</button>
+          <button id="cerrarNvaOt">❌</button>
+        </section>
+
+
         <table class="table">
           <thead>
             <th>⚙️</th>
@@ -87,7 +102,7 @@
             <th>Producto</th>
             <th>Cliente</th>
             <th>Unidades Pedidas</th>
-            <th>Estado Actual</th>
+            <th>Asignar Sala</th>
           </thead>
           <tbody id="tabot">
 
@@ -100,18 +115,18 @@
         <h2>👷‍♀️ Operarios</h2>
       </button>
       <section id="Empleados" class="carpeta">
-        <div class=formFilrto action="">
-          Buscar por
-          <select name="empCat" id="empCat" onMouseUp="verCatFiltros()">
-            <option value="...">...</option>
+        <div class=formFilrto>
+
+          <select name="empCat" id="empCat">
+            <option value="">Buscar por...</option>
             <option value="ID">ID</option>
             <option value="nombre">Nombre</option>
             <option value="direccion">Dirección</option>
             <option value="contacto">Contacto</option>
             <option value="categoria">Categoría</option>
           </select>
-          <input id="filtroEmp" type="search" onkeyup="filtroEmp()" placeholder="🔍 Escriba su busqueda">
-          <select name="empCategoria" id="empCategoria" onmouseup="filtroEmpCategorias()">
+          <input id="filtroEmp" type="search" placeholder="🔍 Escriba su busqueda">
+          <select name="empCategoria" id="empCategoria">
             <option value="...">...</option>
           </select>
 
@@ -141,7 +156,7 @@
         </section>
 
         <div id="formNuevoEmp">
-          <h3>📄 Nuevo Operario</h3>
+          <h3>📄 Nuevo Operario</h3><br>
 
           <input type="text" id="idEmpNvo" placeholder="ID" readonly="readonly">
           <input type="text" id="nombreEmpNvo" placeholder="Nombre">
@@ -156,7 +171,7 @@
         </div>
 
         <div id="formModifEmp">
-          <h3>✏️ Modificar Operario</h3>
+          <h3>✏️ Modificar Operario</h3><br>
 
           <input type="text" id="idEmpMod" placeholder="ID" readonly>
           <input type="text" id="nombreEmpMod" placeholder="Nombre">
@@ -178,15 +193,15 @@
       <section id="Productos" class="carpeta">
 
         <div class=formFilrto action="">
-          Buscar por
+
           <select name="prodCat" id="prodCat">
-            <option value="">...</option>
+            <option value="">Buscar por...</option>
             <option value="ID">ID</option>
             <option value="nombre">Nombre</option>
             <option value="presentacion">Presentación</option>
             <option value="descripcion">Descripción</option>
           </select>
-          <input id="filtroProd" type="text" onkeyup="filtroProd()" placeholder=" 🔍 Escriba su busqueda">
+          <input id="filtroProd" type="text" placeholder=" 🔍 Escriba su busqueda">
         </div>
         <table class="table">
           <thead>
@@ -232,16 +247,15 @@
       </button><br>
       <section id="Clientes" class="carpeta">
         <div class=formFilrto action="">
-          Buscar por
           <select name="cliCat" id="cliCat">
-            <option value="">...</option>
+            <option value="">Buscar por...</option>
             <option value="ID">ID</option>
             <option value="nombre">Nombre</option>
             <option value="direccion">Dirección</option>
             <option value="email">e-mail</option>
             <option value="telefono">Teléfono</option>
           </select>
-          <input id="filtroCli" type="text" onkeyup="filtroCli()" placeholder=" 🔍 Escriba su busqueda">
+          <input id="filtroCli" type="text" placeholder=" 🔍 Escriba su busqueda">
 
         </div>
 
@@ -274,7 +288,7 @@
           <input type="tel" id="telCliNvo" placeholder="Teléfono">
 
           <button id="ingresarNvoCli">Ingresar Cliente</button>
-          <button id="ocultarModCli">❌</button>
+          <button id="ocultarNvoCli">❌</button>
         </div>
 
         <div id="formModifCli">
@@ -285,7 +299,7 @@
           <input type="email" id="mailCliMod" placeholder="e-mail">
           <input type="tel" id="telCliMod" placeholder="Teléfono">
           <button id="guardarCliModif">Guardar Cambios</button>
-          <button id="ocultarModCli">❌</button>
+          <button id="cerrarModCli">❌</button>
         </div>
       </section>
       <hr>
@@ -296,8 +310,7 @@
       <h2>🔍 AUDITORÍAS</h2>
       <hr>
     </section>
-
-
+    
   </main>
   <footer class="foot">
     <small> CoderHouse - Javascript - 38030 <a href="mailto:marceloferrenogueira@gmail.com">Marcelo Ferré </a> &copy

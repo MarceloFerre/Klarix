@@ -58,83 +58,73 @@ function crearIDorden() {
     let id = `OT${ordenes.length}`
     return id
 }
-//HARDCODE
+//Carga de datos con Fetch
+
 function agregarProductos() {
-    productos.push(new producto("PR0", "KETOFEN 100", "10 COMPRIMIDOS", "KETOPROFENO 100MG"))
-    productos.push(new producto("PR1", "KETOFEN 100", "20 COMPRIMIDOS", "KETOPROFENO 100MG"))
-    productos.push(new producto("PR2", "NOVEMINA FUERTE", "10 COMPRIMIDOS", "DIPIRONA 500MG"))
-    productos.push(new producto("PR3", "NOVEMINA FUERTE", "20 COMPRIMIDOS", "DIPIRONA 500MG"))
-    productos.push(new producto("PR4", "IBUPIRAC 600", "10 COMPRIMIDOS", "IBUPROFENO 600MG"))
-    productos.push(new producto("PR5", "IBUPIRAC 600", "20 COMPRIMIDOS", "IBUPROFENO 600MG"))
-    productos.push(new producto("PR6", "IBUPIRAC 400", "10 COMPRIMIDOS", "IBUPROFENO 400MG"))
-}
-function agregarEmpleados() {
-    empleados.push(new empleado(crearIDop(), "JUAN PEREZ", "CAFE 1223", 091999888, 0))
-    empleados.push(new empleado(crearIDop(), "JOHN PEREZ", "CAFE 1226", 091223344, 0))
-    empleados.push(new empleado(crearIDop(), "MARIO PEREZ", "CHOCOLATE 741", 099888777, 0))
-    empleados.push(new empleado(crearIDop(), "PEDRO RODRIGUEZ", "MATEAMARGO 8787", 095856974, 0))
-    empleados.push(new empleado(crearIDop(), "RICARDO RICARDE", "CHOCOLATE 1626", 22885577, 0))
-    empleados.push(new empleado(crearIDop(), "CARLOS PEREZ", "CAFE 1223", 091999888, 0))
-    empleados.push(new empleado(crearIDop(), "ALBERTO BELLO", "TENEGRO 333", 091989898, 1))
-    empleados.push(new empleado(crearIDop(), "DANILO FERNANDEZ", "TENEGRO 7788", 22886633, 1))
-    empleados.push(new empleado(crearIDop(), "SEBASTIAN ALTEZ", "TERERE S/N", 22929299, 1))
-    empleados.push(new empleado(crearIDop(), "DANIEL VIERA", "CERVEZA 987", 091125896, 1))
-    empleados.push(new empleado(crearIDop(), "JARRY GONZALES", "CHOCOLATE 658", 24092178, 1))
-    empleados.push(new empleado(crearIDop(), "JOSE MANSINO", "JUGO 357", 091316797, 2))
-    empleados.push(new empleado(crearIDop(), "CLARISA CURIEL", "JUGO 369", 091666066, 3))
-    empleados.push(new empleado(crearIDop(), "CINTIA CORDEL", "JUGO 355", 091224477, 2))
-    empleados.push(new empleado(crearIDop(), "LORENA NOGUEIRA", "MATEAMARGO 284", 096483726, 2))
-}
-function agregarClientes() {
-    clientes.push(new cliente("CL0", "FARMACIA ESQUINA", "MALDONADO 2233", "farmaciaesquina@farmacias.uy", 25045377))
-    clientes.push(new cliente("CL1", "SANATORIO ITALIANO", "AV.LIBERTAD S/N", "administracion@hospitaliano.com", 24096687))
-    clientes.push(new cliente("CL2", "POLICLINICO ALLENDE", "CERVEZA 3698", "allende@coliclinico.uy", 25876982))
-    clientes.push(new cliente("CL3", "DISTRIBUIDORA PHARMAPHIA", "", "pharmaphia@repartos.uy", 2504553377))
-}
-function agregarLineas() {
-    lineas.push(new linea("LN0", "MANUAL 1", "ENVASADO Y ACONDICIONAMIENTO MANUAL"))
-    lineas.push(new linea("LN1", "MANUAL 2", "ACONDICIONAMIENTO MANUAL"))
-    lineas.push(new linea("LN2", "AUTOMATICA 1", "ENVASADORA AUTOMATICA MEDIANA"))
-    lineas.push(new linea("LN3", "AUTOMATICA 2", "ENVASADORA AUTOMATICA GRANDE"))
-}
-function agregarOrdenes() {
-    ordenes.push(new orden(crearIDorden(), "CL0", "PR0", 750))
-    ordenes.push(new orden(crearIDorden(), "CL1", "PR1", 190))
-    ordenes.push(new orden(crearIDorden(), "CL2", "PR2", 7500))
-    ordenes.push(new orden(crearIDorden(), "CL3", "PR3", 20000))
-    ordenes.push(new orden(crearIDorden(), "CL0", "PR4", 15700))
-    ordenes.push(new orden(crearIDorden(), "CL1", "PR5", 750))
-    ordenes.push(new orden(crearIDorden(), "CL2", "PR6", 200))
-    ordenes.push(new orden(crearIDorden(), "CL3", "PR0", 11))
-    ordenes.push(new orden(crearIDorden(), "CL0", "PR1", 450))
-    ordenes.push(new orden(crearIDorden(), "CL1", "PR2", 2000))
-    ordenes.push(new orden(crearIDorden(), "CL2", "PR3", 55000))
-    ordenes.push(new orden(crearIDorden(), "CL3", "PR4", 360))
-    ordenes.push(new orden(crearIDorden(), "CL0", "PR5", 500))
-    ordenes.push(new orden(crearIDorden(), "CL1", "PR6", 500))
-    ordenes.push(new orden(crearIDorden(), "CL2", "PR0", 750))
+    fetch('js/KXbd.JSON')
+        .then((resp) => resp.json())
+        .then((data) => {
+            data.productos.forEach(producto => {
+                productos.push(producto)
+            });
+        })
 
 }
-function incrustarDatos() {
-    //agregarProductos()
+function agregarEmpleados() {
+    fetch('js/KXbd.JSON')
+        .then((resp) => resp.json())
+        .then((data) => {
+            data.empleados.forEach(empleado => {
+                empleados.push(empleado)
+            });
+        })
+}
+function agregarClientes() {
+    fetch('js/KXbd.JSON')
+        .then((resp) => resp.json())
+        .then((data) => {
+            data.clientes.forEach(cliente => {
+                clientes.push(cliente)
+            });
+
+        })
+}
+function agregarLineas() {
+    fetch('js/KXbd.JSON')
+        .then((resp) => resp.json())
+        .then((data) => {
+            data.lineas.forEach(linea => {
+                lineas.push(linea)
+            });
+
+        })
+}
+function agregarOrdenes() {
+    fetch('js/KXbd.JSON')
+        .then((resp) => resp.json())
+        .then((data) => {
+            data.ordenes.forEach(orden => {
+                ordenes.push(orden)
+            });
+
+        })
+}
+function Iniciar() {
+
     ProductosLSget()
-    //agregarClientes()
     ClientesLSget()
-    //agregarEmpleados()
     EmpleadosLSget()
-    //agregarOrdenes()
     OrdenesLSget()
-    //agregarLineas()
     LineasLSget()
 }
-incrustarDatos()
+Iniciar()
 
 //FUNCIONES CON JSON Y LOCALSTORAGE
 function ProductosLSset() {//Guarda PRODUCTOS en localStorage
     const prodsJson = JSON.stringify(productos)
     localStorage.setItem('KXproductos', prodsJson)
 }
-function ProductosLSget() {//Busca PRODUCTOS en localStorage, si no encuentra los agrega del hardcode
+function ProductosLSget() {//Busca PRODUCTOS en localStorage, si no encuentra los agrega haciendo FETCH a KXbd.JSON
     const prodsJson = (JSON.parse(localStorage.getItem('KXproductos')) || [])
     if (prodsJson.length == 0) {
         agregarProductos()
@@ -149,7 +139,7 @@ function ClientesLSset() {//Guarda CLIENTES en localStorage
     const clisJson = JSON.stringify(clientes)
     localStorage.setItem('KXclientes', clisJson)
 }
-function ClientesLSget() {//busca CLIENTES en localStorage, si no encuentra los agrega del hardcode
+function ClientesLSget() {//busca CLIENTES en localStorage, si no encuentra los agrega haciendo FETCH a KXbd.JSON
     const clisJson = (JSON.parse(localStorage.getItem('KXclientes')) || [])
     if (clisJson.length == 0) {
         agregarClientes()
@@ -164,7 +154,7 @@ function EmpleadosLSset() {//Guarda EMPLEADOS en localStorage
     const empsJson = JSON.stringify(empleados)
     localStorage.setItem('KXempleados', empsJson)
 }
-function EmpleadosLSget() {//Busca EMPLEADOS en localStorage, si no encuentra los agrega del hardcode
+function EmpleadosLSget() {//Busca EMPLEADOS en localStorage, si no encuentra los agrega haciendo FETCH a KXbd.JSON
     const empsJson = (JSON.parse(localStorage.getItem('KXempleados')) || [])
     if (empsJson.length == 0) {
         agregarEmpleados()
@@ -179,7 +169,7 @@ function OrdenesLSset() {//Guarda ORDENES en localStorage
     const otsJson = JSON.stringify(ordenes)
     localStorage.setItem('KXordenes', otsJson)
 }
-function OrdenesLSget() {//Busca ORDENES en localStorage, si no encuentra los agrega del hardcode
+function OrdenesLSget() {//Busca ORDENES en localStorage, si no encuentra los agrega haciendo FETCH a KXbd.JSON
     const otsJson = (JSON.parse(localStorage.getItem('KXordenes')) || [])
     if (otsJson.length == 0) {
         agregarOrdenes()
@@ -194,7 +184,7 @@ function LineasLSset() {//Guarda LINEAS DE PROD en localStorage
     const lnsJson = JSON.stringify(lineas)
     localStorage.setItem('KXlineas', lnsJson)
 }
-function LineasLSget() {//Busca LINEAS DE PROD en localStorage, si no encuentra los agrega del hardcode
+function LineasLSget() {//Busca LINEAS DE PROD en localStorage, si no encuentra los agrega haciendo FETCH a KXbd.JSON
     const lnsJson = (JSON.parse(localStorage.getItem('KXlineas')) || [])
     if (lnsJson.length == 0) {
         agregarLineas()
@@ -205,3 +195,4 @@ function LineasLSget() {//Busca LINEAS DE PROD en localStorage, si no encuentra 
         })
     }
 }
+

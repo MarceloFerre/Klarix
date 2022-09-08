@@ -1,4 +1,74 @@
 
+/* fetch('js/KXbd.JSON')
+    .then( (resp) => resp.json() )
+    .then( (data) => {
+        console.table(data.productos)
+        productos = data.productos
+        ProductosLSset()
+    })*/
+comenzar()
+function comenzar() {
+    cardMonitor.innerHTML = `<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="aviso">
+        <div class="avtitulo">
+            <h2>Cargando datos</h2>
+        </div>
+        <div class="avimg">
+            <img src="logo.gif">
+            <h3 id="comentCarga">Recuperando tablas</h3>
+            <progress id="progCarga" class="progress" max="1000" value="0"></progress>
+           
+        </div>
+        <div class="avpie"></div>
+    </div>`
+    let progCarga = document.getElementById("progCarga")
+    let comentCarga = document.getElementById("comentCarga")
+    comentCarga.innerHTML = "Cargando Productos"
+    progCarga.value = 0
+    setInterval(() => {
+        progCarga.value++
+    }, 1);
+    setTimeout(() => {
+        Swal.fire({
+            title: 'Datos cargados exitosamente',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false,
+        })
+        recuperarMonitores()
+    }, 6000);
+
+}
+function recuperarMonitores() {
+    cardMonitor.innerHTML = ``
+    let monitor = monitores
+    if (monitor) {
+        monitor.forEach(item => {
+
+            let div = document.createElement('div')
+            div.className = 'card'
+            div.innerHTML = `<div class="cardtitulo">🏭 ${item.titulo}</div>
+                                    <div class="cardot">📑 ${item.ot}</div>
+                                    <div class="cardprod">${item.prod}</div>
+                                    <div class="cardpresen">${item.present}</div>
+                                    <div class="cardestadoicono">${item.icono}</div>
+                                    <div class="cardestado">${item.estado}</div>
+                                    <div class="cardUnidades">${item.undsprod}/${item.undspedidas} | ${parseInt(item.progreso * 100)}% <progress class="progress" value="${item.progreso}"></progress></div>
+                                    <div class="cardpie">
+                                    <a href="#">+info</a>
+                                    </div>
+                                </div>
+                `
+            cardMonitor.append(div)
+        })
+    }
+}
+
+
+
+
+
+
 //MODULOS
 function botones() {
     //buttons de la barra de navegacion
@@ -23,9 +93,30 @@ function botones() {
 
     //buttons Ordenes
 
-    //buttons Empleados
+    //buttons Operarios
+    let selEmpCat = document.getElementById("empCat")
+    selEmpCat.addEventListener('mouseup', verCatFiltros)
+    let inptFiltroEmp = document.getElementById("filtroEmp")
+    inptFiltroEmp.addEventListener('keyup', filtroEmp)
+    let selEmpCategoria = document.getElementById("empCategoria")
+    selEmpCategoria.addEventListener('mouseup', filtroEmpCategorias)
+
+    let btnVerFormNvoEmp = document.getElementById("verFormNvoEmp")
+    btnVerFormNvoEmp.addEventListener('click', verFormNvoEmp)
+    let btnCerrarFormNvoEmp = document.getElementById("ocultarNvoEmp")
+    btnCerrarFormNvoEmp.addEventListener('click', verFormNvoEmp)
+    let btnIngresarNvoEmp = document.getElementById("ingresarNvoEmp")
+    btnIngresarNvoEmp.addEventListener('click', ingresarNvoEmp)
+
+    let btnCerrarFormModEmp = document.getElementById("ocultarEmpModif")
+    btnCerrarFormModEmp.addEventListener('click', cerrarEmpModif)
+    let btnGuardarModEmp = document.getElementById("guardarEmpModif")
+    btnGuardarModEmp.addEventListener('click', guardarModifEmp)
 
     //buttons Productos
+    let inptFiltroProd = document.getElementById("filtroProd")
+    inptFiltroProd.addEventListener('keyup', filtroProd)
+
     let btnVerFormNvoProd = document.getElementById("verFormNvoProd")
     btnVerFormNvoProd.addEventListener('click', verFormNvoProd)
     let btnOcultarFormNvoProd = document.getElementById("cerrarNvoProd")
@@ -39,6 +130,20 @@ function botones() {
     btnGuardarModProd.addEventListener('click', guardarProdModif)
 
     //buttons Clientes
+    let inptFiltroCli = document.getElementById("filtroCli")
+    inptFiltroCli.addEventListener('keyup', filtroCli)
+
+    let btnVerFormNvoCli = document.getElementById("verFormNvoCli")
+    btnVerFormNvoCli.addEventListener('click', verFormNvoCli)
+    let btnCerrarFormNvoCli = document.getElementById("ocultarNvoCli")
+    btnCerrarFormNvoCli.addEventListener('click', verFormNvoCli)
+    let btnIngresarNvoCli = document.getElementById("ingresarNvoCli")
+    btnIngresarNvoCli.addEventListener('click', ingresarNvoCli)
+
+    let cerrarModCli = document.getElementById("cerrarModCli")
+    cerrarModCli.addEventListener('click', ocultarModifCli)
+    let btnGuardarModCli = document.getElementById("guardarCliModif")
+    btnGuardarModCli.addEventListener('click', guardarCliModif)
 
 }
 botones()
@@ -75,35 +180,6 @@ function VerAudit() {//Ver AUDITORIA
 }
 //MONITOR
 
-localStorage.setItem('monitores', JSON.stringify(monitores))
-cardMonitor.innerHTML = '<img src="https://corpogenlab.com/wp-content/uploads/2019/11/tubo-1.gif" ><h2>Cargando Lineas</h2>'
-setTimeout(() => {
-    cardMonitor.innerHTML = ''
-    recuperarMonitores()
-}, 3000)
-function recuperarMonitores() {
-    let monitor = JSON.parse(localStorage.getItem('monitores'))
-    if (monitor) {
-        monitor.forEach(item => {
-
-            let div = document.createElement('div')
-            div.className = 'card'
-            div.innerHTML = `<div class="cardtitulo">🏭 ${item.titulo}</div>
-                                    <div class="cardot">📑 ${item.ot}</div>
-                                    <div class="cardprod">${item.prod}</div>
-                                    <div class="cardpresen">${item.present}</div>
-                                    <div class="cardestadoicono">${item.icono}</div>
-                                    <div class="cardestado">${item.estado}</div>
-                                    <div class="cardUnidades">${item.undsprod}/${item.undspedidas} | ${parseInt(item.progreso * 100)}% <progress class="progress" value="${item.progreso}"></progress></div>
-                                    <div class="cardpie">
-                                    <a href="#">+info</a>
-                                    </div>
-                                </div>
-                `
-            cardMonitor.append(div)
-        })
-    }
-}
 
 //ADMINISTRADOR
 
@@ -306,7 +382,12 @@ function ingresarNvoCli() {//Boton INGRESAR CLIENTE
     const telCliNvo = document.getElementById("telCliNvo")
 
     if (nombreCliNvo.value == "" || direcCliNvo.value == "" || mailCliNvo.value == "" || telCliNvo.value == "") {
-        alert("Por favor llenar bien los campos.")
+        Swal.fire({
+            title: 'Cliente incorrecto',
+            text: 'Por favor, llene bien los campos.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        })
     } else {
         const cliNvo = new cliente()
         cliNvo.idcli = crearIDcli()
@@ -316,12 +397,20 @@ function ingresarNvoCli() {//Boton INGRESAR CLIENTE
         cliNvo.telefono = parseInt(telCliNvo.value)
 
         clientes.push(cliNvo)
-        cargarTablaClientes()
+        cargarTablaClientes(clientes)
+        verFormNvoCli()
+        ClientesLSset()
         idCliNvo.value = crearIDcli()
         nombreCliNvo.value = ""
         direcCliNvo.value = ""
         mailCliNvo.value = ""
         telCliNvo.value = ""
+        Swal.fire({
+            title: 'Cliente ingresado correctamente',
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false,
+        })
     }
 }
 function verFormModifCli(idcli) {//Boton de tabla MODIFICAR CLIENTE
@@ -354,7 +443,12 @@ function guardarCliModif() {//guarda los cambios en el CLIENTE
     const telCliMod = document.getElementById("telCliMod")
 
     if (nombreCliMod.value == "" || direcCliMod.value == "" || mailCliMod.value == "" || telCliMod.value == "") {
-        alert("Por favor llenar bien los campos.")
+        Swal.fire({
+            title: 'Cambio incorrecto',
+            text: 'Por favor, llene bien los campos.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        })
         verFormModifCli(IDcli)
     } else {
         const modificado = new cliente()
@@ -363,11 +457,27 @@ function guardarCliModif() {//guarda los cambios en el CLIENTE
         modificado.direccion = direcCliMod.value.toLocaleUpperCase()
         modificado.mail = mailCliMod.value
         modificado.telefono = parseInt(telCliMod.value)
-        if (confirm("Desea guardar los cambios?")) {
-            clientes[IDreal] = modificado
-            cargarTablaClientes()
-            formModCli.style.display = "none"
-        }
+
+        Swal.fire({
+            showCancelButton: true,
+            text: '¿Desea modificar el cliente?',
+            icon: 'warning',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                clientes[IDreal] = modificado
+                cargarTablaClientes(clientes)
+                ClientesLSset()
+                formModCli.style.display = "none"
+                Swal.fire({
+                    title: 'Cliente modificado correctamente',
+                    icon: 'success',
+                    timer: 1500,
+                    showConfirmButton: false,
+                })
+            }
+        })
     }
 }
 function filtroCli() {//Filtro CLIENTES
@@ -398,6 +508,9 @@ function filtroCli() {//Filtro CLIENTES
         cargarTablaClientes(clientes)
     }
 }
+function ocultarModifCli() {
+    formModCli.style.display = "none"
+}
 
 //OPERARIOS
 //oculta formularios cuando inicia
@@ -417,7 +530,7 @@ function optCatEmp(optid) {//todos los select con categorias de operarios
         optCat.innerHTML += `<option value="${i}">${CATEGORIA[i]}</option>`
     }
 }
-function filtroEmp() {
+function filtroEmp() {//Busca empleados por sus propiedades
     const filtro = document.getElementById("filtroEmp").value.toLocaleUpperCase()
     const categoria = document.getElementById("empCat").value
     let busqueda = []
@@ -455,12 +568,12 @@ function verCatFiltros() {//si selecciona filtrar por categoria, muestra select 
         if (filtro.style.display == "none") { filtro.style.display = "block" }
     }
 }
-function filtroEmpCategorias() {
+function filtroEmpCategorias() {//busca operarios por su categoría
     const filtrocat = CATEGORIA[document.getElementById("empCategoria").value]
     let busqueda = empleados.filter((empleado) => empleado.categoria == filtrocat)
     cargarTablaEmpleados(busqueda)
 }
-function verFormNvoEmp() {
+function verFormNvoEmp() {//muestra formulario nuevo operario
     if (formNvoEmp.style.display == "none") {
         formNvoEmp.style.display = "block"
         formModEmp.style.display = "none"
@@ -472,7 +585,7 @@ function verFormNvoEmp() {
     idEmpNvo.value = crearIDop()
     optCatEmp("catEmpNvo")
 }
-function ingresarNvoEmp() {
+function ingresarNvoEmp() {//guarda operario nuevo
     const idEmpNvo = document.getElementById("idEmpNvo")
     const nombreEmpNvo = document.getElementById("nombreEmpNvo")
     const direcEmpNvo = document.getElementById("direcEmpNvo")
@@ -480,8 +593,13 @@ function ingresarNvoEmp() {
     const catEmpNvo = document.getElementById("catEmpNvo")
 
 
-    if (nombreEmpNvo.value == "" || direcEmpNvo.value == "" || contactoEmpNvo.value == "" || catEmpNvo.value == "") {
-        alert("Por favor llenar bien los campos.")
+    if (nombreEmpNvo.value == "" || direcEmpNvo.value == "" || contactoEmpNvo.value === 0 || catEmpNvo.value == 0) {
+        Swal.fire({
+            title: 'Operario incorrecto',
+            text: 'Por favor, llene bien los campos.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        })
     } else {
         const EmpNvo = new empleado()
         EmpNvo.idemp = idEmpNvo.value
@@ -492,18 +610,27 @@ function ingresarNvoEmp() {
 
 
         empleados.push(EmpNvo)
-        cargarTablaEmpleados()
+        cargarTablaEmpleados(empleados)
+        EmpleadosLSset()
+        verFormNvoEmp()
+
         idEmpNvo.value = crearIDop()
         nombreEmpNvo.value = ""
         direcEmpNvo.value = ""
         contactoEmpNvo.value = ""
         catEmpNvo.value = ""
+        Swal.fire({
+            title: 'Operario ingresado correctamente',
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false,
+        })
     }
 
 
 }
-function verFormModifEmp(idemp) {
-    optCatEmp("catEmpMod")
+function verFormModifEmp(ID) {//muestra y carga datos al formulario modificar empleado
+
     if (formModEmp.style.display == "none") {
         formModEmp.style.display = "block"
         formNvoEmp.style.display = "none"
@@ -513,16 +640,67 @@ function verFormModifEmp(idemp) {
     const direcEmpMod = document.getElementById("direcEmpMod")
     const contEmpMod = document.getElementById("contEmpMod")
     const catEmpMod = document.getElementById("catEmpMod")
-    let { nombre, direccion, contacto, categoria } = empleados.find(empleado => empleado.idemp == idemp)
-    let cataindi = CATEGORIA.findIndex(cat => cat == categoria)
-    idempleado.value = idemp
+
+    let { nombre, direccion, contacto, categoria } = empleados.find(empleado => empleado.idemp == ID)
+    let catindex = CATEGORIA.findIndex(cat => cat == categoria)
+    optCatEmp("catEmpMod")
+
+    idempleado.value = ID
     nombreEmpMod.value = nombre
     direcEmpMod.value = direccion
     contEmpMod.value = contacto
-    catEmpMod.value = cataindi
+    catEmpMod.selectedIndex = catindex + 1
 }
-function guardarEmpModif() {
+function cerrarEmpModif() {
+    formModEmp.style.display = "none"
+}
+function guardarModifEmp() {//guarda cambios realizados en operario
+    const idEmpMod = document.getElementById("idEmpMod")
+    const IDemp = idEmpMod.value
+    const IDreal = empleados.findIndex(empleado => empleado.idemp == IDemp)
+    const nombreEmpMod = document.getElementById("nombreEmpMod")
+    const direcEmpMod = document.getElementById("direcEmpMod")
+    const contactoEmpMod = document.getElementById("contEmpMod")
+    const catEmpMod = document.getElementById("catEmpMod")
 
+
+    if (nombreEmpMod.value == "" || direcEmpMod.value == "" || contactoEmpMod.value == "" || catEmpMod.value == "") {
+        Swal.fire({
+            title: 'Cambio no admitido!',
+            text: 'Por favor, llene bien los campos.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        })
+        verFormModifEmp(IDemp)
+    } else {
+        const modificado = new empleado()
+        modificado.idemp = IDemp
+        modificado.nombre = nombreEmpMod.value.toLocaleUpperCase()
+        modificado.direccion = direcEmpMod.value.toLocaleUpperCase()
+        modificado.contacto = parseInt(contactoEmpMod.value)
+        modificado.categoria = CATEGORIA[catEmpMod.value]
+
+        Swal.fire({
+            showCancelButton: true,
+            text: '¿Desea modificar el operario?',
+            icon: 'warning',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                empleados[IDreal] = modificado
+                cargarTablaEmpleados(empleados)
+                EmpleadosLSset()
+                cerrarEmpModif()
+                Swal.fire({
+                    title: 'Operario modificado correctamente',
+                    icon: 'success',
+                    timer: 1500,
+                    showConfirmButton: false,
+                })
+            }
+        })
+    }
 }
 //LINEAS
 //
@@ -545,8 +723,10 @@ const tabemp = document.getElementById("tabemp")
 const tablns = document.getElementById("tablns")
 const btnslns = document.getElementById("btnsLineas")
 const tabot = document.getElementById("tabot")
-
-cargarTablas()
+setTimeout(() => {
+    cargarTablas()
+}, 3500);
+//cargarTablas()
 function cargarTablas() {
     cargarTablaProductos(productos)
     ProductosLSset()
@@ -601,7 +781,7 @@ function cargarTablaEmpleados(arrEmp) {
     tabemp.innerHTML = ``
     arrEmp.forEach(empleado => {
         tabemp.innerHTML += `<tr>
-                                <td><button class="btnModEmp" id='${cliente.idemp}' >📝</button></td>
+                                <td><button class="btnModEmp" id='${empleado.idemp}' >📝</button></td>
                                 <td>${empleado.idemp}</td>
                                 <td><strong>${empleado.nombre}</strong></td>
                                 <td>${empleado.categoria}</td>
@@ -611,9 +791,9 @@ function cargarTablaEmpleados(arrEmp) {
                            </tr>`
     })
     let btnModEmp = document.querySelectorAll('.btnModEmp')
-    btnModEmp.forEach(btn => {
-        btn.addEventListener('click', () => {
-            verFormModifEmp(btn.id)
+    btnModEmp.forEach(modEmp => {
+        modEmp.addEventListener('click', () => {
+            verFormModifEmp(modEmp.id)
         })
     })
 }
@@ -649,8 +829,14 @@ function cargarTablaOrdenes(arrOts) {
                                 <td><strong>${prod.nombre}</strong> - ${pres}</td>
                                 <td>${cli.nombre}</td>
                                 <td>${orden.unidadespedidas}</td>      
-                                <td>${orden.estado}</td>
+                                <td><button id="btnNvaLn"> 📃👉🏭 <br> </button>
+                                </td>
                            </tr>`
     })
 }
-prod
+
+
+function arraytotal() {
+    const arraytotal = { "productos": productos, "clientes": clientes, "empleados": empleados, "ordenes": ordenes, "lineas": lineas }
+    return console.log(JSON.stringify(arraytotal))
+}
