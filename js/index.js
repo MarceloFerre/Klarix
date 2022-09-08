@@ -56,27 +56,45 @@ function comenzar() {
 }
 function recuperarMonitores() {
     cardMonitor.innerHTML = ``
-    let monitor = monitores
-    if (monitor) {
-        monitor.forEach(item => {
+    let monitor = lineas
 
-            let div = document.createElement('div')
-            div.className = 'card'
-            div.innerHTML = `<div class="cardtitulo">🏭 ${item.titulo}</div>
-                                    <div class="cardot">📑 ${item.ot}</div>
-                                    <div class="cardprod">${item.prod}</div>
-                                    <div class="cardpresen">${item.present}</div>
-                                    <div class="cardestadoicono">${item.icono}</div>
-                                    <div class="cardestado">${item.estado}</div>
-                                    <div class="cardUnidades">${item.undsprod}/${item.undspedidas} | ${parseInt(item.progreso * 100)}% <progress class="progress" value="${item.progreso}"></progress></div>
-                                    <div class="cardpie">
-                                    <a href="#">+info</a>
-                                    </div>
-                                </div>
-                `
-            cardMonitor.append(div)
-        })
-    }
+    monitor.forEach(linea => {
+
+        let div = document.createElement('div')
+        div.className = 'card'
+        if (linea.ordenes || []) {
+            div.innerHTML = `<div class="cardtitulo">🏭 ${linea.nombre}</div>
+                <div class="cardot">📑 Sin ordenes</div>
+                <div class="cardprod">Esperando...</div>
+                <div class="cardpresen"> </div>
+                <div class="cardestadoicono"> ⏱️ </div>
+                <div class="cardestado">Esperando por ordenes</div>
+                <div class="cardUnidades"><progress class="progress" value="0"></progress></div>
+                <div class="cardpie">
+                <a href="#">+info</a>
+                </div>
+            </div>
+`
+        } else {
+            let orden = ordenes.find(orden => orden.id == linea.idorden)
+            let producto = productos.find(producto => producto.id == orden.idproducto)
+            div.innerHTML = `<div class="cardtitulo">🏭 ${linea.nombre}</div>
+                <div class="cardot">📑 ${item.ordenactiva}</div>
+                <div class="cardprod">${producto.nombre}</div>
+                <div class="cardpresen">${producto.presentacion}</div>
+                <div class="cardestadoicono">${item.icono}</div>
+                <div class="cardestado">${orden.estado}</div>
+                <div class="cardUnidades">${orden.undsprod}/${orden.undspedidas} | ${parseInt((orden.undsprod / orden.undspedidas) * 100)}% <progress class="progress" value="${parseInt((orden.undsprod / orden.undspedidas) * 100)}"></progress></div>
+                <div class="cardpie">
+                <a href="#">+info</a>
+                </div>
+            </div>
+`            }
+
+
+        cardMonitor.append(div)
+    })
+
 }
 
 
