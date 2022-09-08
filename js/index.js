@@ -62,7 +62,7 @@ function recuperarMonitores() {
 
         let div = document.createElement('div')
         div.className = 'card'
-        if (linea.ordenes || []) {
+        if (linea.ordenes.length < 1) {
             div.innerHTML = `<div class="cardtitulo">🏭 ${linea.nombre}</div>
                 <div class="cardot">📑 Sin ordenes</div>
                 <div class="cardprod">Esperando...</div>
@@ -76,15 +76,15 @@ function recuperarMonitores() {
             </div>
 `
         } else {
-            let orden = ordenes.find(orden => orden.id == linea.idorden)
-            let producto = productos.find(producto => producto.id == orden.idproducto)
+            let orden = ordenes.find(ord => ord.id == linea.idorden)
+            let producto = productos.find(producto => producto.idpr == orden.idproducto)
             div.innerHTML = `<div class="cardtitulo">🏭 ${linea.nombre}</div>
-                <div class="cardot">📑 ${item.ordenactiva}</div>
+                <div class="cardot">📑 ${linea.ordenactiva}</div>
                 <div class="cardprod">${producto.nombre}</div>
                 <div class="cardpresen">${producto.presentacion}</div>
-                <div class="cardestadoicono">${item.icono}</div>
+                <div class="cardestadoicono">${EmojiEstado(orden.estado)}</div>
                 <div class="cardestado">${orden.estado}</div>
-                <div class="cardUnidades">${orden.undsprod}/${orden.undspedidas} | ${parseInt((orden.undsprod / orden.undspedidas) * 100)}% <progress class="progress" value="${parseInt((orden.undsprod / orden.undspedidas) * 100)}"></progress></div>
+                <div class="cardUnidades">${orden.unidadesproducidas}/${orden.unidadespedidas} | ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}% <progress class="progress" value="${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}"></progress></div>
                 <div class="cardpie">
                 <a href="#">+info</a>
                 </div>
@@ -97,7 +97,38 @@ function recuperarMonitores() {
 
 }
 
+function EmojiEstado(estado) {
+    switch (estado) {
+        case "NO ASIGNADO":
+            return "✖️"
+            break;
+        case "ESPERA":
+            return "⏳"
+            break;
+        case "PREPARACION":
+            return "⌛"
+            break;
+        case "PRODUCIENDO":
+            return "▶️"
+            break;
+        case "DETENIDO":
+            return "⏸️"
+            break;
+        case "FINALIZANDO":
+            return "⏭️"
+            break;
+        case "TERMINADO":
+            return "✅"
+            break;
+        case "DESHABILITADO":
+            return "🚫"
+            break;
+        default:
+            return "🧉"
 
+
+    }
+}
 
 
 

@@ -315,7 +315,7 @@
             "idproducto": "PR0",
             "unidadespedidas": 750,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "PREPARACION"
         },
         {
             "idorden": "OT1",
@@ -323,7 +323,7 @@
             "idproducto": "PR1",
             "unidadespedidas": 190,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "ESPERA"
         },
         {
             "idorden": "OT2",
@@ -436,8 +436,8 @@
             "nombre": "MANUAL 1",
             "descripcion": "ENVASADO Y ACONDICIONAMIENTO MANUAL",
             "empleados": [],
-            "ordenes": [],
-            "ordenactiva": "Sin ordenes asignadas"
+            "ordenes": ["OT0","OT1"],
+            "ordenactiva": "OT0"
         },
         {
             "idlinea": "LN1",

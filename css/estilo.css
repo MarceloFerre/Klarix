@@ -228,6 +228,7 @@ section hr {
     background-color: rgb(136, 178, 185);
     align-items: center;
     margin-bottom: 10px;
+    margin-right: 20px;
     box-shadow: 5px 5px 5px grey;
 }
 
