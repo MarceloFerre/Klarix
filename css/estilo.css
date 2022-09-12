@@ -30,7 +30,6 @@ h2 {
     font-size: 3.5em;
     padding-top: 0;
     padding-bottom: 15px;
-
 }
 
 .cabecera img {
@@ -214,12 +213,12 @@ section hr {
 
 .cards {
     width: 120%;
-    border-style:groove ;
+    border-style: groove;
     border-width: 5px;
-    border-color:rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 0, 0, 0.5);
     padding: 25px;
     border-radius: 20px 0px 20px 0px;
-    background-color:rgba(87, 87, 87);
+    background-color: rgba(87, 87, 87);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     align-self: start;
@@ -272,10 +271,25 @@ section hr {
     font-size: 10px;
 }
 
+@keyframes latidos {
+    from {
+        transform: none;
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
 .cardestadoicono {
     background-color: transparent;
     font-size: 50px;
     padding: 20px;
+    animation: latidos 5s infinite;
 }
 
 .cardestado {

@@ -9,9 +9,13 @@
   <script src=""></script>
   <link rel="stylesheet" href="css/tacit-css-1.5.5.min.css" />
   <link rel="stylesheet" href="css/estilo.css">
-  <script defer src="js/clases.js"></script>
-  <script  src="js/variables.js"></script>
   <script defer src="js/index.js"></script>
+  <script defer src="js/productos.js"></script>
+  <script defer src="js/clientes.js"></script>
+  <script defer src="js/operarios.js"></script>
+  <script defer src="js/ordenes.js"></script>
+  <script defer src="js/lineas.js"></script>
+
   <script defer src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
@@ -32,9 +36,9 @@
     <section id="Monitor">
       <h2>🖥️ MONITOR</h2>
       <section id="MonitorTarjetas">
-        
+
         <div id="cardMonitor" class="cards">
-          
+
         </div>
       </section>
       <section id="logDiario">
@@ -102,7 +106,6 @@
             <th>Producto</th>
             <th>Cliente</th>
             <th>Unidades Pedidas</th>
-            <th>Asignar Sala</th>
           </thead>
           <tbody id="tabot">
 
@@ -111,13 +114,13 @@
 
       </section>
       <hr>
-      <button id="verEmp" class="botontitulo">
+      <button id="verOpe" class="botontitulo">
         <h2>👷‍♀️ Operarios</h2>
       </button>
-      <section id="Empleados" class="carpeta">
+      <section id="Operarios" class="carpeta">
         <div class=formFilrto>
 
-          <select name="empCat" id="empCat">
+          <select name="opeCat" id="opeCat">
             <option value="">Buscar por...</option>
             <option value="ID">ID</option>
             <option value="nombre">Nombre</option>
@@ -125,8 +128,8 @@
             <option value="contacto">Contacto</option>
             <option value="categoria">Categoría</option>
           </select>
-          <input id="filtroEmp" type="search" placeholder="🔍 Escriba su busqueda">
-          <select name="empCategoria" id="empCategoria">
+          <input id="filtroOpe" type="search" placeholder="🔍 Escriba su busqueda">
+          <select name="opeCategoria" id="opeCategoria">
             <option value="...">...</option>
           </select>
 
@@ -144,45 +147,45 @@
 
             </tr>
           </thead>
-          <tbody id="tabemp">
+          <tbody id="tabope">
 
           </tbody>
         </table>
 
-        <section id="menuEmp">
-          <button id="verFormNvoEmp">📄 Nuevo Operario</button>
+        <section id="menuOpe">
+          <button id="verFormNvoOpe">📄 Nuevo Operario</button>
 
 
         </section>
 
-        <div id="formNuevoEmp">
+        <div id="formNuevoOpe">
           <h3>📄 Nuevo Operario</h3><br>
 
-          <input type="text" id="idEmpNvo" placeholder="ID" readonly="readonly">
-          <input type="text" id="nombreEmpNvo" placeholder="Nombre">
-          <input type="text" id="direcEmpNvo" placeholder="Dirección">
+          <input type="text" id="idEmpOpe" placeholder="ID" readonly="readonly">
+          <input type="text" id="nombreEmpOpe" placeholder="Nombre">
+          <input type="text" id="direcEmpOpe" placeholder="Dirección">
           <input type="text" id="contEmpNvo" placeholder="Contacto">
-          <select name="categoria" id="catEmpNvo">
+          <select name="categoria" id="catOpeNvo">
             <option value="">Categoría</option>
             <option value=""></option>
           </select>
-          <button id="ingresarNvoEmp">Ingresar Empleado</button>
-          <button id="ocultarNvoEmp">❌</button>
+          <button id="ingresarNvoOpe">Ingresar Operario</button>
+          <button id="ocultarNvoOpe">❌</button>
         </div>
 
-        <div id="formModifEmp">
+        <div id="formModifOpe">
           <h3>✏️ Modificar Operario</h3><br>
 
-          <input type="text" id="idEmpMod" placeholder="ID" readonly>
-          <input type="text" id="nombreEmpMod" placeholder="Nombre">
-          <input type="text" id="direcEmpMod" placeholder="Dirección">
-          <input type="text" id="contEmpMod" placeholder="Contacto">
-          <select name="categoria" id="catEmpMod">
+          <input type="text" id="idOpeMod" placeholder="ID" readonly>
+          <input type="text" id="nombreOpeMod" placeholder="Nombre">
+          <input type="text" id="direcOpeMod" placeholder="Dirección">
+          <input type="text" id="contOpeMod" placeholder="Contacto">
+          <select name="categoria" id="catOpeMod">
             <option value="" selected disabled>Categoría</option>
             <option value=""></option>
           </select>
-          <button id="guardarEmpModif">Guardar Cambios</button>
-          <button id="ocultarEmpModif">❌</button>
+          <button id="guardarOpeModif">Guardar Cambios</button>
+          <button id="ocultarOpeModif">❌</button>
         </div>
 
       </section>
@@ -310,7 +313,7 @@
       <h2>🔍 AUDITORÍAS</h2>
       <hr>
     </section>
-    
+
   </main>
   <footer class="foot">
     <small> CoderHouse - Javascript - 38030 <a href="mailto:marceloferrenogueira@gmail.com">Marcelo Ferré </a> &copy

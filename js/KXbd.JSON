@@ -180,128 +180,128 @@
             "telefono": 22786985
         }
     ],
-    "empleados": [
+    "operarios": [
         {
-            "idemp": "OP0",
+            "idope": "OP0",
             "nombre": "JUAN PEREZ",
             "direccion": "CAFE 1223",
             "contacto": 91999888,
             "categoria": "OP.COMUN"
         },
         {
-            "idemp": "OP1",
+            "idope": "OP1",
             "nombre": "JOHN PEREZ",
             "direccion": "CAFE 1226",
             "contacto": 91223344,
             "categoria": "OP.COMUN"
         },
         {
-            "idemp": "OP2",
+            "idope": "OP2",
             "nombre": "MARIO PEREZ",
             "direccion": "CHOCOLATE 741",
             "contacto": 99888777,
             "categoria": "OP.COMUN"
         },
         {
-            "idemp": "OP3",
+            "idope": "OP3",
             "nombre": "PEDRO RODRIGUEZ",
             "direccion": "MATEAMARGO 8787",
             "contacto": 95856974,
             "categoria": "OP.COMUN"
         },
         {
-            "idemp": "OP4",
+            "idope": "OP4",
             "nombre": "RICARDO RICARDE",
             "direccion": "CHOCOLATE 1626",
             "contacto": 22885577,
             "categoria": "OP.COMUN"
         },
         {
-            "idemp": "OP5",
+            "idope": "OP5",
             "nombre": "CARLOS PEREZ",
             "direccion": "CAFE 1223",
             "contacto": 91999888,
             "categoria": "OP.ESPECIALIZADO"
         },
         {
-            "idemp": "OP6",
+            "idope": "OP6",
             "nombre": "ALBERTO BELLO",
             "direccion": "TENEGRO 333",
             "contacto": 91989898,
             "categoria": "OP.ESPECIALIZADO"
         },
         {
-            "idemp": "OP7",
+            "idope": "OP7",
             "nombre": "DANILO FERNANDEZ",
             "direccion": "TENEGRO 7788",
             "contacto": 22886633,
             "categoria": "OP.ESPECIALIZADO"
         },
         {
-            "idemp": "OP8",
+            "idope": "OP8",
             "nombre": "SEBASTIAN ALTEZ",
             "direccion": "TERERE S/N",
             "contacto": 22929299,
             "categoria": "OP.ESPECIALIZADO"
         },
         {
-            "idemp": "OP9",
+            "idope": "OP9",
             "nombre": "DANIEL VIERA",
             "direccion": "CERVEZA 987",
             "contacto": 91125896,
             "categoria": "OP.ESPECIALIZADO"
         },
         {
-            "idemp": "OP10",
+            "idope": "OP10",
             "nombre": "JARRY GONZALES",
             "direccion": "CHOCOLATE 658",
             "contacto": 24092178,
             "categoria": "JEFE DE LINEA"
         },
         {
-            "idemp": "OP11",
+            "idope": "OP11",
             "nombre": "JOSE MANSINO",
             "direccion": "JUGO 357",
             "contacto": 91316797,
             "categoria": "JEFE DE LINEA"
         },
         {
-            "idemp": "OP12",
+            "idope": "OP12",
             "nombre": "CLARISA CURIEL",
             "direccion": "JUGO 369",
             "contacto": 91666066,
             "categoria": "CHECKER QC"
         },
         {
-            "idemp": "OP13",
+            "idope": "OP13",
             "nombre": "CINTIA CORDEL",
             "direccion": "JUGO 355",
             "contacto": 91224477,
             "categoria": "CHECKER QC"
         },
         {
-            "idemp": "OP14",
+            "idope": "OP14",
             "nombre": "LORENA NOGUEIRA",
             "direccion": "MATEAMARGO 284",
             "contacto": 96483726,
             "categoria": "JEFE DE LINEA"
         },
         {
-            "idemp": "OP15",
+            "idope": "OP15",
             "nombre": "MARCELO FERRE",
             "direccion": "AGAMENON 4577",
             "contacto": 98178526,
             "categoria": "ADMINISTRATIVO"
         },
         {
-            "idemp": "OP16",
+            "idope": "OP16",
             "nombre": "CAMILO PERDOMO",
             "direccion": "REECONQUISTA 457",
             "contacto": 92365874,
             "categoria": "JEFE DE LINEA"
         },
         {
-            "idemp": "OP17",
+            "idope": "OP17",
             "nombre": "MARIO QUINTANA",
             "direccion": "BAROMETRICA 963",
             "contacto": 22558899,
@@ -435,32 +435,44 @@
             "idlinea": "LN0",
             "nombre": "MANUAL 1",
             "descripcion": "ENVASADO Y ACONDICIONAMIENTO MANUAL",
-            "empleados": [],
-            "ordenes": ["OT0","OT1"],
+            "operarios": [],
+            "ordenes": [
+                "OT0",
+                "OT4"
+            ],
             "ordenactiva": "OT0"
         },
         {
             "idlinea": "LN1",
             "nombre": "MANUAL 2",
             "descripcion": "ACONDICIONAMIENTO MANUAL",
-            "empleados": [],
-            "ordenes": [],
-            "ordenactiva": "Sin ordenes asignadas"
+            "operarios": [],
+            "ordenes": [
+                "OT1",
+                "OT5"
+            ],
+            "ordenactiva": "OT1"
         },
         {
             "idlinea": "LN2",
             "nombre": "AUTOMATICA 1",
             "descripcion": "ENVASADORA AUTOMATICA MEDIANA",
-            "empleados": [],
-            "ordenes": [],
+            "operarios": [],
+            "ordenes": [
+                "OT2",
+                "OT6"
+            ],
             "ordenactiva": "Sin ordenes asignadas"
         },
         {
             "idlinea": "LN3",
             "nombre": "AUTOMATICA 2",
             "descripcion": "ENVASADORA AUTOMATICA GRANDE",
-            "empleados": [],
-            "ordenes": [],
+            "operarios": [],
+            "ordenes": [
+                "OT3",
+                "OT7"
+            ],
             "ordenactiva": "Sin ordenes asignadas"
         }
     ]
