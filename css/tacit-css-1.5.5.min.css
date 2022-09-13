@@ -145,7 +145,7 @@ button {
 input[type="submit"]:hover,
 input[type="reset"]:hover,
 button:hover {
-    background: rgb(118, 156, 165);
+    background: rgba(79, 106, 112, 0.7);
     color: rgb(255, 255, 255);
     box-shadow: 2px 2px 5px rgba(39, 39, 39, 0.493);
     font-weight: 440;
@@ -392,7 +392,7 @@ body {
     background: rgb(118, 156, 165);
     color: #1a1919;
     padding: 2%;
-    min-height: 100vh;
+
 }
 
 p,
@@ -413,8 +413,8 @@ section {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    width: 900px;
-    padding: 5px;
+    width: auto;
+    padding: 10px 1.5em 10px 1.5em;
 
 }
 

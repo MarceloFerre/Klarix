@@ -40,13 +40,12 @@ function loader() {
         clearInterval
         monitorLineas()
         Swal.fire({
-            title: 'Bienvenido a KLARIX ⚗️',
+            title: '⚗️ KLARIX ',
             text: 'Gestion de ambientes productivos',
-            icon: 'info',
-            timer: 2000,
+            icon: 'success',
+            timer: 3000,
             showConfirmButton: false,
         })
-
     }, 9000);
 
 }
