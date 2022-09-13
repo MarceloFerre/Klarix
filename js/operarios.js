@@ -217,7 +217,7 @@ function cargarTablaOperarios(arrOpe) {
     tabope.innerHTML = ``
     arrOpe.forEach(operario => {
         tabope.innerHTML += `<tr>
-                                <td><button class="btnModOpe" id='${operario.idope}' >📝</button></td>
+                                <td><button class="btnModOpe" id='${operario.idope}' title="Modificar operario: ${operario.nombre}">📝</button></td>
                                 <td>${operario.idope}</td>
                                 <td><strong>${operario.nombre}</strong></td>
                                 <td>${operario.categoria}</td>

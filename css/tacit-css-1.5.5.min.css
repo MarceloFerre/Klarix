@@ -4,7 +4,8 @@ select,
 button,
 option,
 body {
-    font: normal 400 normal 1.125rem/1.85625rem system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif
+    font: normal 400 normal 1.125rem/1.85625rem system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: rgb(232, 232, 232);
 }
 
 th {

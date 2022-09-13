@@ -1,5 +1,4 @@
 //CLIENTES
-
 //Array CLIENTES
 const clientes = []
 //Tabla CLIENTES
@@ -182,7 +181,7 @@ function cargarTablaClientes(arrCli) {
     tabcli.innerHTML = ``
     arrCli.forEach(cliente => {
         tabcli.innerHTML += `<tr>
-                                <td><button class="btnModCli" id='${cliente.idcli}' >📝</button></td>
+                                <td><button class="btnModCli" id='${cliente.idcli}' title="Modificar cliente: ${cliente.nombre}">📝</button></td>
                                 <td>${cliente.idcli}</td>
                                 <td><strong>${cliente.nombre}</strong></td>
                                 <td>${cliente.direccion}</td>

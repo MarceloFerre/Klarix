@@ -1,6 +1,7 @@
-/*
+
 loader()
 function loader() {
+
     cardMonitor.innerHTML = `<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="aviso">
         <div class="avtitulo">
@@ -36,10 +37,12 @@ function loader() {
         }
     }, 5);
     setTimeout(() => {
-        recuperarMonitores()
+        clearInterval
+        monitorLineas()
         Swal.fire({
-            title: 'Datos cargados exitosamente',
-            icon: 'success',
+            title: 'Bienvenido a KLARIX ⚗️',
+            text: 'Gestion de ambientes productivos',
+            icon: 'info',
             timer: 2000,
             showConfirmButton: false,
         })
@@ -47,14 +50,14 @@ function loader() {
     }, 9000);
 
 }
-function recuperarMonitores() {
+function monitorLineas() {
     cardMonitor.innerHTML = ``
-    let monitor = lineas
-
-    monitor.forEach(linea => {
-
+    lineas.forEach(linea => {
+        let orden = ordenes.find(ord => ord.idorden == linea.ordenactiva)
+        let producto = productos.find(producto => producto.idpr == orden.idproducto)
         let div = document.createElement('div')
         div.className = 'card'
+        div.title = `📑 ${linea.ordenactiva} - ${producto.nombre} - ${producto.presentacion}`
         if (linea.ordenes.length < 1) {
             div.innerHTML = `<div class="cardtitulo">🏭 ${linea.nombre}</div>
                 <div class="cardot">📑 Sin ordenes</div>
@@ -69,15 +72,13 @@ function recuperarMonitores() {
             </div>
 `
         } else {
-            let orden = ordenes.find(ord => ord.id == linea.idorden)
-            let producto = productos.find(producto => producto.idpr == orden.idproducto)
-            div.innerHTML = `<div class="cardtitulo">🏭 ${linea.nombre}</div>
-                <div class="cardot">📑 ${linea.ordenactiva}</div>
-                <div class="cardprod">${producto.nombre}</div>
-                <div class="cardpresen">${producto.presentacion} - ${producto.descripcion}</div>
-                <div class="cardestadoicono">${EmojiEstado(orden.estado)}</div>
-                <div class="cardestado">${orden.estado}</div>
-                <div class="cardUnidades">${orden.unidadesproducidas}/${orden.unidadespedidas} | ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}% <progress class="progress" value="${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}"></progress></div>
+
+            div.innerHTML = `<div class="cardtitulo" title="🏭 ${linea.idlinea} - ${linea.nombre} | ${linea.descripcion}" >🏭 ${linea.nombre}</div>
+                <div class="cardot"><p class="cardottext"> 📑 ${linea.ordenactiva}</p><div class="cardprod">${producto.nombre}</div></div>
+                <div class="cardpresen" title="${producto.nombre} - ${producto.presentacion} | ${producto.descripcion}">${producto.presentacion} - ${producto.descripcion}</div>
+                <div class="cardestadoicono"  title="${EmojiEstado(orden.estado)} ${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%">${EmojiEstado(orden.estado)}</div>
+                <div class="cardestado"  title="${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%">${orden.estado}</div>
+                <div class="cardUnidades" title="${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%" >${orden.unidadesproducidas}/${orden.unidadespedidas} | ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}% <progress class="progress" value="${parseInt((orden.unidadesproducidas / orden.unidadespedidas * 100))}" max="100"></progress></div>
                 <div class="cardpie">
                 <a href="#">+info</a>
                 </div>
@@ -115,7 +116,7 @@ function EmojiEstado(estado) {
         default:
             return "🧉"
     }
-}*/
+}
 function barraPrincipal() {
     //buttons de la barra de navegacion
     let btnMonitor = document.getElementById("VerMonitor")

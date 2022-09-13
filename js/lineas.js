@@ -1,4 +1,4 @@
-
+//LINEAS DE PRODUCCION
 //array LINEAS
 const lineas = []
 //Tablas LINEAS
@@ -25,10 +25,9 @@ function verLineas() {
     cargarBtnsLineas(lineas)
 }
 function cargarBtnsLineas(arrLns) {
-
     botoneslns.innerHTML = ``
     arrLns.forEach(linea => {
-        botoneslns.innerHTML += `<button class="btnLinea">🏭 ${linea.nombre}</button>`
+        botoneslns.innerHTML += `<button class="btnLinea" title="🔍 ver linea: ${linea.idlinea} - ${linea.nombre} | ${linea.descripcion}">🏭 ${linea.nombre}</button>`
     })
     botoneslns.innerHTML += `<button id="btnNvaLn">➕</button>`
 }

@@ -314,8 +314,8 @@
             "idcliente": "CL0",
             "idproducto": "PR0",
             "unidadespedidas": 750,
-            "unidadesproducidas": 0,
-            "estado": "PREPARACION"
+            "unidadesproducidas": 250,
+            "estado": "PRODUCIENDO"
         },
         {
             "idorden": "OT1",

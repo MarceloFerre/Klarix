@@ -1,7 +1,4 @@
 //PRODUCTOS
-
-
-
 //array PRODUCTOS
 const productos = []
 
@@ -182,7 +179,7 @@ function cargarTablaProductos(arrProd) {//TABLA PRODUCTOS
     tabprod.innerHTML = ``
     arrProd.forEach(producto => {
         tabprod.innerHTML += `<tr>
-                            <td><button class="btnModProd" id=${producto.idpr} >📝</button></td>
+                            <td><button class="btnModProd" id=${producto.idpr} title="Modificar producto: ${producto.nombre} - ${producto.presentacion}">📝</button></td>
                             <td>${producto.idpr}</td>
                             <td><strong>${producto.nombre}</strong></td>
                             <td>${producto.presentacion}</td>

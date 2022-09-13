@@ -1,9 +1,6 @@
-//ORDENES
-
+//ORDENES DE TRABAJO
 //array Ordenes
-
 const ordenes = []
-
 const PRIORIDAD = ["BAJA", "MEDIA", "ALTA", "URGENTE"]
 const ESTADO = ["NO ASIGNADO", "ESPERA", "PREPARACION", "PRODUCIENDO", "DETENIDO", "FINALIZANDO", "TERMINADO", "DESHABILITADO"]
 
@@ -78,9 +75,9 @@ class orden {
         this.idorden = idorden
         this.idcliente = idcliente
         this.idproducto = idproducto
+        this.sala = null
         this.unidadespedidas = unidades
         this.unidadesproducidas = 0
-        this.progreso = this.unidadespedidas / this.unidadesproducidas * 100
         this.estado = "NO ASIGNADO"
     }
 }
