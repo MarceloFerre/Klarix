@@ -112,8 +112,8 @@ section hr {
     border-radius: 0 0 5px 5px;
 }
 
-#formNuevoEmp,
-#formModifEmp,
+#formNuevoOpe,
+#formModifOpe,
 #formNuevoProd,
 #formModifProd,
 #formNuevoCli,
@@ -134,8 +134,8 @@ section hr {
     backdrop-filter: blur(4px);
 }
 
-#formNuevoEmp h3,
-#formModifEmp h3,
+#formNuevoOpe h3,
+#formModifOpe h3,
 #formNuevoProd h3,
 #formModifProd h3,
 #formNuevoCli h3,

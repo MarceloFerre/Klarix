@@ -1,7 +1,7 @@
 //CLIENTES
 
 //Array CLIENTES
- const clientes = []
+const clientes = []
 //Tabla CLIENTES
 const tabcli = document.getElementById("tabcli")
 
@@ -17,8 +17,10 @@ let btnGuardarModCli = document.getElementById("guardarCliModif").addEventListen
 //oculta formularios al iniciar
 const clis = document.getElementById("Clientes")
 clis.style.display = "none"
-const formNvoCli = document.getElementById("formNuevoCli").style.display = "none"
-const formModCli = document.getElementById("formModifCli").style.display = "none"
+const formNvoCli = document.getElementById("formNuevoCli")
+formNvoCli.style.display = "none"
+const formModCli = document.getElementById("formModifCli")
+formModCli.style.display = "none"
 
 //Funciones Formularios
 function crearIDcli() {
@@ -198,16 +200,16 @@ function cargarTablaClientes(arrCli) {
 
 //Carga de datos
 function ClientesLSget() {//busca CLIENTES en localStorage, si no encuentra los agrega haciendo FETCH a KXbd.JSON
-    const clisJson = (JSON.parse(localStorage.getItem('KXclientes')) || [])
-    if (clisJson.length == 0) {
-        fetchClientes()
-        ClientesLSset()
-    } else {
+    const clisJson = (JSON.parse(localStorage.getItem('KXclientes')) || null)
+    if (clisJson) {
         clisJson.forEach(cliente => {
             clientes.push(cliente)
         })
+        cargarTablaClientes(clientes)
+        ClientesLSset()
+    } else {
+        fetchClientes()
     }
-    cargarTablaClientes(clientes)
 
 }
 function ClientesLSset() {//Guarda CLIENTES en localStorage
@@ -221,7 +223,8 @@ function fetchClientes() {
             data.clientes.forEach(cliente => {
                 clientes.push(cliente)
             });
-
+            cargarTablaClientes(clientes)
+            ClientesLSset()
         })
 }
 //Clase 

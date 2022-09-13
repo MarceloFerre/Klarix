@@ -1,6 +1,6 @@
-
-CargaFalsa()
-function CargaFalsa() {
+/*
+loader()
+function loader() {
     cardMonitor.innerHTML = `<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="aviso">
         <div class="avtitulo">
@@ -115,7 +115,7 @@ function EmojiEstado(estado) {
         default:
             return "🧉"
     }
-}
+}*/
 function barraPrincipal() {
     //buttons de la barra de navegacion
     let btnMonitor = document.getElementById("VerMonitor")
@@ -124,9 +124,6 @@ function barraPrincipal() {
     btnAdmin.addEventListener('click', VerAdmin)
     let btnAudit = document.getElementById("VerAudit")
     btnAudit.addEventListener('click', VerAudit)
-    //buttons principales de Admin
-    let btnLineas = document.getElementById("verLineas")
-    btnLineas.addEventListener('click', verLineas)
 }
 barraPrincipal()
 

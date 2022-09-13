@@ -5,7 +5,10 @@ const lineas = []
 
 //Listeners
 const tablns = document.getElementById("tablns")
-const btnslns = document.getElementById("btnsLineas")
+const btnlns = document.getElementById("verLineas")
+btnlns.addEventListener('click', verLineas)
+const botoneslns = document.getElementById("btnsLineas")
+
 
 //Ocultar formularios al iniciar
 const lns = document.getElementById("Lineas")
@@ -19,27 +22,29 @@ function crearIDlinea() {
 }
 function verLineas() {
     lns.style.display == "none" ? lns.style.display = "block" : lns.style.display = "none"
-    cargarTablaLineas(lineas)
+    cargarBtnsLineas(lineas)
 }
-function cargarTablaLineas(arrLns) {
+function cargarBtnsLineas(arrLns) {
 
-    btnslns.innerHTML = ``
+    botoneslns.innerHTML = ``
     arrLns.forEach(linea => {
-        btnslns.innerHTML += `<button class="btnLinea">🏭 ${linea.nombre}</button>`
+        botoneslns.innerHTML += `<button class="btnLinea">🏭 ${linea.nombre}</button>`
     })
-    btnslns.innerHTML += `<button id="btnNvaLn">➕</button>`
+    botoneslns.innerHTML += `<button id="btnNvaLn">➕</button>`
 }
 
 //Carga de datos
 function LineasLSget() {//Busca LINEAS DE PROD en localStorage, si no encuentra los agrega haciendo FETCH a KXbd.JSON
-    const lnsJson = (JSON.parse(localStorage.getItem('KXlineas')) || [])
-    if (lnsJson.length == 0) {
-        fetchLineas()
-        LineasLSset()
-    } else {
+    const lnsJson = (JSON.parse(localStorage.getItem('KXlineas')) || null)
+    if (lnsJson) {
         lnsJson.forEach(linea => {
             lineas.push(linea)
         })
+        LineasLSset()
+        cargarBtnsLineas()
+    } else {
+        fetchLineas()
+
     }
 }
 function LineasLSset() {//Guarda LINEAS DE PROD en localStorage
@@ -53,7 +58,8 @@ function fetchLineas() {
             data.lineas.forEach(linea => {
                 lineas.push(linea)
             });
-
+            LineasLSset()
+            cargarBtnsLineas()
         })
 }
 //clase

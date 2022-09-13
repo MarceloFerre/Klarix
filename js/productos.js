@@ -20,8 +20,10 @@ let btnGuardarModProd = document.getElementById("guardarCambiosProd").addEventLi
 //oculta formularios al iniciar
 const prods = document.getElementById("Productos")
 prods.style.display = "none"
-const formNvoProd = document.getElementById("formNuevoProd").style.display = "none"
-const formModProd = document.getElementById("formModifProd").style.display = "none"
+const formNvoProd = document.getElementById("formNuevoProd")
+formNvoProd.style.display = "none"
+const formModProd = document.getElementById("formModifProd")
+formModProd.style.display = "none"
 
 //Funciones Formularios
 function crearIDprod() {
@@ -32,7 +34,7 @@ function verProd() {//Boton PRODUCTOS
     prods.style.display == "none" ? prods.style.display = "block" : prods.style.display = "none"
 }
 function verFormNvoProd() {//Boton NUEVO PRODUCTO
-    if (formNvoProd.style.display == "none") {
+    if (formNvoProd.style.display === "none") {
         formNvoProd.style.display = "block"
         formModProd.style.display = "none"
 
@@ -87,7 +89,7 @@ function ocultarModProd() {
 
 }
 function verFormModifProd(idpr) {//Boton de tabla MODIFICAR PRODUCTO
-    if (formModProd.style.display == "none") {
+    if (formModProd.style.display === "none") {
         formModProd.style.display = "block"
         formNvoProd.style.display = "none"
     }
@@ -197,32 +199,32 @@ function cargarTablaProductos(arrProd) {//TABLA PRODUCTOS
 }
 
 //Carga de Datos
-async function ProductosLSget() {//Busca PRODUCTOS en localStorage, si no encuentra los agrega haciendo FETCH a KXbd.JSON
-    const prodsJson = (JSON.parse(localStorage.getItem('KXproductos')) || fetchProductos())
-    if (prodsJson.length === 0) {
-        ProductosLSset()
-
-    } else {
+function ProductosLSget() {//Busca PRODUCTOS en localStorage, si no encuentra los agrega haciendo FETCH a KXbd.JSON
+    const prodsJson = (JSON.parse(localStorage.getItem('KXproductos')) || null)
+    if (prodsJson) {
         prodsJson.forEach(producto => {
             productos.push(producto)
         })
+        ProductosLSset()
+        cargarTablaProductos(productos)
+    } else {
+        fetchProductos()
     }
-    cargarTablaProductos(productos)
-
 }
-async function ProductosLSset() {//Guarda PRODUCTOS en localStorage
+function ProductosLSset() {//Guarda PRODUCTOS en localStorage
     const prodsJson = JSON.stringify(productos)
     localStorage.setItem('KXproductos', prodsJson)
 }
-async function fetchProductos() {//Carga PRODUCTOS con fetch
+function fetchProductos() {//Carga PRODUCTOS con fetch
     fetch('js/KXbd.JSON')
         .then((resp) => resp.json())
         .then((data) => {
             data.productos.forEach(producto => {
                 productos.push(producto)
             });
+            cargarTablaProductos(productos)
+            ProductosLSset()
         })
-
 }
 //Clase XD
 class producto {

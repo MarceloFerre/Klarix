@@ -45,14 +45,16 @@ function cargarTablaOrdenes(arrOts) {
 
 //Carga de datos
 function OrdenesLSget() {//Busca ORDENES en localStorage, si no encuentra los agrega haciendo FETCH a KXbd.JSON
-    const otsJson = (JSON.parse(localStorage.getItem('KXordenes')) || [])
-    if (otsJson.length == 0) {
-        fetchOrdenes()
-        OrdenesLSset()
-    } else {
+    const otsJson = (JSON.parse(localStorage.getItem('KXordenes')) || null)
+    if (otsJson) {
         otsJson.forEach(orden => {
             ordenes.push(orden)
         })
+        OrdenesLSset()
+        cargarTablaOrdenes(ordenes)
+    } else {
+        fetchOrdenes()
+
     }
 }
 function OrdenesLSset() {//Guarda ORDENES en localStorage
@@ -66,6 +68,8 @@ function fetchOrdenes() {
             data.ordenes.forEach(orden => {
                 ordenes.push(orden)
             });
+            OrdenesLSset()
+            cargarTablaOrdenes(ordenes)
         })
 }
 //clase
@@ -76,7 +80,7 @@ class orden {
         this.idproducto = idproducto
         this.unidadespedidas = unidades
         this.unidadesproducidas = 0
-        this.progreso = this.unidadespedidas/this.unidadesproducidas*100
+        this.progreso = this.unidadespedidas / this.unidadesproducidas * 100
         this.estado = "NO ASIGNADO"
     }
 }

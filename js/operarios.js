@@ -15,13 +15,16 @@ let btnCerrarFormNvoOpe = document.getElementById("ocultarNvoOpe").addEventListe
 let btnIngresarNvoOpe = document.getElementById("ingresarNvoOpe").addEventListener('click', ingresarNvoOpe)
 let btnCerrarFormModOpe = document.getElementById("ocultarOpeModif").addEventListener('click', cerrarOpeModif)
 let btnGuardarModOpe = document.getElementById("guardarOpeModif").addEventListener('click', guardarModifOpe)
-const selectCat = document.getElementById("opeCategoria").style.display = "none"
+let selectCat = document.getElementById("opeCategoria")
+selectCat.style.display = "none"
 
 //Ocultar Formularios cuando inicia
 const opes = document.getElementById("Operarios")
 opes.style.display = "none"
-const formNvoOpe = document.getElementById("formNuevoOpe").style.display = "none"
-const formModOpe = document.getElementById("formModifOpe").style.display = "none"
+const formNvoOpe = document.getElementById("formNuevoOpe")
+formNvoOpe.style.display = "none"
+const formModOpe = document.getElementById("formModifOpe")
+formModOpe.style.display = "none"
 
 //Funciones Formularios
 function crearIDop() {
@@ -101,7 +104,7 @@ function ingresarNvoOpe() {//guarda operario nuevo
     const catOpeNvo = document.getElementById("catOpeNvo")
 
 
-    if (nombreOpeNvo.value == "" || direcOpeNvo.value == "" || contactoOpeNvo.value === 0 || catOpeNvo.value == 0) {
+    if (nombreOpeNvo.value == "" || direcOpeNvo.value == "" || contactoOpeNvo.value === 0 || catOpeNvo.value === "") {
         Swal.fire({
             title: 'Operario incorrecto',
             text: 'Por favor, llene bien los campos.',
@@ -232,29 +235,30 @@ function cargarTablaOperarios(arrOpe) {
 }
 //Cargar Datos
 function OperariosLSget() {//Busca OPERARIOS en localStorage, si no encuentra los agrega haciendo FETCH a KXbd.JSON
-    const opesJson = (JSON.parse(localStorage.getItem('KXoperarios')) || [])
-    if (opesJson.length == 0) {
-        agregarOperarios()
-        OperariosLSset()
-    } else {
+    const opesJson = (JSON.parse(localStorage.getItem('KXoperarios')) || null)
+    if (opesJson) {
         opesJson.forEach(operario => {
             operarios.push(operario)
         })
+        OperariosLSset()
+        cargarTablaOperarios(operarios)
+    } else {
+        fetchOperarios()
     }
-    cargarTablaOperarios(operarios)
-
 }
 function OperariosLSset() {//Guarda OPERARIOS en localStorage
     const opesJson = JSON.stringify(operarios)
     localStorage.setItem('KXoperarios', opesJson)
 }
-function agregarOperarios() {//Carga OPERARIOS con Fetch
+function fetchOperarios() {//Carga OPERARIOS con Fetch
     fetch('js/KXbd.JSON')
         .then((resp) => resp.json())
         .then((data) => {
             data.operarios.forEach(operario => {
                 operarios.push(operario)
             });
+            cargarTablaOperarios(operarios)
+            OperariosLSset()
         })
 }
 

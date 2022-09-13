@@ -462,7 +462,7 @@
                 "OT2",
                 "OT6"
             ],
-            "ordenactiva": "Sin ordenes asignadas"
+            "ordenactiva": "OT2"
         },
         {
             "idlinea": "LN3",
@@ -473,7 +473,7 @@
                 "OT3",
                 "OT7"
             ],
-            "ordenactiva": "Sin ordenes asignadas"
+            "ordenactiva": "OT3"
         }
     ]
 }
