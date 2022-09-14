@@ -315,7 +315,8 @@
             "idproducto": "PR0",
             "unidadespedidas": 750,
             "unidadesproducidas": 250,
-            "estado": "PRODUCIENDO"
+            "estado": "PRODUCIENDO",
+            "linea": "LN0"
         },
         {
             "idorden": "OT1",
@@ -323,7 +324,8 @@
             "idproducto": "PR1",
             "unidadespedidas": 190,
             "unidadesproducidas": 0,
-            "estado": "ESPERA"
+            "estado": "ESPERA",
+            "linea": "LN1"
         },
         {
             "idorden": "OT2",
@@ -331,7 +333,8 @@
             "idproducto": "PR2",
             "unidadespedidas": 7500,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "ESPERA",
+            "linea": "LN2"
         },
         {
             "idorden": "OT3",
@@ -339,7 +342,8 @@
             "idproducto": "PR3",
             "unidadespedidas": 20000,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "ESPERA",
+            "linea": "LN3"
         },
         {
             "idorden": "OT4",
@@ -347,7 +351,8 @@
             "idproducto": "PR4",
             "unidadespedidas": 15700,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "ESPERA",
+            "linea": "LN0"
         },
         {
             "idorden": "OT5",
@@ -355,7 +360,8 @@
             "idproducto": "PR5",
             "unidadespedidas": 750,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "ESPERA",
+            "linea": "LN1"
         },
         {
             "idorden": "OT6",
@@ -363,7 +369,8 @@
             "idproducto": "PR6",
             "unidadespedidas": 200,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "ESPERA",
+            "linea": "LN2"
         },
         {
             "idorden": "OT7",
@@ -371,7 +378,8 @@
             "idproducto": "PR0",
             "unidadespedidas": 11,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "ESPERA",
+            "linea": "LN3"
         },
         {
             "idorden": "OT8",
@@ -379,7 +387,8 @@
             "idproducto": "PR1",
             "unidadespedidas": 450,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT9",
@@ -387,7 +396,8 @@
             "idproducto": "PR2",
             "unidadespedidas": 2000,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT10",
@@ -395,7 +405,8 @@
             "idproducto": "PR3",
             "unidadespedidas": 55000,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT11",
@@ -403,7 +414,8 @@
             "idproducto": "PR4",
             "unidadespedidas": 360,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT12",
@@ -411,7 +423,8 @@
             "idproducto": "PR5",
             "unidadespedidas": 500,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT13",
@@ -419,7 +432,8 @@
             "idproducto": "PR6",
             "unidadespedidas": 500,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT14",
@@ -427,7 +441,8 @@
             "idproducto": "PR0",
             "unidadespedidas": 750,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         }
     ],
     "lineas": [

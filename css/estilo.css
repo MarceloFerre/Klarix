@@ -28,7 +28,7 @@ h2 {
     text-align: center;
     color: white;
     text-shadow: rgb(17, 17, 17) 1px 1px 1px, rgb(163, 163, 163) -1px -1px 1px;
-    background: linear-gradient(0deg, rgba(86, 86, 86, 1) 0%, rgba(118, 156, 165, 1) 15%, rgba(28, 59, 180, 0.5) 100%);
+    background: linear-gradient(0deg, rgba(86, 86, 86, 1) 0%, rgba(118, 156, 165, 1) 5%, rgba(28, 59, 180, 0.5) 100%);
     font-style: inherit;
     font-weight: bold;
     font-size: 3.5em;
@@ -119,6 +119,7 @@ section hr {
     border-radius: 0 0 5px 5px;
 }
 
+#formNvaOt,
 #formNuevoOpe,
 #formModifOpe,
 #formNuevoProd,
@@ -141,6 +142,7 @@ section hr {
     backdrop-filter: blur(4px);
 }
 
+#formNvaOt h3,
 #formNuevoOpe h3,
 #formModifOpe h3,
 #formNuevoProd h3,
@@ -151,7 +153,13 @@ section hr {
     background-color: transparent;
 }
 
-.aviso {
+.OTselAsignar {
+    display: none;
+    width: 70px;
+
+}
+
+.avisoemergente {
     display: block;
     position: fixed;
     top: 25%;
@@ -170,7 +178,7 @@ section hr {
     align-content: center;
 }
 
-.aviso progress {
+.avisoemergente progress {
     width: 100%;
 }
 
@@ -227,7 +235,7 @@ section hr {
 
 #MonitorTarjetas {
     width: 100%;
-    border-style:double;
+    border-style: double;
     border-width: 5px;
     border-color: rgba(60, 60, 60, 0.9);
     padding: 0 15px 5px 15px;
@@ -403,7 +411,11 @@ table tr td button {
     margin-left: 5px;
 }
 
-
+.btnsOTtab,
+.btnAsignLn,
+.btnModOT {
+    display: inline-block;
+}
 
 footer {
     position: fixed;

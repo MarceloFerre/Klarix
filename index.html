@@ -32,14 +32,14 @@
   </header>
 
   <main>
-    <hr>
+    <br>
     <section id="Monitor">
       <h2>🖥️ MONITOR</h2><br>
       <section id="MonitorTarjetas">
         <h2>🏭 Lineas de producción</h2>
 
         <div id="cardMonitor" class="cards">
-
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
       </section>
       <section id="logDiario">
@@ -83,35 +83,94 @@
         <h2>📑 Ordenes de Trabajo</h2>
       </button><br>
       <section class="carpeta" id="Ordenes">
+        <button class="botontitulo" id="OTcyaBtn">
+          <h3>📄 Crear y asignar</h2>
+        </button><br>
+        <section id="OTasign" class="carpeta">
+          <div class="formFilrto">
+            <select name="OTCYAfiltroCat" id="OTCYAfiltroCat">
+              <option value="">Buscar por...</option>
+              <option value=""></option>
+            </select>
 
-        <button class="btnNvaOt" id="btnNvaOt">📄Ingresar Pedido</button>
-        <section id="formNvaOt">
-          <h3>📄 Nuevo Pedido</h3><br>
-          <input id="nvaOtId" type="text" placeholder="ID" readonly>
-          <select name="" id="nvaOtProd">
-            <option value="">Seleccionar Producto</option>
-          </select>
-          <select name="" id="nvaOtCli">
-            <option value="">Seleccionar Cliente</option>
-          </select>
-          <input id="nvaOtUnds" type="text" placeholder="Unidades pedidas">
-          <button id="btnIngresarOt">Ingresar Pedido</button>
-          <button id="cerrarNvaOt" title="Cerrar">❌</button>
+            <input type="text" placeholder="Escriba ID de la orden">
+
+            <select name="OTCYAfiltro" id="OTCYAfiltro">
+              <option value="">Buscar por...</option>
+              <option value=""></option>
+            </select>
+
+          </div>
+
+          <table class="table">
+            <thead>
+              <th>⚙️</th>
+              <th>ID</th>
+              <th>Producto</th>
+              <th>Cliente</th>
+              <th>Unidades Pedidas</th>
+            </thead>
+            <tbody id="tabOTasign">
+
+            </tbody>
+          </table>
+
+          <button class="btnNvaOt" id="btnNvaOt">➕📄 Crear Orden</button>
+
+          <section id="formNvaOt">
+            <h3>📄 Nuevo Pedido</h3><br>
+            <input id="nvaOtId" type="text" placeholder="ID" readonly>
+            <select name="" id="nvaOtProd">
+              <option value="">Seleccionar Producto</option>
+            </select>
+            <select name="" id="nvaOtCli">
+              <option value="">Seleccionar Cliente</option>
+            </select>
+            <input id="nvaOtUnds" type="text" placeholder="Unidades pedidas">
+            <button id="btnIngresarOt">Ingresar Pedido</button>
+            <button id="cerrarNvaOt" title="Cerrar">❌</button>
+          </section>
+
         </section>
+        <hr>
+
+        <button class="botontitulo" id="OTactBtn">
+          <h3>🗂️ Ordenes Activas</h2>
+        </button><br>
+        <section id="OTactivas" class="carpeta">
+          <div class="formFilrto">
+            <select name="OTactfiltroCat" id="OTactfiltroCat">
+              <option value="">Buscar por...</option>
+              <option value=""></option>
+            </select>
+
+            <input type="text" placeholder="Escriba ID de la orden">
+
+            <select name="OTCYAfiltro" id="OTCYAfiltro">
+              <option value="">Buscar por...</option>
+              <option value=""></option>
+            </select>
+          </div>
 
 
-        <table class="table">
-          <thead>
-            <th>⚙️</th>
-            <th>ID</th>
-            <th>Producto</th>
-            <th>Cliente</th>
-            <th>Unidades Pedidas</th>
-          </thead>
-          <tbody id="tabot">
+          <table class="table">
+            <thead>
+              <th>⚙️</th>
+              <th>ID</th>
+              <th>Linea</th>
+              <th>Producto</th>
+              <th>Estado</th>
+              <th>Progreso</th>
+              <th>Unidades</th>
+            </thead>
+            <tbody id="tabOTact">
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+
+        </section>
+        <hr>
+
 
       </section>
       <hr>
@@ -153,9 +212,9 @@
           </tbody>
         </table>
 
-        <button id="verFormNvoOpe">📄 Nuevo Operario</button>
+        <button id="verFormNvoOpe">➕👷‍♀️ Nuevo Operario</button>
         <div id="formNuevoOpe">
-          <h3>📄 Nuevo Operario</h3><br>
+          <h3>👷‍♀️ Nuevo Operario</h3><br>
 
           <input type="text" id="idOpeNvo" placeholder="ID" readonly="readonly">
           <input type="text" id="nombreOpeNvo" placeholder="Nombre">
@@ -217,9 +276,9 @@
 
           </tbody>
         </table>
-        <button id="verFormNvoProd">📄 Producto Nuevo</button>
+        <button id="verFormNvoProd">➕💊 Producto Nuevo</button>
         <div id="formNuevoProd">
-          <h3>📄 Crear producto nuevo</h3><br>
+          <h3>💊 Crear producto nuevo</h3><br>
           <input type="text" id="idProdNvo" placeholder="ID" readonly="readonly">
           <input type="text" id="nombreProdNvo" placeholder="Nombre del Producto">
           <input type="text" id="presenProdNvo" placeholder="Presentación">
@@ -228,7 +287,7 @@
           <button id="cerrarNvoProd" title="Cerrar">❌</button>
         </div>
         <div id="formModifProd">
-          <h3>✏️ Modificar producto</h3><br>
+          <h3>✏️💊 Modificar producto</h3><br>
           <input type="text" id="idProdMod" placeholder="PR0" disabled>
           <input type="text" id="nombreProdMod" placeholder="Nombre del Producto">
           <input type="text" id="presenProdMod" placeholder="Presentación">
@@ -271,9 +330,9 @@
           <tbody id="tabcli">
           </tbody>
         </table>
-        <button id="verFormNvoCli">📄 Nuevo Cliente</button>
+        <button id="verFormNvoCli">➕ 🤑 Nuevo Cliente</button>
         <div id="formNuevoCli">
-          <h3>📄 Nuevo Cliente</h3><br>
+          <h3>➕ 🤑 Nuevo Cliente</h3><br>
           <input type="text" id="idCliNvo" placeholder="ID" readonly="readonly">
           <input type="text" id="nombreCliNvo" placeholder="Nombre">
           <input type="text" id="direcCliNvo" placeholder="Dirección">
@@ -285,7 +344,7 @@
         </div>
 
         <div id="formModifCli">
-          <h3>✏️ Modificar Cliente</h3><br>
+          <h3>✏️ 🤑 Modificar Cliente</h3><br>
           <input type="text" id="idCliMod" placeholder="CLI0" disabled>
           <input type="text" id="nombreCliMod" placeholder="Nombre">
           <input type="text" id="direcCliMod" placeholder="Dirección">
@@ -299,11 +358,11 @@
     </section>
 
     <section id="Audit">
-
-      <h2>🔍 AUDITORÍAS</h2>
+      
+      <h2>🔍 AUDITORÍAS</h2><br>
       <hr>
     </section>
-
+    <div id="aviso"class=""></div>
   </main>
   <footer class="foot">
     <small> CoderHouse - Javascript - 38030 <a href="mailto:marceloferrenogueira@gmail.com">Marcelo Ferré </a> &copy

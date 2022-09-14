@@ -29,7 +29,7 @@ function cargarBtnsLineas(arrLns) {
     arrLns.forEach(linea => {
         botoneslns.innerHTML += `<button class="btnLinea" title="🔍 ver linea: ${linea.idlinea} - ${linea.nombre} | ${linea.descripcion}">🏭 ${linea.nombre}</button>`
     })
-    botoneslns.innerHTML += `<button id="btnNvaLn">➕</button>`
+    botoneslns.innerHTML += `<button id="btnNvaLn" title="➕🏭Crear Nueva Linea de producción.">➕🏭</button>`
 }
 
 //Carga de datos

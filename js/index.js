@@ -1,9 +1,9 @@
 
 loader()
 function loader() {
-
-    cardMonitor.innerHTML = `<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div class="aviso">
+    let aviso = document.getElementById("aviso")
+    aviso.innerHTML = `
+    <div class="avisoemergente">
         <div class="avtitulo">
             <h2>Cargando datos</h2>
         </div>
@@ -38,6 +38,8 @@ function loader() {
     }, 5);
     setTimeout(() => {
         clearInterval
+        aviso.style.display = "none"
+
         monitorLineas()
         Swal.fire({
             title: '⚗️ KLARIX ',
