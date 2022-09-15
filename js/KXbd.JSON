@@ -315,8 +315,8 @@
             "idproducto": "PR0",
             "unidadespedidas": 750,
             "unidadesproducidas": 250,
-            "estado": "PRODUCIENDO",
-            "linea": "LN0"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT1",
@@ -324,8 +324,8 @@
             "idproducto": "PR1",
             "unidadespedidas": 190,
             "unidadesproducidas": 0,
-            "estado": "ESPERA",
-            "linea": "LN1"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT2",
@@ -333,8 +333,8 @@
             "idproducto": "PR2",
             "unidadespedidas": 7500,
             "unidadesproducidas": 0,
-            "estado": "ESPERA",
-            "linea": "LN2"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT3",
@@ -342,8 +342,8 @@
             "idproducto": "PR3",
             "unidadespedidas": 20000,
             "unidadesproducidas": 0,
-            "estado": "ESPERA",
-            "linea": "LN3"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT4",
@@ -351,8 +351,8 @@
             "idproducto": "PR4",
             "unidadespedidas": 15700,
             "unidadesproducidas": 0,
-            "estado": "ESPERA",
-            "linea": "LN0"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT5",
@@ -360,8 +360,8 @@
             "idproducto": "PR5",
             "unidadespedidas": 750,
             "unidadesproducidas": 0,
-            "estado": "ESPERA",
-            "linea": "LN1"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT6",
@@ -369,8 +369,8 @@
             "idproducto": "PR6",
             "unidadespedidas": 200,
             "unidadesproducidas": 0,
-            "estado": "ESPERA",
-            "linea": "LN2"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT7",
@@ -378,8 +378,8 @@
             "idproducto": "PR0",
             "unidadespedidas": 11,
             "unidadesproducidas": 0,
-            "estado": "ESPERA",
-            "linea": "LN3"
+            "estado": "NO ASIGNADO",
+            "linea": ""
         },
         {
             "idorden": "OT8",
@@ -451,44 +451,32 @@
             "nombre": "MANUAL 1",
             "descripcion": "ENVASADO Y ACONDICIONAMIENTO MANUAL",
             "operarios": [],
-            "ordenes": [
-                "OT0",
-                "OT4"
-            ],
-            "ordenactiva": "OT0"
+            "ordenes": [],
+            "ordenactiva": ""
         },
         {
             "idlinea": "LN1",
             "nombre": "MANUAL 2",
             "descripcion": "ACONDICIONAMIENTO MANUAL",
             "operarios": [],
-            "ordenes": [
-                "OT1",
-                "OT5"
-            ],
-            "ordenactiva": "OT1"
+            "ordenes": [],
+            "ordenactiva": ""
         },
         {
             "idlinea": "LN2",
             "nombre": "AUTOMATICA 1",
             "descripcion": "ENVASADORA AUTOMATICA MEDIANA",
             "operarios": [],
-            "ordenes": [
-                "OT2",
-                "OT6"
-            ],
-            "ordenactiva": "OT2"
+            "ordenes": [],
+            "ordenactiva": ""
         },
         {
             "idlinea": "LN3",
             "nombre": "AUTOMATICA 2",
             "descripcion": "ENVASADORA AUTOMATICA GRANDE",
             "operarios": [],
-            "ordenes": [
-                "OT3",
-                "OT7"
-            ],
-            "ordenactiva": "OT3"
+            "ordenes": [],
+            "ordenactiva": ""
         }
     ]
 }

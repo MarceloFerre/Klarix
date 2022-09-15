@@ -45,53 +45,55 @@ function loader() {
             title: '⚗️ KLARIX ',
             text: 'Gestion de ambientes productivos',
             icon: 'success',
-            timer: 3000,
+            timer: 1000,
             showConfirmButton: false,
         })
-    }, 9000);
+    }, 3000);
 
 }
 function monitorLineas() {
     cardMonitor.innerHTML = ``
     lineas.forEach(linea => {
-        let orden = ordenes.find(ord => ord.idorden == linea.ordenactiva)
-        let producto = productos.find(producto => producto.idpr == orden.idproducto)
         let div = document.createElement('div')
         div.className = 'card'
-        div.title = `📑 ${linea.ordenactiva} - ${producto.nombre} - ${producto.presentacion}`
-        if (linea.ordenes.length < 1) {
-            div.innerHTML = `<div class="cardtitulo">🏭 ${linea.nombre}</div>
-                <div class="cardot">📑 Sin ordenes</div>
-                <div class="cardprod">Esperando...</div>
-                <div class="cardpresen"> </div>
-                <div class="cardestadoicono"> ⏱️ </div>
-                <div class="cardestado">Esperando por ordenes</div>
-                <div class="cardUnidades"><progress class="progress" value="0"></progress></div>
-                <div class="cardpie">
-                <a href="#">+info</a>
-                </div>
-            </div>
-`
-        } else {
+        if (linea.ordenes.length > 0) {
+            let orden = ordenes.find(ord => ord.idorden == linea.ordenactiva)
+            let producto = productos.find(producto => producto.idpr == orden.idproducto)
+
+            div.title = `📑 ${linea.ordenactiva} - ${producto.nombre} - ${producto.presentacion}`
 
             div.innerHTML = `<div class="cardtitulo" title="🏭 ${linea.idlinea} - ${linea.nombre} | ${linea.descripcion}" >🏭 ${linea.nombre}</div>
-                <div class="cardot"><p class="cardottext"> 📑 ${linea.ordenactiva}</p><div class="cardprod">${producto.nombre}</div></div>
-                <div class="cardpresen" title="${producto.nombre} - ${producto.presentacion} | ${producto.descripcion}">${producto.presentacion} - ${producto.descripcion}</div>
-                <div class="cardestadoicono"  title="${EmojiEstado(orden.estado)} ${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%">${EmojiEstado(orden.estado)}</div>
-                <div class="cardestado"  title="${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%">${orden.estado}</div>
-                <div class="cardUnidades" title="${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%" >${orden.unidadesproducidas}/${orden.unidadespedidas} | ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}% <progress class="progress" value="${parseInt((orden.unidadesproducidas / orden.unidadespedidas * 100))}" max="100"></progress></div>
-                <div class="cardpie">
-                <a href="#">+info</a>
-                </div>
+            <div class="cardot"><p class="cardottext"> 📑 ${linea.ordenactiva}</p><div class="cardprod">${producto.nombre}</div></div>
+            <div class="cardpresen" title="${producto.nombre} - ${producto.presentacion} | ${producto.descripcion}">${producto.presentacion} - ${producto.descripcion}</div>
+            <div class="cardestadoicono"  title="${EmojiEstado(orden.estado)} ${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%">${EmojiEstado(orden.estado)}</div>
+            <div class="cardestado"  title="${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%">${orden.estado}</div>
+            <div class="cardUnidades" title="${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%" >${orden.unidadesproducidas}/${orden.unidadespedidas} | ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}% <progress class="progress" value="${parseInt((orden.unidadesproducidas / orden.unidadespedidas * 100))}" max="100"></progress></div>
+            <div class="cardpie">
+            <button>+info</button>
             </div>
-`            }
+        </div>`
+
+        } else {
+            div.innerHTML = `<div class="cardtitulo">🏭 ${linea.nombre}</div>
+            <div class="cardot">📑 Sin ordenes</div>
+            <div class="cardprod">Sin Ordenes</div>
+            <div class="cardpresen">Esperando ... </div>
+            <div class="cardestadoicono"> ${EmojiEstado("DESHABILITADO")} </div>
+            <div class="cardestado">DESHABILITADO</div>
+            <div class="cardUnidades"><small><b>+info</b> para asignar 🔻</small><progress class="progress" value="0"></progress></div>
+            <div class="cardpie">
+            <button onclick="masinfoasign()">+info</button>
+            </div>
+        </div>`
+
+        }
         cardMonitor.append(div)
     })
 }
 function EmojiEstado(estado) {
     switch (estado) {
         case "NO ASIGNADO":
-            return "✖️"
+            return "❎"
             break;
         case "ESPERA":
             return "⏳"
@@ -112,22 +114,25 @@ function EmojiEstado(estado) {
             return "✅"
             break;
         case "DESHABILITADO":
-            return "🚫"
+            return "✖️"
             break;
         default:
             return "🧉"
     }
 }
-function barraPrincipal() {
-    //buttons de la barra de navegacion
-    let btnMonitor = document.getElementById("VerMonitor")
-    btnMonitor.addEventListener('click', VerMonitor)
-    let btnAdmin = document.getElementById("VerAdmin")
-    btnAdmin.addEventListener('click', VerAdmin)
-    let btnAudit = document.getElementById("VerAudit")
-    btnAudit.addEventListener('click', VerAudit)
+function masinfoasign() {
+
+    VerAdmin()
+    document.getElementById("Ordenes").style.display = "block"
+    document.getElementById("OTasign").style.display = "block"
+    cargarTabOTasignar(ordenes)
+    Swal.fire({
+        title: `Asignar Ordenes`,
+        html: `<div class="asignarorden"><p>Presione <button>➕📄 Crear Orden</button> para crear una orden.</p><p>Presione <button>📝</button> para modificar una orden.</p><p>Presione <button>📥</button> para asignar una orden a una sala.<p></div>`,
+        icon: 'info',
+        showConfirmButton: true,
+    })
 }
-barraPrincipal()
 
 //elementos para mostrar los 3 modulos
 const Monitor = document.getElementById("Monitor")
@@ -138,12 +143,25 @@ Monitor.style.display = "block"
 Admin.style.display = "none"
 Audit.style.display = "none"
 
+function barraPrincipal() {
+    //buttons de la barra de navegacion
+    let btnMonitor = document.getElementById("VerMonitor")
+    btnMonitor.addEventListener('click', VerMonitor)
+    let btnAdmin = document.getElementById("VerAdmin")
+    btnAdmin.addEventListener('click', VerAdmin)
+    let btnAudit = document.getElementById("VerAudit")
+    btnAudit.addEventListener('click', VerAudit)
+}
+barraPrincipal()
 function VerMonitor() {//Ver MONITOR
     if (Monitor.style.display == "none") {
         Monitor.style.display = "block"
         Admin.style.display = "none"
         Audit.style.display = "none"
+        monitorLineas()
     }
+    monitorLineas()
+
 }
 function VerAdmin() {//Ver ADMINISTRADOR
     if (Admin.style.display == "none") {
@@ -159,7 +177,6 @@ function VerAudit() {//Ver AUDITORIA
         Audit.style.display = "block"
     }
 }
-
 function arraytotal() {
     const arraytotal = { "productos": productos, "clientes": clientes, "empleados": empleados, "ordenes": ordenes, "lineas": lineas }
     return console.log(JSON.stringify(arraytotal))

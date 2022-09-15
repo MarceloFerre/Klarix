@@ -88,18 +88,13 @@
         </button><br>
         <section id="OTasign" class="carpeta">
           <div class="formFilrto">
-            <select name="OTCYAfiltroCat" id="OTCYAfiltroCat">
+            <select id="OTCYAfiltroCat">
               <option value="">Buscar por...</option>
-              <option value=""></option>
+              <option value="ID">ID</option>
+              <option value="Producto">Producto</option>
+              <option value="Cliente">Cliente</option>
             </select>
-
-            <input type="text" placeholder="Escriba ID de la orden">
-
-            <select name="OTCYAfiltro" id="OTCYAfiltro">
-              <option value="">Buscar por...</option>
-              <option value=""></option>
-            </select>
-
+            <input id="otAsignFiltroInpt" type="text" placeholder="🔍 Escriba su busqueda">
           </div>
 
           <table class="table">
@@ -118,7 +113,7 @@
           <button class="btnNvaOt" id="btnNvaOt">➕📄 Crear Orden</button>
 
           <section id="formNvaOt">
-            <h3>📄 Nuevo Pedido</h3><br>
+            <h3>➕📄 Nueva Orden</h3><br>
             <input id="nvaOtId" type="text" placeholder="ID" readonly>
             <select name="" id="nvaOtProd">
               <option value="">Seleccionar Producto</option>
@@ -141,15 +136,12 @@
           <div class="formFilrto">
             <select name="OTactfiltroCat" id="OTactfiltroCat">
               <option value="">Buscar por...</option>
-              <option value=""></option>
+              <option value="ID">ID</option>
+              <option value="Linea">Linea</option>
+              <option value="Producto">Producto</option>
+              <option value="Estado">Estado</option>
             </select>
-
-            <input type="text" placeholder="Escriba ID de la orden">
-
-            <select name="OTCYAfiltro" id="OTCYAfiltro">
-              <option value="">Buscar por...</option>
-              <option value=""></option>
-            </select>
+            <input id="otActFiltroInpt" type="text" placeholder="🔍 Escriba su busqueda">
           </div>
 
 
@@ -157,9 +149,9 @@
             <thead>
               <th>⚙️</th>
               <th>ID</th>
-              <th>Linea</th>
-              <th>Producto</th>
-              <th>Estado</th>
+              <th>🏭 Linea</th>
+              <th>💊 Producto</th>
+              <th>ℹ️ Estado</th>
               <th>Progreso</th>
               <th>Unidades</th>
             </thead>
@@ -214,7 +206,7 @@
 
         <button id="verFormNvoOpe">➕👷‍♀️ Nuevo Operario</button>
         <div id="formNuevoOpe">
-          <h3>👷‍♀️ Nuevo Operario</h3><br>
+          <h3>➕👷‍♀️ Nuevo Operario</h3><br>
 
           <input type="text" id="idOpeNvo" placeholder="ID" readonly="readonly">
           <input type="text" id="nombreOpeNvo" placeholder="Nombre">
@@ -229,7 +221,7 @@
         </div>
 
         <div id="formModifOpe">
-          <h3>✏️ Modificar Operario</h3><br>
+          <h3>✏️👷‍♀️ Modificar Operario</h3><br>
 
           <input type="text" id="idOpeMod" placeholder="ID" readonly>
           <input type="text" id="nombreOpeMod" placeholder="Nombre">
@@ -278,7 +270,7 @@
         </table>
         <button id="verFormNvoProd">➕💊 Producto Nuevo</button>
         <div id="formNuevoProd">
-          <h3>💊 Crear producto nuevo</h3><br>
+          <h3>➕💊 Crear producto nuevo</h3><br>
           <input type="text" id="idProdNvo" placeholder="ID" readonly="readonly">
           <input type="text" id="nombreProdNvo" placeholder="Nombre del Producto">
           <input type="text" id="presenProdNvo" placeholder="Presentación">
@@ -358,11 +350,11 @@
     </section>
 
     <section id="Audit">
-      
+
       <h2>🔍 AUDITORÍAS</h2><br>
       <hr>
     </section>
-    <div id="aviso"class=""></div>
+    <div id="aviso" class=""></div>
   </main>
   <footer class="foot">
     <small> CoderHouse - Javascript - 38030 <a href="mailto:marceloferrenogueira@gmail.com">Marcelo Ferré </a> &copy
@@ -371,3 +363,4 @@
 </body>
 
 </html>
+

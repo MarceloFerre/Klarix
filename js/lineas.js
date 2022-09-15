@@ -1,6 +1,6 @@
 //LINEAS DE PRODUCCION
 //array LINEAS
-const lineas = []
+let lineas = []
 //Tablas LINEAS
 
 //Listeners
@@ -70,6 +70,7 @@ class linea {
         this.operarios = []
         this.ordenes = []
         this.ordenactiva = (this.ordenes[0] || "Sin ordenes asignadas")
+        this.logs = []
     }
 }
 

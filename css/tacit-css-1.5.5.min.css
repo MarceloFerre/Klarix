@@ -29,6 +29,8 @@ table {
     display: table;
     width: 100%;
     max-height: min-content;
+    border-radius: 4px;
+    background-color: rgb(240, 240, 240);
 
 }
 
@@ -38,7 +40,8 @@ table tr {
 
 table tr :hover {
 
-    background-color: #d4d4d4;
+    background-color: rgba(128, 128, 128, 0.15);
+    border-radius: 4px;
 }
 
 table tr th {
