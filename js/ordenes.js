@@ -75,7 +75,7 @@ function cargarTabOTasignar(arrOTSasi) {//carga la tabla con las ordenes sin asi
         let prod = productos.find(producto => producto.idpr == orden.idproducto)
         let pres = prod.presentacion.toLocaleLowerCase()
         tabOTasign.innerHTML += `<tr>
-                            <td><div class="btnsOTtab">
+                            <td class="${orden.idorden}"><div class="btnsOTtab">
                                     <button class="btnModOT" id='${orden.idorden}' title="Modificar Orden: ${orden.idorden}">📝</button>
                                     <button class="btnAsignLn" id='${orden.idorden}' title="Asignar Orden: ${orden.idorden}">📥</button>
                                     <select class="OTselAsignar" id='${orden.idorden}'>
@@ -219,6 +219,7 @@ function modificarOT() {
         })
 
     } else {
+        console.log(otmod)
         Swal.fire({
             showCancelButton: true,
             text: `¿Desea modificar la Orden ${otmod.idorden}?`,
@@ -227,8 +228,9 @@ function modificarOT() {
             cancelButtonText: 'No'
         }).then((result) => {
             if (result.isConfirmed) {
-                const indexReal = ordenes.indexOf(ord => ord.idorden === otmod.idorden)
-                ordenes[indexReal] = otmod
+
+                const index = ordenes.findIndex(ord => ord.idorden === otmod.idorden)
+                ordenes[index] = otmod
                 cerrarFormModOt()
                 cargarTabOTasignar(ordenes)
                 OrdenesLSset()
@@ -313,8 +315,11 @@ function cargarTabOTactivas(arrOTSAct) {//escribe la tabla de ordenes Activas
         let ln = lineas.find(linea => linea.idlinea === orden.linea)
         let prod = productos.find(producto => producto.idpr === orden.idproducto)
         let pres = prod.presentacion.toLocaleLowerCase()
+        let btnQuitarOT = ""
+        orden.estado === "ESPERA" ? btnQuitarOT = `<button class="btnModOT" id='${orden.idorden}' title="Quitar Orden ${orden.idorden} de la linea ${ln.nombre}">🗳️</button>` : btnQuitarOT = "";
         tabOTact.innerHTML += `<tr>
-                                <td><button class="btnModOT" id=${ln.idlinea}' title="Ver Orden: ${orden.idorden} en linea ${ln.nombre}.">ℹ️</button>
+                                <td><button class="btnModOT" id='${ln.idlinea}' title="Ver Orden ${orden.idorden} en linea ${ln.nombre}">ℹ️</button>
+                                ${btnQuitarOT}
                                 </td>
                                 <td>${orden.idorden}</td>
                                 <td title="${ln.idlinea} - ${ln.descripcion}">${ln.nombre}</td>

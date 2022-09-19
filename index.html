@@ -57,26 +57,44 @@
       <section id="Lineas" class="carpeta">
 
         <div id="btnsLineas" class="btnsLineas">
-
-
         </div>
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th>⚙️</th>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Descripción</th>
-              <th>Orden Activa</th>
+        <button class="botontitulo" id="btnLinea">
+          <h2>☝️ Seleccione una linea de producción</h2>
+        </button><br>
+        <div class="carpeta" id="linea">
+          <div class="formFilrto">
+            <button class="btnLinea">📑 Ordenes</button>
+            <button class="btnLinea">📕 Logs</button>
+            <button class="btnLinea">👷‍♀️ Operarios</button>
+          </div>
 
-            </tr>
-          </thead>
-          <tbody id="tablns">
-
-          </tbody>
-        </table>
-
+          <div id="lnOTS">
+            <div class="card" id="cardOTLinea">
+              <div class="cardtitulo" title="">📑 Orden Activa</div>
+              <div class="cardot">
+                <p class="cardottext" id="lnOTid"> OT02</p>
+                <div class="cardprod" id="lnOTprod">IVERMIC</div>
+              </div>
+              <div class="cardpresen" id="lnOTpresen">
+                100ML - IVERMECTINA 1%</div>
+              <div class="cardestadoicono" id="lnOTico">
+                ▶️</div>
+              <div class="cardestado" id="lnOTestado">
+                PRODUCIENDO</div>
+              <div class="cardUnidades" id="lnOTunds">
+                / | % <progress class="progress" value="0" max="100" id="lnOTbarra"></progress>
+              </div>
+              <div class="cardpie">
+                <button>🌀 Actualizar Estado</button>
+              </div>
+            </div>
+          </div>
+          <div id="lnLogs"></div>
+          <div id="lnOpes"></div>
+          <br>
+        </div>
+        <hr>
       </section>
       <hr>
       <button class="botontitulo" id="verOrdenes">

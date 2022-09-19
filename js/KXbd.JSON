@@ -311,138 +311,183 @@
     "ordenes": [
         {
             "idorden": "OT0",
-            "idcliente": "CL0",
-            "idproducto": "PR0",
-            "unidadespedidas": 750,
-            "unidadesproducidas": 250,
-            "estado": "NO ASIGNADO",
-            "linea": ""
+            "idcliente": "CL7",
+            "idproducto": "PR7",
+            "linea": "LN0",
+            "unidadespedidas": 100,
+            "unidadesproducidas": 47,
+            "estado": "PRODUCIENDO",
+            "logs": []
         },
         {
             "idorden": "OT1",
-            "idcliente": "CL1",
+            "idcliente": "CL7",
             "idproducto": "PR1",
-            "unidadespedidas": 190,
+            "linea": null,
+            "unidadespedidas": 200,
             "unidadesproducidas": 0,
             "estado": "NO ASIGNADO",
-            "linea": ""
+            "logs": []
         },
         {
             "idorden": "OT2",
-            "idcliente": "CL2",
-            "idproducto": "PR2",
-            "unidadespedidas": 7500,
+            "idcliente": "CL7",
+            "idproducto": "PR15",
+            "linea": "LN0",
+            "unidadespedidas": 300,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO",
-            "linea": ""
+            "estado": "ESPERA",
+            "logs": []
         },
         {
             "idorden": "OT3",
-            "idcliente": "CL3",
-            "idproducto": "PR3",
-            "unidadespedidas": 20000,
+            "idcliente": "CL7",
+            "idproducto": "PR18",
+            "linea": null,
+            "unidadespedidas": 200,
             "unidadesproducidas": 0,
             "estado": "NO ASIGNADO",
-            "linea": ""
+            "logs": []
         },
         {
             "idorden": "OT4",
             "idcliente": "CL0",
-            "idproducto": "PR4",
-            "unidadespedidas": 15700,
+            "idproducto": "PR3",
+            "linea": "LN2",
+            "unidadespedidas": 25000,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO",
-            "linea": ""
+            "estado": "PREPARACION",
+            "logs": []
         },
         {
             "idorden": "OT5",
-            "idcliente": "CL1",
-            "idproducto": "PR5",
-            "unidadespedidas": 750,
+            "idcliente": "CL0",
+            "idproducto": "PR9",
+            "linea": null,
+            "unidadespedidas": 12000,
             "unidadesproducidas": 0,
             "estado": "NO ASIGNADO",
-            "linea": ""
+            "logs": []
         },
         {
             "idorden": "OT6",
-            "idcliente": "CL2",
-            "idproducto": "PR6",
-            "unidadespedidas": 200,
+            "idcliente": "CL0",
+            "idproducto": "PR15",
+            "linea": "LN0",
+            "unidadespedidas": 6000,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO",
-            "linea": ""
+            "estado": "ESPERA",
+            "logs": []
         },
         {
             "idorden": "OT7",
-            "idcliente": "CL3",
-            "idproducto": "PR0",
-            "unidadespedidas": 11,
+            "idcliente": "CL0",
+            "idproducto": "PR1",
+            "linea": null,
+            "unidadespedidas": 150,
             "unidadesproducidas": 0,
             "estado": "NO ASIGNADO",
-            "linea": ""
+            "logs": []
         },
         {
             "idorden": "OT8",
-            "idcliente": "CL0",
-            "idproducto": "PR1",
-            "unidadespedidas": 450,
+            "idcliente": "CL2",
+            "idproducto": "PR5",
+            "linea": "LN3",
+            "unidadespedidas": 2000,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO",
-            "linea": ""
+            "estado": "PREPARACION",
+            "logs": []
         },
         {
             "idorden": "OT9",
-            "idcliente": "CL1",
-            "idproducto": "PR2",
-            "unidadespedidas": 2000,
+            "idcliente": "CL2",
+            "idproducto": "PR8",
+            "linea": "LN3",
+            "unidadespedidas": 6000,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO",
-            "linea": ""
+            "estado": "ESPERA",
+            "logs": []
         },
         {
             "idorden": "OT10",
             "idcliente": "CL2",
-            "idproducto": "PR3",
-            "unidadespedidas": 55000,
+            "idproducto": "PR1",
+            "linea": null,
+            "unidadespedidas": 4000,
             "unidadesproducidas": 0,
             "estado": "NO ASIGNADO",
-            "linea": ""
+            "logs": []
         },
         {
             "idorden": "OT11",
-            "idcliente": "CL3",
-            "idproducto": "PR4",
-            "unidadespedidas": 360,
+            "idcliente": "CL2",
+            "idproducto": "PR16",
+            "linea": "LN0",
+            "unidadespedidas": 20000,
             "unidadesproducidas": 0,
-            "estado": "NO ASIGNADO",
-            "linea": ""
+            "estado": "ESPERA",
+            "logs": []
         },
         {
             "idorden": "OT12",
-            "idcliente": "CL0",
-            "idproducto": "PR5",
-            "unidadespedidas": 500,
+            "idcliente": "CL1",
+            "idproducto": "PR1",
+            "linea": null,
+            "unidadespedidas": 6000,
             "unidadesproducidas": 0,
             "estado": "NO ASIGNADO",
-            "linea": ""
+            "logs": []
         },
         {
             "idorden": "OT13",
             "idcliente": "CL1",
-            "idproducto": "PR6",
-            "unidadespedidas": 500,
+            "idproducto": "PR0",
+            "linea": null,
+            "unidadespedidas": 6000,
             "unidadesproducidas": 0,
             "estado": "NO ASIGNADO",
-            "linea": ""
+            "logs": []
         },
         {
             "idorden": "OT14",
-            "idcliente": "CL2",
-            "idproducto": "PR0",
-            "unidadespedidas": 750,
+            "idcliente": "CL1",
+            "idproducto": "PR8",
+            "linea": "LN3",
+            "unidadespedidas": 2000,
+            "unidadesproducidas": 0,
+            "estado": "ESPERA",
+            "logs": []
+        },
+        {
+            "idorden": "OT15",
+            "idcliente": "CL1",
+            "idproducto": "PR5",
+            "linea": null,
+            "unidadespedidas": 4000,
             "unidadesproducidas": 0,
             "estado": "NO ASIGNADO",
-            "linea": ""
+            "logs": []
+        },
+        {
+            "idorden": "OT16",
+            "idcliente": "CL5",
+            "idproducto": "PR6",
+            "linea": null,
+            "unidadespedidas": 14600,
+            "unidadesproducidas": 0,
+            "estado": "NO ASIGNADO",
+            "logs": []
+        },
+        {
+            "idorden": "OT17",
+            "idcliente": "CL5",
+            "idproducto": "PR15",
+            "linea": "LN0",
+            "unidadespedidas": 10500,
+            "unidadesproducidas": 0,
+            "estado": "ESPERA",
+            "logs": []
         }
     ],
     "lineas": [
@@ -451,8 +496,14 @@
             "nombre": "MANUAL 1",
             "descripcion": "ENVASADO Y ACONDICIONAMIENTO MANUAL",
             "operarios": [],
-            "ordenes": [],
-            "ordenactiva": ""
+            "ordenes": [
+                "OT0",
+                "OT2",
+                "OT6",
+                "OT17",
+                "OT11"
+            ],
+            "ordenactiva": "OT0"
         },
         {
             "idlinea": "LN1",
@@ -467,16 +518,22 @@
             "nombre": "AUTOMATICA 1",
             "descripcion": "ENVASADORA AUTOMATICA MEDIANA",
             "operarios": [],
-            "ordenes": [],
-            "ordenactiva": ""
+            "ordenes": [
+                "OT4"
+            ],
+            "ordenactiva": "OT4"
         },
         {
             "idlinea": "LN3",
             "nombre": "AUTOMATICA 2",
             "descripcion": "ENVASADORA AUTOMATICA GRANDE",
             "operarios": [],
-            "ordenes": [],
-            "ordenactiva": ""
+            "ordenes": [
+                "OT8",
+                "OT14",
+                "OT9"
+            ],
+            "ordenactiva": "OT8"
         }
     ]
 }

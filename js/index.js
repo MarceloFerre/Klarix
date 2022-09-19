@@ -96,10 +96,10 @@ function EmojiEstado(estado) {
             return "❎"
             break;
         case "ESPERA":
-            return "⏳"
+            return "💬"
             break;
         case "PREPARACION":
-            return "⌛"
+            return "⏳"
             break;
         case "PRODUCIENDO":
             return "▶️"
@@ -178,6 +178,6 @@ function VerAudit() {//Ver AUDITORIA
     }
 }
 function arraytotal() {
-    const arraytotal = { "productos": productos, "clientes": clientes, "empleados": empleados, "ordenes": ordenes, "lineas": lineas }
+    const arraytotal = { "productos": productos, "clientes": clientes, "operarios": operarios, "ordenes": ordenes, "lineas": lineas }
     return console.log(JSON.stringify(arraytotal))
 }
