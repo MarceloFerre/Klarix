@@ -13,23 +13,36 @@ let tabOTact = document.getElementById("tabOTact")
 
 
 //listeners
+//boton principal Ordenes
 let btnOrdenes = document.getElementById("verOrdenes")
 btnOrdenes.addEventListener('click', verOrdenes)
+//boton Asignar y Crear
 let btnOTSasign = document.getElementById("OTcyaBtn")
 btnOTSasign.addEventListener('click', verOTSasign)
+//boton Ordenes Activas
 let btnOTSactiv = document.getElementById("OTactBtn")
 btnOTSactiv.addEventListener('click', verOTSactiv)
+//input filtro Ordenes Activas
 let otActFiltroInpt = document.getElementById("otActFiltroInpt")
 otActFiltroInpt.addEventListener('keyup', otActiFiltro)
+///input filtro Ordenes sin asignar
 let otAsignFiltroInpt = document.getElementById("otAsignFiltroInpt")
 otAsignFiltroInpt.addEventListener('keyup', otAsignFiltro)
+//boton mostrar formulario Nueva Orden
 let btnNvaOt = document.getElementById("btnNvaOt")
 btnNvaOt.addEventListener('click', verFormNvaOT)
+//boton cerrar formulario Nueva Orden
 let btncerrarNvaOt = document.getElementById("cerrarNvaOt")
 btncerrarNvaOt.addEventListener('click', verFormNvaOT)
+//boton Ingresar Nueva Orden
 let btnIngresarOt = document.getElementById("btnIngresarOt")
 btnIngresarOt.addEventListener('click', ingresarNvaOt)
-
+//boton cerrar formulario Modificar Orden
+let btncerrarModOt = document.getElementById("cerrarModOt")
+btncerrarModOt.addEventListener('click', cerrarFormModOt)
+//boton Guardar Orden Modificada
+let btnModificarOt = document.getElementById("btnModificarOt")
+btnModificarOt.addEventListener('click', modificarOT)
 
 //ocultar seccion al iniciar
 const ots = document.getElementById("Ordenes")
@@ -48,14 +61,13 @@ function crearIDorden() {
 function verOrdenes() {//muestra toda la seccion de ordenes
     ots.style.display == "none" ? ots.style.display = "block" : ots.style.display = "none"
 }
-//asignar/crear OTs
+//crear- modificar - asignar Ordenes de Trabajos
 function verOTSasign() {//muestra la seccion asignar y crear OT
     otsAsign.style.display == "none" ? otsAsign.style.display = "block" : otsAsign.style.display = "none"
     cargarTabOTasignar(ordenes)
-    formNvaOTsels()
+    formsOTsels("nvaOtProd", "nvaOtCli")
 }
 function cargarTabOTasignar(arrOTSasi) {//carga la tabla con las ordenes sin asignar
-
     tabOTasign.innerHTML = ``
     let OTsNoAsign = arrOTSasi.filter((orden) => orden.estado === "NO ASIGNADO")
     OTsNoAsign.forEach(orden => {
@@ -74,10 +86,21 @@ function cargarTabOTasignar(arrOTSasi) {//carga la tabla con las ordenes sin asi
                             </td>
                             <td>${orden.idorden}</td>
                             <td title="${prod.idpr} | ${prod.descripcion}"><strong>${prod.nombre}</strong> - ${pres}</td>
-                            <td>${cli.nombre}</td>
                             <td>${orden.unidadespedidas}</td>
+                            <td>${cli.nombre}</td>
+
                            </tr>`
     })
+    //asigna event listener a los botones Modificar Orden, muestra el formulario Modificar Orden
+    let btnModOt = document.querySelectorAll('.btnModOT')
+    btnModOt.forEach(btn => {
+        btn.addEventListener('click', () => {
+            verFormModOt(btn.id)
+        })
+    })
+
+
+    //asigna event listener a los botones Asignar, muestra el select con las lineas
     let btnSelAsignLn = document.querySelectorAll('.btnAsignLn')
     btnSelAsignLn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -86,10 +109,10 @@ function cargarTabOTasignar(arrOTSasi) {//carga la tabla con las ordenes sin asi
 
         })
     })
+    //rellena los select y permite asignar la orden a la sala seleccionada
     let selAsignLn = document.querySelectorAll('.OTselAsignar')
     selAsignLn.forEach(sel => {
         sel.innerHTML = '<option value="">🏭</option>'
-
         lineas.forEach(linea => {
             sel.innerHTML += `<option value="${linea.idlinea}" title="${linea.idlinea} - ${linea.descripcion}">${linea.nombre}</option>`
         });
@@ -98,6 +121,12 @@ function cargarTabOTasignar(arrOTSasi) {//carga la tabla con las ordenes sin asi
         })
 
     })
+}
+//crear
+function verFormNvaOT() {//carga y muestra el formulario Nueva Orden
+    const formNvaOt = document.getElementById("formNvaOt")
+    document.getElementById("nvaOtId").value = crearIDorden()
+    formNvaOt.style.display == "block" ? formNvaOt.style.display = "none" : formNvaOt.style.display = "block"
 }
 function AsignLn(ot, ln) {//asigna la orden a la linea seleccionada
     const orden = ordenes.find(orden => orden.idorden === ot)
@@ -132,6 +161,103 @@ function AsignLn(ot, ln) {//asigna la orden a la linea seleccionada
             })
         }
     })
+}
+function ingresarNvaOt() {//verifica formulario e ingresa Nueva Orden sin asignar
+    const otid = crearIDorden()
+    const otcli = document.getElementById("nvaOtCli").value
+    const otprod = document.getElementById("nvaOtProd").value
+    const otunds = parseInt(document.getElementById("nvaOtUnds").value)
+    if (otcli == "" || otprod == "" || isNaN(otunds) || otunds < 100) {
+        Swal.fire({
+            title: 'Orden incorrecta',
+            text: 'Por favor, llene bien los campos.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        })
+    } else {
+        const nvaOT = new orden(crearIDorden(), otcli, otprod, otunds)
+        ordenes.push(nvaOT)
+        document.getElementById("nvaOtId").value = crearIDorden()
+        document.getElementById("nvaOtCli").value = ""
+        document.getElementById("nvaOtProd").value = ""
+        document.getElementById("nvaOtUnds").value = ""
+        cargarTabOTasignar(ordenes)
+        OrdenesLSset()
+        Swal.fire({
+            title: `Orden de Trabajo ${nvaOT.idorden} ingresada correctamente`,
+            text: '✳️ No olvide asignar las ordenes a una linea 📥',
+            icon: 'success',
+            timer: 2500,
+            showConfirmButton: false,
+        })
+    }
+
+
+}
+//modificar
+function cerrarFormModOt() {//cierra formulario Modificar Orden
+    document.getElementById("formModOt").style.display = "none"
+}
+function verFormModOt(idOrden) {//carga y muestra formulario Modificar Orden
+    formsOTsels("modOtProd", "modOtCli")
+    const ot = ordenes.find(ot => ot.idorden === idOrden)
+    document.getElementById("modOtId").value = ot.idorden
+    document.getElementById("modOtCli").value = ot.idcliente
+    document.getElementById("modOtProd").value = ot.idproducto
+    document.getElementById("modOtUnds").value = ot.unidadespedidas
+    document.getElementById("formModOt").style.display = "block"
+}
+function modificarOT() {
+    const otmod = new orden(document.getElementById("modOtId").value, document.getElementById("modOtCli").value, document.getElementById("modOtProd").value, parseInt(document.getElementById("modOtUnds").value))
+    if (otmod.idcliente === "" || otmod.idproducto === "" || isNaN(otmod.unidadespedidas) || otmod.unidadespedidas < 100) {
+        verFormModOt(otmod.idorden)
+        Swal.fire({
+            title: 'Modificacion de Orden incorrecta',
+            text: 'Por favor, llene bien los campos.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        })
+
+    } else {
+        Swal.fire({
+            showCancelButton: true,
+            text: `¿Desea modificar la Orden ${otmod.idorden}?`,
+            icon: 'warning',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const indexReal = ordenes.indexOf(ord => ord.idorden === otmod.idorden)
+                ordenes[indexReal] = otmod
+                cerrarFormModOt()
+                cargarTabOTasignar(ordenes)
+                OrdenesLSset()
+                Swal.fire({
+                    title: `Orden ${otmod.idorden} modificada correctamente!!!`,
+                    icon: 'success',
+                    timer: 2500,
+                    showConfirmButton: false,
+                })
+            }
+        })
+    }
+
+
+
+}
+
+function formsOTsels(selOTprod, selOTcli) {//llena los select del formulario Nueva Orden y Modificar Orden
+    const selprod = document.getElementById(selOTprod)
+    selprod.innerHTML = '<option value="">💊 Producto</option>'
+    productos.forEach(prod => {
+        selprod.innerHTML += `<option value="${prod.idpr}">${prod.nombre} - ${prod.presentacion}</option>`
+    });
+    const selcli = document.getElementById(selOTcli)
+    selcli.innerHTML = '<option value="">🤑 Cliente</option>'
+    clientes.forEach(cli => {
+        selcli.innerHTML += `<option value="${cli.idcli}">${cli.nombre}</option>`
+    });
+
 }
 function otAsignFiltro() {//filtro de Asignar Ordenes
 
@@ -169,27 +295,11 @@ function otAsignFiltro() {//filtro de Asignar Ordenes
         cargarTabOTasignar(ordenes)
     }
 }
-function verFormNvaOT() {//carga y muestra el formulario Nueva Orden
-    const formNvaOt = document.getElementById("formNvaOt")
-    document.getElementById("nvaOtId").value = crearIDorden()
-    formNvaOt.style.display == "block" ? formNvaOt.style.display = "none" : formNvaOt.style.display = "block"
-}
-function formNvaOTsels() {//llena los select del formulario Nueva Orden
-    const selprod = document.getElementById("nvaOtProd")
-    selprod.innerHTML = '<option value="">💊 Producto</option>'
-    productos.forEach(prod => {
-        selprod.innerHTML += `<option value="${prod.idpr}">${prod.nombre} - ${prod.presentacion}</option>`
-    });
-    const selcli = document.getElementById("nvaOtCli")
-    selcli.innerHTML = '<option value="">🤑 Cliente</option>'
-    clientes.forEach(cli => {
-        selcli.innerHTML += `<option value="${cli.idcli}">${cli.nombre}</option>`
-    });
 
-}
-function ingresarNvaOt() {
 
-}
+
+
+
 
 //seccion OrdenesActivas
 function verOTSactiv() {//ver seccion Ordenes Activas
@@ -204,7 +314,7 @@ function cargarTabOTactivas(arrOTSAct) {//escribe la tabla de ordenes Activas
         let prod = productos.find(producto => producto.idpr === orden.idproducto)
         let pres = prod.presentacion.toLocaleLowerCase()
         tabOTact.innerHTML += `<tr>
-                                <td><button class="btnModOT" id='${orden.idorden}' title="Ver Orden: ${orden.idorden}">ℹ️</button>
+                                <td><button class="btnModOT" id=${ln.idlinea}' title="Ver Orden: ${orden.idorden} en linea ${ln.nombre}.">ℹ️</button>
                                 </td>
                                 <td>${orden.idorden}</td>
                                 <td title="${ln.idlinea} - ${ln.descripcion}">${ln.nombre}</td>

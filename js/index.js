@@ -1,6 +1,6 @@
 
-loader()
-function loader() {
+loader(10000)
+function loader(timer) {
     let aviso = document.getElementById("aviso")
     aviso.innerHTML = `
     <div class="avisoemergente">
@@ -45,10 +45,10 @@ function loader() {
             title: '⚗️ KLARIX ',
             text: 'Gestion de ambientes productivos',
             icon: 'success',
-            timer: 1000,
+            timer: 3000,
             showConfirmButton: false,
         })
-    }, 3000);
+    }, timer);
 
 }
 function monitorLineas() {
@@ -82,7 +82,7 @@ function monitorLineas() {
             <div class="cardestado">DESHABILITADO</div>
             <div class="cardUnidades"><small><b>+info</b> para asignar 🔻</small><progress class="progress" value="0"></progress></div>
             <div class="cardpie">
-            <button onclick="masinfoasign()">+info</button>
+            <button onclick="masinfoasign()" title="Asignar Ordenes 📥">+info</button>
             </div>
         </div>`
 
@@ -128,7 +128,7 @@ function masinfoasign() {
     cargarTabOTasignar(ordenes)
     Swal.fire({
         title: `Asignar Ordenes`,
-        html: `<div class="asignarorden"><p>Presione <button>➕📄 Crear Orden</button> para crear una orden.</p><p>Presione <button>📝</button> para modificar una orden.</p><p>Presione <button>📥</button> para asignar una orden a una sala.<p></div>`,
+        html: `<div class="asignarorden"><p>Presione <button>➕📄 Crear Orden</button> para crear una orden.</p><p>Presione <button =class="asOtBtn">📝</button> para modificar una orden.</p><p>Presione <button =class="asOtBtn">📥</button> para asignar una orden a una sala.<p></div>`,
         icon: 'info',
         showConfirmButton: true,
     })

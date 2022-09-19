@@ -102,8 +102,9 @@
               <th>⚙️</th>
               <th>ID</th>
               <th>Producto</th>
-              <th>Cliente</th>
               <th>Unidades Pedidas</th>
+              <th>Cliente</th>
+
             </thead>
             <tbody id="tabOTasign">
 
@@ -115,15 +116,29 @@
           <section id="formNvaOt">
             <h3>➕📄 Nueva Orden</h3><br>
             <input id="nvaOtId" type="text" placeholder="ID" readonly>
-            <select name="" id="nvaOtProd">
-              <option value="">Seleccionar Producto</option>
-            </select>
             <select name="" id="nvaOtCli">
               <option value="">Seleccionar Cliente</option>
             </select>
+            <select name="" id="nvaOtProd">
+              <option value="">Seleccionar Producto</option>
+            </select>
             <input id="nvaOtUnds" type="text" placeholder="Unidades pedidas">
-            <button id="btnIngresarOt">Ingresar Pedido</button>
+            <button id="btnIngresarOt">Ingresar Orden</button>
             <button id="cerrarNvaOt" title="Cerrar">❌</button>
+          </section>
+
+          <section id="formModOt">
+            <h3>✏️📄 Modificar Orden</h3><br>
+            <input id="modOtId" type="text" placeholder="ID" readonly>
+            <select name="" id="modOtCli">
+              <option value="">Seleccionar Cliente</option>
+            </select>
+            <select name="" id="modOtProd">
+              <option value="">Seleccionar Producto</option>
+            </select>
+            <input id="modOtUnds" type="text" placeholder="Unidades pedidas">
+            <button id="btnModificarOt">Modificar Orden</button>
+            <button id="cerrarModOt" title="Cerrar">❌</button>
           </section>
 
         </section>
@@ -363,4 +378,3 @@
 </body>
 
 </html>
-

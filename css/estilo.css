@@ -119,6 +119,7 @@ section hr {
     border-radius: 0 0 5px 5px;
 }
 
+#formModOt,
 #formNvaOt,
 #formNuevoOpe,
 #formModifOpe,
@@ -142,6 +143,7 @@ section hr {
     backdrop-filter: blur(4px);
 }
 
+#formModOt h3,
 #formNvaOt h3,
 #formNuevoOpe h3,
 #formModifOpe h3,
@@ -155,7 +157,8 @@ section hr {
 
 #formNuevoOpe select,
 #formModifOpe select,
-#formNvaOt select {
+#formNvaOt select,
+#formModOt select {
     width: 100%;
 }
 
@@ -402,6 +405,7 @@ table tr td button {
     padding: 0%;
 }
 
+
 #btnsLineas {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
@@ -427,6 +431,11 @@ table tr td button {
 
 .asignarorden {
     text-align: left;
+}
+
+.asOtBtn {
+    margin: 0;
+    padding: 0%;
 }
 
 footer {
