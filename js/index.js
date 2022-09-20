@@ -1,5 +1,5 @@
 
-loader(10000)
+loader(1000)
 function loader(timer) {
     let aviso = document.getElementById("aviso")
     aviso.innerHTML = `
@@ -123,9 +123,11 @@ function EmojiEstado(estado) {
 function masinfoasign() {
 
     VerAdmin()
+
+    cargarTabOTasignar(ordenes)
+    formsOTsels("nvaOtProd", "nvaOtCli")
     document.getElementById("Ordenes").style.display = "block"
     document.getElementById("OTasign").style.display = "block"
-    cargarTabOTasignar(ordenes)
     Swal.fire({
         title: `Asignar Ordenes`,
         html: `<div class="asignarorden"><p>Presione <button>➕📄 Crear Orden</button> para crear una orden.</p><p>Presione <button =class="asOtBtn">📝</button> para modificar una orden.</p><p>Presione <button =class="asOtBtn">📥</button> para asignar una orden a una sala.<p></div>`,

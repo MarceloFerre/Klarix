@@ -290,7 +290,7 @@ section hr {
 }
 
 .card {
-    display: flex;
+    display: inline-block;
     flex-direction: column;
     width: 150px;
     height: auto;
@@ -347,7 +347,7 @@ section hr {
 }
 
 .cardpresen {
-    width: 130px;
+    width: 100%;
     text-align: center;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -423,6 +423,18 @@ table tr td button {
     margin: 0;
     padding: 0%;
 }
+
+.lnOTS {
+    display: flex;
+    flex-direction: row;
+    align-self: start;
+    padding-block-end: 10px;
+}
+
+.OTStab {
+    width: calc(100% - 200px);
+}
+
 
 
 #btnsLineas {

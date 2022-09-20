@@ -112,7 +112,7 @@ function cargarTabOTasignar(arrOTSasi) {//carga la tabla con las ordenes sin asi
     //rellena los select y permite asignar la orden a la sala seleccionada
     let selAsignLn = document.querySelectorAll('.OTselAsignar')
     selAsignLn.forEach(sel => {
-        sel.innerHTML = '<option value="">🏭</option>'
+        sel.innerHTML = '<option value="">🏭 Asignar a linea...</option>'
         lineas.forEach(linea => {
             sel.innerHTML += `<option value="${linea.idlinea}" title="${linea.idlinea} - ${linea.descripcion}">${linea.nombre}</option>`
         });
@@ -127,6 +127,7 @@ function verFormNvaOT() {//carga y muestra el formulario Nueva Orden
     const formNvaOt = document.getElementById("formNvaOt")
     document.getElementById("nvaOtId").value = crearIDorden()
     formNvaOt.style.display == "block" ? formNvaOt.style.display = "none" : formNvaOt.style.display = "block"
+
 }
 function AsignLn(ot, ln) {//asigna la orden a la linea seleccionada
     const orden = ordenes.find(orden => orden.idorden === ot)
@@ -318,7 +319,7 @@ function cargarTabOTactivas(arrOTSAct) {//escribe la tabla de ordenes Activas
         let btnQuitarOT = ""
         orden.estado === "ESPERA" ? btnQuitarOT = `<button class="btnModOT" id='${orden.idorden}' title="Quitar Orden ${orden.idorden} de la linea ${ln.nombre}">🗳️</button>` : btnQuitarOT = "";
         tabOTact.innerHTML += `<tr>
-                                <td><button class="btnModOT" id='${ln.idlinea}' title="Ver Orden ${orden.idorden} en linea ${ln.nombre}">ℹ️</button>
+                                <td><button class="btnModOT" id='${ln.idlinea}' title="Ver Orden ${orden.idorden} en linea ${ln.nombre}" onclick="cargarLinea(${ln.idlinea})">ℹ️</button>
                                 ${btnQuitarOT}
                                 </td>
                                 <td>${orden.idorden}</td>
