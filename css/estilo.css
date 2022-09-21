@@ -165,7 +165,7 @@ section hr {
 
 .OTselAsignar {
     display: none;
-    width: 50px;
+    
 
 }
 
@@ -279,11 +279,10 @@ section hr {
 }
 
 .cards {
-    width: 120%;
-    border-radius: 20px 0px 20px 0px;
+    margin-left: -10px;
     background-color: transparent;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     align-self: start;
     padding-top: 10px;
 
@@ -292,14 +291,14 @@ section hr {
 .card {
     display: inline-block;
     flex-direction: column;
-    width: 150px;
+    width: 170px;
     height: auto;
     border: 2px solid rgb(137, 137, 137);
     border-radius: 15px 0 15px 0;
     border-style: outset;
     background-color: rgb(136, 178, 185);
     align-items: center;
-    margin: 15px;
+    margin: 15px  0 15px 15px;
     box-shadow: 2px 2px 3px rgb(0, 0, 0, 0.5);
 }
 
@@ -432,14 +431,18 @@ table tr td button {
 }
 
 .OTStab {
-    width: calc(100% - 200px);
+    width: calc(100% - 230px);
+    margin: 10px;
 }
-
+.tablnopes {
+    width: auto;
+    margin: 20px;
+}
 
 
 #btnsLineas {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(24%, 1fr));
     align-self: start;
     padding-block-end: 10px;
 }

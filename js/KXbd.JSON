@@ -186,126 +186,144 @@
             "nombre": "JUAN PEREZ",
             "direccion": "CAFE 1223",
             "contacto": 91999888,
-            "categoria": "OP.COMUN"
+            "categoria": "OP.COMUN",
+            "linea": null
         },
         {
             "idope": "OP1",
             "nombre": "JOHN PEREZ",
             "direccion": "CAFE 1226",
             "contacto": 91223344,
-            "categoria": "OP.COMUN"
+            "categoria": "OP.COMUN",
+            "linea": null
         },
         {
             "idope": "OP2",
             "nombre": "MARIO PEREZ",
             "direccion": "CHOCOLATE 741",
             "contacto": 99888777,
-            "categoria": "OP.COMUN"
+            "categoria": "OP.COMUN",
+            "linea": null
         },
         {
             "idope": "OP3",
             "nombre": "PEDRO RODRIGUEZ",
             "direccion": "MATEAMARGO 8787",
             "contacto": 95856974,
-            "categoria": "OP.COMUN"
+            "categoria": "OP.COMUN",
+            "linea": null
         },
         {
             "idope": "OP4",
             "nombre": "RICARDO RICARDE",
             "direccion": "CHOCOLATE 1626",
             "contacto": 22885577,
-            "categoria": "OP.COMUN"
+            "categoria": "OP.COMUN",
+            "linea": null
         },
         {
             "idope": "OP5",
             "nombre": "CARLOS PEREZ",
             "direccion": "CAFE 1223",
             "contacto": 91999888,
-            "categoria": "OP.ESPECIALIZADO"
+            "categoria": "OP.ESPECIALIZADO",
+            "linea": null
         },
         {
             "idope": "OP6",
             "nombre": "ALBERTO BELLO",
             "direccion": "TENEGRO 333",
             "contacto": 91989898,
-            "categoria": "OP.ESPECIALIZADO"
+            "categoria": "OP.ESPECIALIZADO",
+            "linea": null
         },
         {
             "idope": "OP7",
             "nombre": "DANILO FERNANDEZ",
             "direccion": "TENEGRO 7788",
             "contacto": 22886633,
-            "categoria": "OP.ESPECIALIZADO"
+            "categoria": "OP.ESPECIALIZADO",
+            "linea": null
         },
         {
             "idope": "OP8",
             "nombre": "SEBASTIAN ALTEZ",
             "direccion": "TERERE S/N",
             "contacto": 22929299,
-            "categoria": "OP.ESPECIALIZADO"
+            "categoria": "OP.ESPECIALIZADO",
+            "linea": null
         },
         {
             "idope": "OP9",
             "nombre": "DANIEL VIERA",
             "direccion": "CERVEZA 987",
             "contacto": 91125896,
-            "categoria": "OP.ESPECIALIZADO"
+            "categoria": "OP.ESPECIALIZADO",
+            "linea": "LN0"
         },
         {
             "idope": "OP10",
             "nombre": "JARRY GONZALES",
             "direccion": "CHOCOLATE 658",
             "contacto": 24092178,
-            "categoria": "JEFE DE LINEA"
+            "categoria": "JEFE DE LINEA",
+            "linea": "LN3"
         },
         {
             "idope": "OP11",
             "nombre": "JOSE MANSINO",
             "direccion": "JUGO 357",
             "contacto": 91316797,
-            "categoria": "JEFE DE LINEA"
+            "categoria": "JEFE DE LINEA",
+            "linea": "LN2"
         },
         {
             "idope": "OP12",
             "nombre": "CLARISA CURIEL",
             "direccion": "JUGO 369",
             "contacto": 91666066,
-            "categoria": "CHECKER QC"
+            "categoria": "CHECKER QC",
+            "linea": null
         },
         {
             "idope": "OP13",
             "nombre": "CINTIA CORDEL",
             "direccion": "JUGO 355",
             "contacto": 91224477,
-            "categoria": "CHECKER QC"
+            "categoria": "CHECKER QC",
+            "linea": null
         },
         {
             "idope": "OP14",
             "nombre": "LORENA NOGUEIRA",
             "direccion": "MATEAMARGO 284",
             "contacto": 96483726,
-            "categoria": "JEFE DE LINEA"
+            "categoria": "JEFE DE LINEA",
+            "linea": "LN1"
         },
         {
             "idope": "OP15",
             "nombre": "MARCELO FERRE",
             "direccion": "AGAMENON 4577",
             "contacto": 98178526,
-            "categoria": "ADMINISTRATIVO"
+            "categoria": "ADMINISTRATIVO",
+            "linea": null
         },
         {
             "idope": "OP16",
             "nombre": "CAMILO PERDOMO",
             "direccion": "REECONQUISTA 457",
             "contacto": 92365874,
-            "categoria": "JEFE DE LINEA"
+            "categoria": "JEFE DE LINEA",
+            "linea": "LN0"
         },
         {
             "idope": "OP17",
             "nombre": "MARIO QUINTANA",
             "direccion": "BAROMETRICA 963",
             "contacto": 22558899,
-            "categoria": "MANTENIMIENTO"
+            "categoria": "MANTENIMIENTO",
+            "linea": null
         }
     ],
     "ordenes": [
@@ -495,7 +513,10 @@
             "idlinea": "LN0",
             "nombre": "MANUAL 1",
             "descripcion": "ENVASADO Y ACONDICIONAMIENTO MANUAL",
-            "operarios": [],
+            "operarios": [
+                "OP16",
+                "OP9"
+            ],
             "ordenes": [
                 "OT0",
                 "OT2",
@@ -509,7 +530,9 @@
             "idlinea": "LN1",
             "nombre": "MANUAL 2",
             "descripcion": "ACONDICIONAMIENTO MANUAL",
-            "operarios": [],
+            "operarios": [
+                "OP14"
+            ],
             "ordenes": [],
             "ordenactiva": ""
         },
@@ -517,7 +540,9 @@
             "idlinea": "LN2",
             "nombre": "AUTOMATICA 1",
             "descripcion": "ENVASADORA AUTOMATICA MEDIANA",
-            "operarios": [],
+            "operarios": [
+                "OP11"
+            ],
             "ordenes": [
                 "OT4"
             ],
@@ -527,7 +552,9 @@
             "idlinea": "LN3",
             "nombre": "AUTOMATICA 2",
             "descripcion": "ENVASADORA AUTOMATICA GRANDE",
-            "operarios": [],
+            "operarios": [
+                "OP10"
+            ],
             "ordenes": [
                 "OT8",
                 "OT14",

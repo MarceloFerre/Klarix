@@ -270,6 +270,7 @@ class operario {
         this.direccion = direccion
         this.contacto = contacto
         this.categoria = CATEGORIA[idcat]
+        this.linea = null
     }
 }
 

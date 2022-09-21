@@ -1,5 +1,5 @@
 
-loader(1000)
+loader(10000)
 function loader(timer) {
     let aviso = document.getElementById("aviso")
     aviso.innerHTML = `
@@ -69,14 +69,13 @@ function monitorLineas() {
             <div class="cardestado"  title="${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%">${orden.estado}</div>
             <div class="cardUnidades" title="${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%" >${orden.unidadesproducidas}/${orden.unidadespedidas} | ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}% <progress class="progress" value="${parseInt((orden.unidadesproducidas / orden.unidadespedidas * 100))}" max="100"></progress></div>
             <div class="cardpie">
-            <button>+info</button>
+            <button class="masinfo"id="${linea.idlinea}">+info</button>
             </div>
         </div>`
 
         } else {
             div.innerHTML = `<div class="cardtitulo">🏭 ${linea.nombre}</div>
-            <div class="cardot">📑 Sin ordenes</div>
-            <div class="cardprod">Sin Ordenes</div>
+            <div class="cardot"><p class="cardottext"> 📑 Sin ordenes</p><div class="cardprod">Sin Ordenes ...</div></div>
             <div class="cardpresen">Esperando ... </div>
             <div class="cardestadoicono"> ${EmojiEstado("DESHABILITADO")} </div>
             <div class="cardestado">DESHABILITADO</div>
@@ -88,6 +87,15 @@ function monitorLineas() {
 
         }
         cardMonitor.append(div)
+        const btnsmasinfo = document.querySelectorAll('.masinfo')
+        btnsmasinfo.forEach(btn => {
+            btn.addEventListener('click', () => {
+                VerAdmin()
+                cargarLinea(btn.id)
+                cargarBtnsLineas(lineas)
+                document.getElementById("Lineas").style.display = "block"
+            })
+        })
     })
 }
 function EmojiEstado(estado) {

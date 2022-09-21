@@ -105,7 +105,7 @@ function cargarTabOTasignar(arrOTSasi) {//carga la tabla con las ordenes sin asi
     btnSelAsignLn.forEach(btn => {
         btn.addEventListener('click', () => {
             const btnysel = document.querySelectorAll(`#${btn.id}`)
-            btnysel[2].style.display === "block" ? btnysel[2].style.display = "none" : btnysel[2].style.display = "block"
+            btnysel[2].style.display === "inline" ? btnysel[2].style.display = "none" : btnysel[2].style.display = "inline"
 
         })
     })
@@ -220,7 +220,6 @@ function modificarOT() {
         })
 
     } else {
-        console.log(otmod)
         Swal.fire({
             showCancelButton: true,
             text: `¿Desea modificar la Orden ${otmod.idorden}?`,
@@ -235,12 +234,7 @@ function modificarOT() {
                 cerrarFormModOt()
                 cargarTabOTasignar(ordenes)
                 OrdenesLSset()
-                Swal.fire({
-                    title: `Orden ${otmod.idorden} modificada correctamente!!!`,
-                    icon: 'success',
-                    timer: 2500,
-                    showConfirmButton: false,
-                })
+
             }
         })
     }
@@ -299,11 +293,6 @@ function otAsignFiltro() {//filtro de Asignar Ordenes
     }
 }
 
-
-
-
-
-
 //seccion OrdenesActivas
 function verOTSactiv() {//ver seccion Ordenes Activas
     otsActiv.style.display == "none" ? otsActiv.style.display = "block" : otsActiv.style.display = "none"
@@ -317,9 +306,9 @@ function cargarTabOTactivas(arrOTSAct) {//escribe la tabla de ordenes Activas
         let prod = productos.find(producto => producto.idpr === orden.idproducto)
         let pres = prod.presentacion.toLocaleLowerCase()
         let btnQuitarOT = ""
-        orden.estado === "ESPERA" ? btnQuitarOT = `<button class="btnModOT" id='${orden.idorden}' title="Quitar Orden ${orden.idorden} de la linea ${ln.nombre}">🗳️</button>` : btnQuitarOT = "";
+        orden.estado === "ESPERA" ? btnQuitarOT = `<button class="btnQuitarOT" id='${orden.idorden}' title="Quitar Orden ${orden.idorden} de la linea ${ln.nombre}">🗳️</button>` : btnQuitarOT = "";
         tabOTact.innerHTML += `<tr>
-                                <td><button class="btnModOT" id='${ln.idlinea}' title="Ver Orden ${orden.idorden} en linea ${ln.nombre}" onclick="cargarLinea(${ln.idlinea})">ℹ️</button>
+                                <td><button class="btnOTsl" id='${ln.idlinea}' title="Ver Orden ${orden.idorden} en linea ${ln.nombre}" onclick="cargarLinea(${ln.idlinea})">ℹ️</button>
                                 ${btnQuitarOT}
                                 </td>
                                 <td>${orden.idorden}</td>
@@ -329,6 +318,22 @@ function cargarTabOTactivas(arrOTSAct) {//escribe la tabla de ordenes Activas
                                 <td><progress title="${parseInt(orden.unidadesproducidas / orden.unidadespedidas * 100)}% " class="progress" value="${parseInt((orden.unidadesproducidas / orden.unidadespedidas * 100))}" max="100"></progress></td>
                                 <td>${orden.unidadesproducidas}/${orden.unidadespedidas} </td>
                            </tr>`
+    })
+    let btnsOtSl = document.querySelectorAll('.btnOTsl')
+    btnsOtSl.forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('linea').style.display = "block"
+            document.getElementById('Lineas').style.display = "block"
+            document.getElementById('Ordenes').style.display = "none"
+            cargarBtnsLineas(lineas)
+            cargarLinea(btn.id)
+        })
+    })
+    let btnsQuitarOt = document.querySelectorAll('.btnQuitarOT')
+    btnsQuitarOt.forEach(btn => {
+        btn.addEventListener('click', () => {
+            quitarOTdeLinea(btn.id)
+        })
     })
 }
 function otActiFiltro() {//filtro de Ordenes Activas
@@ -367,6 +372,37 @@ function otActiFiltro() {//filtro de Ordenes Activas
     } else {
         cargarTabOTactivas(ordenes)
     }
+}
+function quitarOTdeLinea(idot) {
+    const ot = ordenes.find(ot => ot.idorden === idot)
+    const ln = lineas.find(ln => ln.idlinea === ot.linea)
+    const index = ln.ordenes.findIndex(ln => ln === ot.idorden)
+    Swal.fire({
+        showCancelButton: true,
+        title: `¡CUIDADO!`,
+        text: `¿Desea quitar la Orden ${ot.idorden} de la linea ${ln.nombre}?`,
+        icon: 'warning',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            ot.linea = null
+            ot.estado = "NO ASIGNADO"
+            ln.ordenes.splice(index, 1)
+
+            cargarTabOTactivas(ordenes)
+            cargarTabOTasignar(ordenes)
+
+            LineasLSset()
+            OrdenesLSset()
+            Swal.fire({
+                title: `Orden ${ot.idorden} quitada correctamente!!!`,
+                icon: 'success',
+                timer: 2500,
+                showConfirmButton: false,
+            })
+        }
+    })
 }
 
 //Carga de datos

@@ -9,14 +9,13 @@
   <script src=""></script>
   <link rel="stylesheet" href="css/tacit-css-1.5.5.min.css" />
   <link rel="stylesheet" href="css/estilo.css">
-  <script defer src="js/index.js"></script>
   <script defer src="js/productos.js"></script>
   <script defer src="js/clientes.js"></script>
   <script defer src="js/operarios.js"></script>
   <script defer src="js/ordenes.js"></script>
   <script defer src="js/lineas.js"></script>
-
-  <script defer src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script defer src="js/monitor.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -59,52 +58,72 @@
         <div id="btnsLineas" class="btnsLineas">
         </div>
 
-        <button class="botontitulo" id="btnLinea">
+        <button class="botontitulo" id="btnLinea" disabled>
           <h2>☝️ Seleccione una linea de producción</h2>
         </button><br>
         <div class="carpeta" id="linea">
           <div class="formFilrto">
-            <button class="btnLinea">📑 Ordenes</button>
-            <button class="btnLinea">📕 Logs</button>
-            <button class="btnLinea">👷‍♀️ Operarios</button>
+            <button class="btnLinea" id="btnLNots">📑 Ordenes</button>
+            <button class="btnLinea" id="btnLNopes">👷‍♀️ Operarios</button>
+            <button class="btnLinea" disabled>📕 Logs</button>
           </div>
 
           <div id="lnOTS" class="lnOTS">
-            
-              <div class="card" id="cardOTLinea">
-                <div class="cardtitulo" title="">📑 Orden Activa</div>
-                <div class="cardot">
-                  <p class="cardottext" id="lnOTid"> </p>
-                  <div class="cardprod" id="lnOTprod"></div>
-                </div>
-                <div class="cardpresen" id="lnOTpresen"></div>
-                <div class="cardestadoicono" id="lnOTico"></div>
-                <div class="cardestado" id="lnOTestado">PRODUCIENDO</div>
-                <div class="cardUnidades" id="lnOTunds"> / | %
-                  <progress class="progress" value="0" max="100" id="lnOTbarra"></progress>
-                </div>
-                <div class="cardpie">
-                  <button>🌀 Actualizar Estado</button>
-                </div>
+            <div class="card" id="cardOTLinea">
+              <div class="cardtitulo" title="">📑 Orden Activa</div>
+              <div class="cardot">
+                <p class="cardottext" id="lnOTid"> </p>
+                <div class="cardprod" id="lnOTprod"></div>
               </div>
-              <div class="OTStab" id="OTStab"><br>
-                <h3>📑 Ordenes Asignadas</h3>
-                <table class="table">
-                  <thead>
-                    <th>⚙️</th>
-                    <th>🔜 </th>
-                    <th>ID</th>
-                    <th>Producto</th>
-                    <th>Unidades</th>
-                  </thead>
-                  <tbody>
-                  </tbody>
-                </table>
+              <div class="cardpresen" id="lnOTpresen"></div>
+              <div class="cardestadoicono" id="lnOTico"></div>
+              <div class="cardestado" id="lnOTestado"></div>
+              <div class="cardUnidades" id="lnOTunds"> / | %
+                <progress class="progress" value="0" max="100" id="lnOTbarra"></progress>
               </div>
+              <div class="cardpie">
+
+              </div>
+            </div>
+            <div class="OTStab" id="OTStab">
+              <h3>📑 Ordenes Asignadas</h3>
+              <table class="table">
+                <thead>
+                  <th>⚙️</th>
+                  <th>🔜 </th>
+                  <th>ID</th>
+                  <th>Producto</th>
+                  <th>Unidades</th>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div id="lnLogs"></div>
-          <div id="lnOpes"></div>
-          <br>
+          <div class="tablnopes" id="lnOpes">
+            <h3>👷‍♀️ Operarios</h3>
+
+            <table class="table">
+              <thead>
+                <th>⚙️</th>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+              </thead>
+              <tbody id="tabLnOperarios">
+              </tbody>
+            </table>
+
+            <div class="">
+              <button>📥 👷‍♀️ Ingresar Operario</button>
+              <select name="" id="">
+                <option value="">👷‍♀️ Selecciona Operario</option>
+                <option value="">Coso2</option>
+                <option value="">Coso3</option>
+                <option value="">Coso4</option>
+              </select>
+            </div>
+          </div>
         </div>
         <hr>
       </section>
@@ -140,9 +159,7 @@
 
             </tbody>
           </table>
-
           <button class="btnNvaOt" id="btnNvaOt">➕📄 Crear Orden</button>
-
           <section id="formNvaOt">
             <h3>➕📄 Nueva Orden</h3><br>
             <input id="nvaOtId" type="text" placeholder="ID" readonly>
@@ -156,7 +173,6 @@
             <button id="btnIngresarOt">Ingresar Orden</button>
             <button id="cerrarNvaOt" title="Cerrar">❌</button>
           </section>
-
           <section id="formModOt">
             <h3>✏️📄 Modificar Orden</h3><br>
             <input id="modOtId" type="text" placeholder="ID" readonly>
@@ -170,10 +186,8 @@
             <button id="btnModificarOt">Modificar Orden</button>
             <button id="cerrarModOt" title="Cerrar">❌</button>
           </section>
-
         </section>
         <hr>
-
         <button class="botontitulo" id="OTactBtn">
           <h3>🗂️ Ordenes Activas</h2>
         </button><br>
