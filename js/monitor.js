@@ -8,7 +8,7 @@ function loader(timer) {
             <h2>Cargando datos</h2>
         </div>
         <div class="avimg">
-            <img src="logo.gif">
+            <img src="200w.webp">
             <h3 id="comentCarga">Buscando y recuperando datos</h3>
             <progress id="progCarga" class="progress" max="1400" value="0"></progress>
            
@@ -44,8 +44,10 @@ function loader(timer) {
         Swal.fire({
             title: '⚗️ KLARIX ',
             text: 'Gestion de ambientes productivos',
-            icon: 'success',
-            timer: 3000,
+            imageUrl: 'logo.gif',
+            imageHeight: 166,
+            imageWidth: 250,
+            timer: 5000,
             showConfirmButton: false,
         })
     }, timer);

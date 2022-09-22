@@ -235,7 +235,8 @@ section hr {
 
 .avimg img {
     background-color: white;
-    border-radius: 100%;
+    opacity: 70%;
+    border-radius: 40px;
     width: 250px;
     height: 166px;
     margin-left: 40px;

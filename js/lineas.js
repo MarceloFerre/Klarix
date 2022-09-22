@@ -22,12 +22,17 @@ btnLNopes.addEventListener('click', () => {
     document.getElementById('lnOTS').style.display = "none"
     document.getElementById('lnOpes').style.display = "block"
 })
+const botonIngresarOpeLn = document.getElementById('btnlnIngresarOpe')
+botonIngresarOpeLn.addEventListener('click', verSelOpe)
 
 
 //Ocultar formularios al iniciar
 const lns = document.getElementById("Lineas")
 lns.style.display = "none"
 document.getElementById('lnOpes').style.display = "none"
+const selectOpesLn = document.getElementById('selectOpes')
+selectOpesLn.style.display = "none"
+selectOpesLn.addEventListener('click', () => { opeaLinea(selectOpesLn.value) })
 
 //Funciones
 function crearIDlinea() {
@@ -43,7 +48,7 @@ function cargarBtnsLineas(arrLns) {//carga botones con los nombres de las lineas
     arrLns.forEach(linea => {
         botoneslns.innerHTML += `<button class="btnLinea" id="${linea.idlinea}" title="🔍 ver linea: ${linea.idlinea} - ${linea.nombre} | ${linea.descripcion}">${linea.nombre}</button>`
     })
-    //botoneslns.innerHTML += `<button id="btnNvaLn" title="➕🏭Crear Nueva Linea de producción.">➕🏭</button>`
+    botoneslns.innerHTML += `<button id="btnNvaLn" title="➕🏭 PROXIMAMENTE - Crear Nueva Linea de producción... ">➕🏭</button>`
     let btnslns = document.querySelectorAll('.btnLinea')
     btnslns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -76,7 +81,7 @@ function cardOTactiva(ln) {//carga la card de orden activa de la Linea seleccion
         document.getElementById("lnOTpresen").innerHTML = `Esperando ... `
         document.getElementById("lnOTico").innerHTML = `${EmojiEstado("DESHABILITADO")}`
         document.getElementById("lnOTestado").innerHTML = `DESHABILITADO`
-        document.getElementById("lnOTunds").innerHTML = `<small><b>+info</b> para asignar 🔻</small><progress class="progress" value="0"></progress>`
+        document.getElementById("lnOTunds").innerHTML = `<small><b>📄 Asignar Ordenes</b></small><progress class="progress" value="0"></progress>`
     } else {
         const ot = ordenes.find(ot => ot.idorden === ln.ordenactiva)
         const prod = productos.find(prd => prd.idpr === ot.idproducto)
@@ -85,7 +90,7 @@ function cardOTactiva(ln) {//carga la card de orden activa de la Linea seleccion
         document.getElementById("lnOTpresen").innerHTML = `${prod.presentacion} - ${prod.descripcion}`
         document.getElementById("lnOTico").innerHTML = `${EmojiEstado(ot.estado)}`
         document.getElementById("lnOTestado").innerHTML = `${ot.estado}`
-        document.getElementById("lnOTunds").innerHTML = `${ot.unidadesproducidas}/${ot.unidadespedidas} | ${parseInt((ot.unidadesproducidas / ot.unidadespedidas) * 100)}% <progress class="progress" value="${parseInt((ot.unidadesproducidas / ot.unidadespedidas * 100))}" max="100"></progress><button>🌀 <b>Actualizar</b></button>`
+        document.getElementById("lnOTunds").innerHTML = `${ot.unidadesproducidas}/${ot.unidadespedidas} | ${parseInt((ot.unidadesproducidas / ot.unidadespedidas) * 100)}% <progress class="progress" value="${parseInt((ot.unidadesproducidas / ot.unidadespedidas * 100))}" max="100"></progress><button title="🌀 Actualizar estado de Orden Activa">🌀 <b>Actualizar</b></button>`
     }
 }
 function tabOTSactivas(ln) {//carga la tabla con ordenes en espera de la linea seleccionada
@@ -119,10 +124,25 @@ function tabOTSactivas(ln) {//carga la tabla con ordenes en espera de la linea s
                     `
             }
         })
+        //eventos botones Quitar Ordenes
         const btnsQuitarOT = document.querySelectorAll('.btnQuitarOT')
         btnsQuitarOT.forEach(btn => {
             btn.addEventListener('click', () => {
                 quitarOT(btn.id)
+            })
+        })
+        //botones Subir Ordenes
+        const btnsSubirOT = document.querySelectorAll('.btnSubirOT')
+        btnsSubirOT.forEach(btn => {
+            btn.addEventListener('click', () => {
+                subirOT(btn.id)
+            })
+        })
+        //botones Bajar Ordenes
+        const btnsBajarOT = document.querySelectorAll('.btnBajarOT')
+        btnsBajarOT.forEach(btn => {
+            btn.addEventListener('click', () => {
+                bajarOT(btn.id)
             })
         })
     }
@@ -136,17 +156,26 @@ function tabOToperarios(ln) {//muestra los operarios que hay en la sala
     ln.operarios.forEach(idope => {
         let ope = operarios.find(ope => ope.idope === idope)
         document.getElementById('tabLnOperarios').innerHTML += `<tr>
-                                    <td><button id="${ope.idope}" title="Quitar a ${ope.nombre} de linea ${ln.nombre}">🗳️</button></td>
+                                    <td><button class="btnQuitarOpeLn" id="${ope.idope}" title="Quitar a ${ope.nombre} de linea ${ln.nombre}">🗳️</button></td>
                                     <td>${ope.idope}</td>
                                     <td><b>${ope.nombre}</b></td>
                                     <td>${ope.categoria}</td>
                                 </tr>`
     })
-
-
-
+    //Select ingresar operarios con todos los operarios sin lineas asignadas
+    selectOpesLn.innerHTML = `<option value="">👷‍♀️ Seleccionar Operario</option>`
+    operarios.forEach(ope => {
+        if (ope.linea === null) {
+            selectOpesLn.innerHTML += `<option value="${ope.idope}">${ope.nombre} - ${ope.categoria.toLowerCase()}</option>`
+        }
+    })
+    //boton quitar Operario de Linea
+    const btnsQuitarOpe = document.querySelectorAll('.btnQuitarOpeLn')
+    btnsQuitarOpe.forEach(btn => {
+        btn.addEventListener('click', () => { quitarOpeLn(btn.id) })
+    })
 }
-function quitarOT(idot) {
+function quitarOT(idot) {//quitar Orden de Sala
     const ot = ordenes.find(ot => ot.idorden === idot)
     const ln = lineas.find(ln => ln.idlinea === ot.linea)
     const index = ln.ordenes.findIndex(ln => ln === ot.idorden)
@@ -174,6 +203,87 @@ function quitarOT(idot) {
             })
         }
     })
+}
+function subirOT(idot) {//subir en lista de esperas de orden
+    const ot = ordenes.find(ot => ot.idorden === idot)
+    const ln = lineas.find(lin => lin.idlinea === ot.linea)
+    const index = ln.ordenes.findIndex(ln => ln === idot)
+    const ot2 = ln.ordenes[index - 1]
+    ln.ordenes[index - 1] = idot
+    ln.ordenes[index] = ot2
+    cargarLinea(ln.idlinea)
+    LineasLSset()
+}
+function bajarOT(idot) {//bajar en lista de esperas de orden
+    const ot = ordenes.find(ot => ot.idorden === idot)
+    const ln = lineas.find(lin => lin.idlinea === ot.linea)
+    const index = ln.ordenes.findIndex(ln => ln === idot)
+    const ot2 = ln.ordenes[index + 1]
+    ln.ordenes[index + 1] = idot
+    ln.ordenes[index] = ot2
+    cargarLinea(ln.idlinea)
+    LineasLSset()
+}
+function verSelOpe() {//muestra el select de operarios
+    selectOpesLn.style.display === "none" ? selectOpesLn.style.display = "inline" : selectOpesLn.style.display = "none"
+}
+function opeaLinea(idOpe) {//Agrega Operarios a la linea 
+    const ope = operarios.find(ope => ope.idope === idOpe)
+    const linea = lineas.find(ln => ln.idlinea === btnLinea.title)
+    if (linea) {
+        Swal.fire({
+            showCancelButton: true,
+            title: `¿Desea agregar a ${ope.nombre}`,
+            text: `a la linea ${linea.nombre} ?`,
+            icon: 'warning',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                
+                ope.linea = linea.idlinea
+                linea.operarios.push(ope.idope)
+                cargarLinea(linea.idlinea)
+                LineasLSset()
+                Swal.fire({
+                    title: `👷‍♀️ Operario ingresado con éxito`,
+                    icon: 'success',
+                    timer: 2500,
+                    showConfirmButton: false
+                })
+            }
+        })
+    }
+}
+function quitarOpeLn(idOpe) {//quita el Operario seleccionado
+    const ope = operarios.find(ope => ope.idope === idOpe)
+    const linea = lineas.find(ln => ln.idlinea === btnLinea.title)
+    if (linea) {
+        Swal.fire({
+            showCancelButton: true,
+            title: `¿Desea QUITAR a ${ope.nombre}`,
+            text: `a la linea ${linea.nombre} ?`,
+            icon: 'warning',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                
+                ope.linea = null
+                const index = linea.operarios.findIndex(id => id === idOpe)
+                linea.operarios.splice(index, 1)
+                cargarLinea(linea.idlinea)
+                LineasLSset()
+                Swal.fire({
+                    title: `👷‍♀️ Se sacó operario de la sala`,
+                    icon: 'success',
+                    timer: 2500,
+                    showConfirmButton: false
+                })
+            }
+        })
+    }
+
 }
 
 
