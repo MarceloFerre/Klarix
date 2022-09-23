@@ -8,7 +8,7 @@ function loader(timer) {
             <h2>Cargando datos</h2>
         </div>
         <div class="avimg">
-            <img src="200w.webp">
+            <img src="img/200w.webp">
             <h3 id="comentCarga">Buscando y recuperando datos</h3>
             <progress id="progCarga" class="progress" max="1400" value="0"></progress>
            
@@ -39,12 +39,13 @@ function loader(timer) {
     setTimeout(() => {
         clearInterval
         aviso.style.display = "none"
-
         monitorLineas()
+        
+
         Swal.fire({
             title: '⚗️ KLARIX ',
             text: 'Gestion de ambientes productivos',
-            imageUrl: 'logo.gif',
+            imageUrl: 'img/logo.gif',
             imageHeight: 166,
             imageWidth: 250,
             timer: 5000,
@@ -54,51 +55,54 @@ function loader(timer) {
 
 }
 function monitorLineas() {
-    cardMonitor.innerHTML = ``
-    lineas.forEach(linea => {
-        let div = document.createElement('div')
-        div.className = 'card'
-        if (linea.ordenes.length > 0) {
-            let orden = ordenes.find(ord => ord.idorden == linea.ordenactiva)
-            let producto = productos.find(producto => producto.idpr == orden.idproducto)
+    setInterval(() => {
+        cardMonitor.innerHTML = ``
+        lineas.forEach(linea => {
+            let div = document.createElement('div')
+            div.className = 'card'
+            if (linea.ordenes.length > 0) {
+                let orden = ordenes.find(ord => ord.idorden == linea.ordenactiva)
+                let producto = productos.find(producto => producto.idpr == orden.idproducto)
 
-            div.title = `📑 ${linea.ordenactiva} - ${producto.nombre} - ${producto.presentacion}`
+                div.title = `📑 ${linea.ordenactiva} - ${producto.nombre} - ${producto.presentacion}`
 
-            div.innerHTML = `<div class="cardtitulo" title="🏭 ${linea.idlinea} - ${linea.nombre} | ${linea.descripcion}" >🏭 ${linea.nombre}</div>
-            <div class="cardot"><p class="cardottext"> 📑 ${linea.ordenactiva}</p><div class="cardprod">${producto.nombre}</div></div>
-            <div class="cardpresen" title="${producto.nombre} - ${producto.presentacion} | ${producto.descripcion}">${producto.presentacion} - ${producto.descripcion}</div>
-            <div class="cardestadoicono"  title="${EmojiEstado(orden.estado)} ${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%">${EmojiEstado(orden.estado)}</div>
-            <div class="cardestado"  title="${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%">${orden.estado}</div>
-            <div class="cardUnidades" title="${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%" >${orden.unidadesproducidas}/${orden.unidadespedidas} | ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}% <progress class="progress" value="${parseInt((orden.unidadesproducidas / orden.unidadespedidas * 100))}" max="100"></progress></div>
-            <div class="cardpie">
-            <button class="masinfo"id="${linea.idlinea}">+info</button>
-            </div>
-        </div>`
+                div.innerHTML = `<div class="cardtitulo" title="🏭 ${linea.idlinea} - ${linea.nombre} | ${linea.descripcion}" >🏭 ${linea.nombre}</div>
+                <div class="cardot"><p class="cardottext"> 📑 ${linea.ordenactiva}</p><div class="cardprod">${producto.nombre}</div></div>
+                <div class="cardpresen" title="${producto.nombre} - ${producto.presentacion} | ${producto.descripcion}">${producto.presentacion} - ${producto.descripcion}</div>
+                <div class="cardestadoicono"  title="${EmojiEstado(orden.estado)} ${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%">${EmojiEstado(orden.estado)}</div>
+                <div class="cardestado"  title="${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%">${orden.estado}</div>
+                <div class="cardUnidades" title="${orden.estado} | progreso: ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}%" >${orden.unidadesproducidas}/${orden.unidadespedidas} | ${parseInt((orden.unidadesproducidas / orden.unidadespedidas) * 100)}% <progress class="progress" value="${parseInt((orden.unidadesproducidas / orden.unidadespedidas * 100))}" max="100"></progress></div>
+                <div class="cardpie">
+                <button class="masinfo"id="${linea.idlinea}">+info</button>
+                </div>
+            </div>`
 
-        } else {
-            div.innerHTML = `<div class="cardtitulo">🏭 ${linea.nombre}</div>
-            <div class="cardot"><p class="cardottext"> 📑 Sin ordenes</p><div class="cardprod">Sin Ordenes ...</div></div>
-            <div class="cardpresen">Esperando ... </div>
-            <div class="cardestadoicono"> ${EmojiEstado("DESHABILITADO")} </div>
-            <div class="cardestado">DESHABILITADO</div>
-            <div class="cardUnidades"><small><b>+info</b> para asignar 🔻</small><progress class="progress" value="0"></progress></div>
-            <div class="cardpie">
-            <button onclick="masinfoasign()" title="Asignar Ordenes 📥">+info</button>
-            </div>
-        </div>`
+            } else {
+                div.innerHTML = `<div class="cardtitulo">🏭 ${linea.nombre}</div>
+                <div class="cardot"><p class="cardottext"> 📑 Sin ordenes</p><div class="cardprod">Sin Ordenes ...</div></div>
+                <div class="cardpresen">Esperando ... </div>
+                <div class="cardestadoicono"> ${EmojiEstado("DESHABILITADO")} </div>
+                <div class="cardestado">DESHABILITADO</div>
+                <div class="cardUnidades"><small><b>+info</b> para asignar 🔻</small><progress class="progress" value="0"></progress></div>
+                <div class="cardpie">
+                <button onclick="masinfoasign()" title="Asignar Ordenes 📥">+info</button>
+                </div>
+            </div>`
 
-        }
-        cardMonitor.append(div)
-        const btnsmasinfo = document.querySelectorAll('.masinfo')
-        btnsmasinfo.forEach(btn => {
-            btn.addEventListener('click', () => {
-                VerAdmin()
-                cargarLinea(btn.id)
-                cargarBtnsLineas(lineas)
-                document.getElementById("Lineas").style.display = "block"
+            }
+            cardMonitor.append(div)
+            const btnsmasinfo = document.querySelectorAll('.masinfo')
+            btnsmasinfo.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    VerAdmin()
+                    cargarLinea(btn.id)
+                    cargarBtnsLineas(lineas)
+                    document.getElementById("Lineas").style.display = "block"
+                })
             })
         })
-    })
+    }, 2500);
+
 }
 function EmojiEstado(estado) {
     switch (estado) {
@@ -170,10 +174,7 @@ function VerMonitor() {//Ver MONITOR
         Monitor.style.display = "block"
         Admin.style.display = "none"
         Audit.style.display = "none"
-        monitorLineas()
     }
-    monitorLineas()
-
 }
 function VerAdmin() {//Ver ADMINISTRADOR
     if (Admin.style.display == "none") {

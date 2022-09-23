@@ -63,7 +63,7 @@ function cargarLinea(IDlinea) {//carga informacion de la linea
     btnLinea.title = `${ln.idlinea}`
     btnLinea.disabled = false
     lineaCarpeta.style.display = "block"
-    cardOTactiva(ln)
+
     tabOTSactivas(ln)
     tabOToperarios(ln)
 }
@@ -74,7 +74,16 @@ function verLinea() {//muestra-oculta la carpeta de la linea seleccionada
         lineaCarpeta.style.display === "none" ? lineaCarpeta.style.display = "block" : lineaCarpeta.style.display = "none"
     }
 }
-function cardOTactiva(ln) {//carga la card de orden activa de la Linea seleccionada
+setInterval(() => {
+    cardOTactiva()
+    tabOTSactivas()
+}, 300);
+function cardOTactiva() {//carga la card de orden activa de la Linea seleccionada
+    let btn = document.getElementById("btnLinea")
+    const ln = lineas.find(ln => ln.idlinea === btn.title)
+    // setInterval(() => {
+
+
     if (ln.ordenes.length === 0) {
         document.getElementById("lnOTid").innerHTML = `📑 Sin ordenes`
         document.getElementById("lnOTprod").innerHTML = `Sin Ordenes`
@@ -90,10 +99,19 @@ function cardOTactiva(ln) {//carga la card de orden activa de la Linea seleccion
         document.getElementById("lnOTpresen").innerHTML = `${prod.presentacion} - ${prod.descripcion}`
         document.getElementById("lnOTico").innerHTML = `${EmojiEstado(ot.estado)}`
         document.getElementById("lnOTestado").innerHTML = `${ot.estado}`
-        document.getElementById("lnOTunds").innerHTML = `${ot.unidadesproducidas}/${ot.unidadespedidas} | ${parseInt((ot.unidadesproducidas / ot.unidadespedidas) * 100)}% <progress class="progress" value="${parseInt((ot.unidadesproducidas / ot.unidadespedidas * 100))}" max="100"></progress><button title="🌀 Actualizar estado de Orden Activa">🌀 <b>Actualizar</b></button>`
+        document.getElementById("lnOTunds").innerHTML = `${ot.unidadesproducidas}/${ot.unidadespedidas} | ${parseInt((ot.unidadesproducidas / ot.unidadespedidas) * 100)}% <progress class="progress" value="${parseInt((ot.unidadesproducidas / ot.unidadespedidas * 100))}" max="100"></progress><button id="${ot.idorden}" class="btnActualizarEstado" title="🌀 Actualizar estado de Orden Activa">🌀 <b>Actualizar</b></button>`
+
+        document.querySelector('.btnActualizarEstado').addEventListener('click', () => {
+            actualizarEstado(document.querySelector('.btnActualizarEstado').id)
+        })
     }
+    // }, 200);
+
 }
-function tabOTSactivas(ln) {//carga la tabla con ordenes en espera de la linea seleccionada
+function tabOTSactivas() {//carga la tabla con ordenes en espera de la linea seleccionada
+    let btn = document.getElementById("btnLinea")
+    const ln = lineas.find(ln => ln.idlinea === btn.title)
+
     if (ln.ordenes.length <= 1) {
         document.getElementById("OTStab").innerHTML = `<h3>📑Sin Ordenes en Espera</h3><br> <button onclick="asignsl()" title="Asignar Ordenes">📄 Asignar Ordenes</button>
                     `
@@ -147,7 +165,7 @@ function tabOTSactivas(ln) {//carga la tabla con ordenes en espera de la linea s
         })
     }
 }
-function asignsl() {
+function asignsl() {//boton cuando la linea no tiene ordenes
     verLinea()
     masinfoasign()
 }
@@ -240,7 +258,7 @@ function opeaLinea(idOpe) {//Agrega Operarios a la linea
             cancelButtonText: 'No'
         }).then((result) => {
             if (result.isConfirmed) {
-                
+
                 ope.linea = linea.idlinea
                 linea.operarios.push(ope.idope)
                 cargarLinea(linea.idlinea)
@@ -268,7 +286,7 @@ function quitarOpeLn(idOpe) {//quita el Operario seleccionado
             cancelButtonText: 'No'
         }).then((result) => {
             if (result.isConfirmed) {
-                
+
                 ope.linea = null
                 const index = linea.operarios.findIndex(id => id === idOpe)
                 linea.operarios.splice(index, 1)
@@ -285,8 +303,78 @@ function quitarOpeLn(idOpe) {//quita el Operario seleccionado
     }
 
 }
+function actualizarEstado(idot) {
+    const ot = ordenes.find(ot => ot.idorden === idot)
+    Swal.fire({
+        title: `🌀 Actualizando Estado`,
+        icon: 'success',
+        timer: 2500,
+        showConfirmButton: false,
+    })
+    switch (ot.estado) {
+        case "ESPERA":
+            ot.estado = "PREPARACION"
+            break;
+        case "PREPARACION":
+            ot.estado = "PRODUCIENDO"
+            break;
+        case "PRODUCIENDO":
+            if (ot.unidadespedidas > ot.unidadesproducidas) {
+                ot.estado = "DETENIDO"
+            } else {
+                ot.estado = "FINALIZANDO"
+            }
+            break;
+        case "DETENIDO":
+            ot.estado = "PRODUCIENDO"
+            break;
+        case "FINALIZANDO":
+            //cierra la orden
+            const ln = lineas.find(ln => ln.idlinea === ot.linea)
+            console.log(ln)
+            ot.estado = "TERMINADO"
+            ln.ordenes.shift()
+            ln.ordenactiva = ln.ordenes[0]
+
+            break;
+        case "TERMINADO":
 
 
+
+            break;
+        default:
+            break;
+    }
+    OrdenesLSset()
+
+}
+setTimeout(() => {
+    Simulador()
+
+}, 3000);
+function Simulador() {
+    setInterval(() => {
+        ordenes.forEach(ot => {
+            //si la orden está en espera y esta en el primer lugar pasa automaticamente a preparacion
+            const lin = lineas.find(ln => ln.idlinea === ot.linea)
+            const index = lin.ordenes.findIndex(ln => ln === ot.idorden)
+            if (ot.estado === "ESPERA" && index == 0) {
+                ot.estado = "PREPARACION"
+            }
+            //si está produciendo y no completa las unidades, suma unidades
+            if (ot.estado === "PRODUCIENDO") {
+                if (ot.unidadespedidas > ot.unidadesproducidas) {
+                    ot.unidadesproducidas++
+
+                } else {
+                    ot.estado = "FINALIZANDO"
+                }
+            }
+
+        });
+    }, 1000);
+
+}
 //Carga de datos
 function LineasLSget() {//Busca LINEAS DE PROD en localStorage, si no encuentra los agrega haciendo FETCH a KXbd.JSON
     const lnsJson = (JSON.parse(localStorage.getItem('KXlineas')) || null)
@@ -331,3 +419,4 @@ class linea {
 
 //inicio
 LineasLSget()
+

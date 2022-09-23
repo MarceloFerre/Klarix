@@ -300,7 +300,7 @@ function verOTSactiv() {//ver seccion Ordenes Activas
 }
 function cargarTabOTactivas(arrOTSAct) {//escribe la tabla de ordenes Activas
     tabOTact.innerHTML = ``
-    let OTsActi = arrOTSAct.filter((orden) => orden.estado != "NO ASIGNADO")
+    let OTsActi = arrOTSAct.filter((orden) => (orden.estado != "NO ASIGNADO")&&(orden.estado != "TERMINADO") )
     OTsActi.forEach(orden => {
         let ln = lineas.find(linea => linea.idlinea === orden.linea)
         let prod = productos.find(producto => producto.idpr === orden.idproducto)

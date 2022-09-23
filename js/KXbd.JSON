@@ -332,8 +332,8 @@
             "idcliente": "CL7",
             "idproducto": "PR7",
             "linea": "LN0",
-            "unidadespedidas": 100,
-            "unidadesproducidas": 47,
+            "unidadespedidas": 60,
+            "unidadesproducidas": 0,
             "estado": "PRODUCIENDO",
             "logs": []
         },
@@ -342,7 +342,7 @@
             "idcliente": "CL7",
             "idproducto": "PR1",
             "linea": null,
-            "unidadespedidas": 200,
+            "unidadespedidas": 100,
             "unidadesproducidas": 0,
             "estado": "NO ASIGNADO",
             "logs": []
@@ -352,7 +352,7 @@
             "idcliente": "CL7",
             "idproducto": "PR15",
             "linea": "LN0",
-            "unidadespedidas": 300,
+            "unidadespedidas": 80,
             "unidadesproducidas": 0,
             "estado": "ESPERA",
             "logs": []
@@ -372,7 +372,7 @@
             "idcliente": "CL0",
             "idproducto": "PR3",
             "linea": "LN2",
-            "unidadespedidas": 25000,
+            "unidadespedidas": 120,
             "unidadesproducidas": 0,
             "estado": "PREPARACION",
             "logs": []
@@ -412,7 +412,7 @@
             "idcliente": "CL2",
             "idproducto": "PR5",
             "linea": "LN3",
-            "unidadespedidas": 2000,
+            "unidadespedidas": 35,
             "unidadesproducidas": 0,
             "estado": "PREPARACION",
             "logs": []

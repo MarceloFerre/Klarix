@@ -105,6 +105,12 @@ main {
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: gray 2px 0px 5px, rgba(128, 128, 128, 0.3) -2px 0px 2px;
 }
+.audit {
+ text-align: center;
+ background-color: rgba(255, 255, 255, 0.8);
+ box-shadow: gray 2px 0px 5px, rgba(128, 128, 128, 0.3) -2px 0px 2px;
+}
+
 
 hr {
     height: 15px;
@@ -142,6 +148,7 @@ section hr {
     padding: 10px;
     background-color: rgb(146, 175, 182);
     backdrop-filter: blur(4px);
+    
 }
 
 #formModOt h3,
@@ -377,7 +384,7 @@ section hr {
     background-color: transparent;
     font-size: 50px;
     padding: 20px;
-    animation: latidos 5s infinite;
+    animation: latidos 2.5s infinite;
     text-align: center;
 
 }
